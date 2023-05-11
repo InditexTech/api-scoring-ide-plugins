@@ -1,0 +1,8 @@
+- fixes: 
+    - title: fix example
+      command: insert
+  problem: insert property
+- fixes:
+    - title: another fix example
+      command: insertOrUpdate
+  problem: update property

@@ -1,0 +1,216 @@
+- problem: 
+    - response-schema-not-defined
+    - oas3-unused-components-schema
+    - standard-http-status-codes
+    - implicit-grant-oauth2
+    - resource-owner-password-auth
+    - response-schema-not-defined
+    - negotiate-auth
+    - oauth1-auth
+    - allowed-verbs
+    - well-understood-http-status-codes
+  fixes:
+    - title: Remove this section
+      command: remove
+- problem: info-contact
+  fixes:
+    - title: Add Contact Section
+      command: insertOrUpdate
+      path: contact
+      position: end
+      payload: { name: '', email: '' }
+      parameters:
+        - type: property
+          path: email
+          source: gitUserEmail
+        - type: property
+          path: name
+          source: gitUserName
+- problem: 
+  - info-description
+  - operation-description
+  fixes:
+    - title: Add a Description
+      command: insertOrUpdate
+      path: description
+      payload: 'add some description here'
+- problem: invalid-ref
+  fixes:
+    - title: Select a valid $ref from a list
+      command: insertOrUpdate
+      source: selectRef
+- problem: operation-2xx-response
+  fixes:
+    - title: Add 200 Response
+      command: insertOrUpdate
+      path: 200
+      source: buildResponse
+    - title: Add 201 Response
+      command: insertOrUpdate
+      path: 201
+      source: buildResponse
+# -- NEW SECTION RULES
+- problem: global-security
+  fixes: 
+    - title : Add global security property
+      command: insertOrUpdate
+      path: security
+      payload: [ itxBasicAuth : [], itxBearerAuth: [], itxApiKeyAuth : []]
+- problem: numeric-required-properties-format
+  fixes:
+    - title: Add 'format' property
+      command: insertOrUpdate
+      path: format
+      position: end
+      payload: int32
+- problem: numeric-required-properties-min
+  fixes:
+    - title: Add 'minimum' property
+      command: insertOrUpdate
+      path: minimum
+      position: end
+      payload: 0
+- problem: numeric-required-properties-max
+  fixes:
+    - title: Add 'maximum' property
+      command: insertOrUpdate
+      path: maximum
+      position: end
+      payload: 100
+- problem: string-required-properties-pattern
+  fixes:
+    - title: Add 'pattern' property
+      command: insertOrUpdate
+      path: pattern
+      position: end
+      payload: ^[a-zA-Z0-9 ]*$
+- problem: string-required-properties-length
+  fixes:
+    - title: Add 'maxLength' property
+      command: insertOrUpdate
+      path: maxLength
+      position: end
+      payload: 255
+- problem: response-schema-defined
+  fixes: 
+    - title: Add response 'schema' property
+      command: insertOrUpdate
+      path: content
+      position: end
+      payload: { application/json : {schema : { type: 'object', properties: {name : {type: 'string'}}}}}
+- problem: path-params
+  fixes:
+    - title: Add path parameter
+      command: insertOrUpdate
+      position: end
+      source: addMissingParameter
+- problem: 
+  - ensure-param-examples
+  - ensure-properties-examples
+  fixes:
+    - title: Add 'example' property
+      command: insertOrUpdate
+      path: example
+      position: end
+      source: exampleProperty
+- problem: array-required-properties
+  fixes:
+    - title: Add 'maxItems' property
+      command: insertOrUpdate
+      path: maxItems
+      position: end
+      payload: 100
+- problem: no-additional-properties-defined
+  fixes:
+    - title : Add 'additionalProperties' property
+      command: insertOrUpdate
+      path: additionalProperties
+      position: end
+      payload: false
+- problem: schema-mandatory-parameters
+  fixes: 
+    - title : Add 'schema' property to parameter
+      command: insertOrUpdate
+      path: schema
+      position: end
+      payload: { type: 'string', maxLength: 255, pattern: '^[a-zA-Z0-9 ]*$'}
+- problem: schema-mandatory-headers
+  fixes: 
+    - title : Add 'schema' property to header
+      command: insertOrUpdate
+      path: schema
+      position: end
+      payload: { type: 'string', maxLength: 255, pattern: '^[a-zA-Z0-9 ]*$'}
+
+- problem: 
+    - get-http-status-codes-collections
+    - get-http-status-codes-resource
+    - post-http-status-codes-resource
+    - post-http-status-codes-controller
+    - put-http-status-codes-resource
+    - delete-http-status-codes-resource
+    - patch-http-status-codes-resource
+  fixes:
+    - title: Add missing response
+      command: insertOrUpdate
+      path: XXX
+      position: end
+      source: addMissingResponseCode
+
+- problem: empty-schema-headers
+  fixes:
+    - title : Add 'schema' property to header
+      command: insertOrUpdate
+      path: schema
+      position: end
+      payload: { type: 'string', maxLength: 255, pattern: '^[a-zA-Z0-9 ]*$'}
+
+- problem: server-https
+  fixes: 
+    - title : Fix url to have https
+      command: insertOrUpdate
+      path: url
+      source: addServerHttps
+
+# =========== Update Property name fixes
+- problem: date-suffix
+  fixes:
+    - title: Append 'Date' suffix
+      command: renameProperty
+      source: addDateSuffix
+
+- problem: datetime-suffix
+  fixes:
+    - title: Append 'Date' suffix
+      command: renameProperty
+      source: addDateSuffix
+    - title: Append 'DateTime' suffix
+      command: renameProperty
+      source: addDateTimeSuffix
+- problem: paths-uppercase
+  fixes:
+    - title: Convert Path to Lower Case
+      command: renameProperty
+      source: toLowerCase
+- problem: paths-no-underscore
+  fixes:
+    - title: Remove Underscore Characters from Path
+      command: renameProperty
+      source: removeUnderScores
+    - title: Replace Underscores with Dashes in Path
+      command: renameProperty
+      source: replaceUnderScoresWithDashes
+- problem: path-params
+  fixes:
+    - title: Remove unused path parameter
+      problemMatcher: isUnusedPathParam
+      command: insertOrAppendToArray
+      position: end
+      path: parameters
+      source: addMissingParameter
+    - title: Add missing path parameter
+      problemMatcher: isMissingPathParam
+      command: insertOrAppendToArray
+      position: end
+      path: parameters
+      source: addMissingParameter

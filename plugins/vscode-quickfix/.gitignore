@@ -1,0 +1,15 @@
+node_modules
+# Local config
+.npmrc
+
+dist
+*.vsix
+
+/code/out
+/code/.vscode-test
+/code/package-lock.json
+.DS_Store
+
+code/.nyc_output
+code/coverage
+test-report.json

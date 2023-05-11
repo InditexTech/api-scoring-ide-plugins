@@ -1,0 +1,9 @@
+{
+    "reporterEnabled": "mocha-spec-json-output-reporter, mocha-sonarqube-reporter",
+    "mochaSpecJsonOutputReporterReporterOptions":{
+      "fileName":"test-report.json"
+    },
+    "mochaSonarqubeReporterReporterOptions":{
+      "output":"coverage/sonar-report.xml"
+    }
+}

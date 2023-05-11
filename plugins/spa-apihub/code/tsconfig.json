@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    /* Language and Environment */
+    "target": "es6" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
+    "lib": [
+      "ES6",
+      "DOM",
+      "DOM.Iterable",
+      "ES2021.String"
+    ] /* Specify a set of bundled library declaration files that describe the target runtime environment. */,
+    "jsx": "react" /* Specify what JSX code is generated. */,
+    /* Modules */
+    "module": "es2015" /* Specify what module code is generated. */,
+    "moduleResolution": "Node" /* Specify how TypeScript looks up a file from a given module specifier. */,
+    "baseUrl": "src" /* Specify the base directory to resolve non-relative module names. */,
+    "paths": {
+      "*": ["./*"],
+      "root/*": [""]
+    } /* Specify a set of entries that re-map imports to additional lookup locations. */,
+    "resolveJsonModule": true /* Enable importing .json files */,
+    "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables `allowSyntheticDefaultImports` for type compatibility. */,
+    "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
+    /* Type Checking */
+    "strict": true /* Enable all strict type-checking options. */,
+    "noImplicitAny": true /* Enable error reporting for expressions and declarations with an implied `any` type.. */,
+    "strictNullChecks": true /* When type checking, take into account `null` and `undefined`. */,
+    "strictFunctionTypes": true /* When assigning functions, check to ensure parameters and the return values are subtype-compatible. */,
+    "strictPropertyInitialization": true /* Check for class properties that are declared but not set in the constructor. */,
+    "noImplicitThis": true /* Enable error reporting when `this` is given the type `any`. */,
+    "alwaysStrict": true /* Ensure 'use strict' is always emitted. */,
+    "noUnusedLocals": false /* Enable error reporting when a local variables aren't read. */,
+    "noUnusedParameters": false /* Raise an error when a function parameter isn't read */,
+    "noImplicitReturns": false /* Enable error reporting for codepaths that do not explicitly return in a function. */,
+    /* Completeness */
+    "skipLibCheck": true /* Skip type checking all .d.ts files. */
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}

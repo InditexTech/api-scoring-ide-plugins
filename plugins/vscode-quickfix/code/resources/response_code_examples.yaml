@@ -1,0 +1,66 @@
+responses:
+  '200':
+    description: OK - Success
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/200ResponseSchema'
+  '201':
+    description: Created - Success
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/201ResponseSchema'
+  '204':
+    description: No Content - Success
+  '400':
+    description: Bad Request - The request is malformed or invalid.
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/400BadRequestError'
+  '401':
+    description: Unauthorized - The request is unauthorized.
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/401UnauthorizedError'
+  '403':
+    description: Forbidden - The request is forbidden.
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/403ForbiddenError'
+  '404':
+    description: Not Found - The resource was not found.
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/404NotFoundError'
+  '409':
+    description: Conflict
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/409ConflictError'
+  '500':
+    description: Internal Server Error - Use it as a General System Error.
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/500InternalServerErrorError'
+  '503':
+    description: Service Unavailable - Use it to report the Specific Errors
+      that the server suffers.
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/503ServiceUnavailableError'
+  '504':
+    description: Gateway Timeout - Use it to report a Timeout occurred on the
+      server.
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/504GatewayTimeoutError'
+                

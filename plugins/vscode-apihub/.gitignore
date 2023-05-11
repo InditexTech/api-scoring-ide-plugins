@@ -1,0 +1,7 @@
+node_modules
+# Local config
+.npmrc
+
+.vscode-test/
+dist
+*.vsix

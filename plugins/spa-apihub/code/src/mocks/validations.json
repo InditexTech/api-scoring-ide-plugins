@@ -1,0 +1,1023 @@
+{
+  "apiName": "API Sample",
+  "apiProtocol": 1,
+  "result": [
+    {
+      "designValidation": {
+        "validationType": 1,
+        "spectralValidation": {
+          "issues": [
+            {
+              "code": "oas3-server-trailing-slash",
+              "message": "Server URL must not have trailing slash.",
+              "path": ["servers", "1", "url"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 13,
+                  "character": 9
+                },
+                "end": {
+                  "line": 13,
+                  "character": 74
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "oas3-server-trailing-slash",
+              "message": "Server URL must not have trailing slash.",
+              "path": ["servers", "2", "url"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 15,
+                  "character": 9
+                },
+                "end": {
+                  "line": 15,
+                  "character": 61
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "oas3-server-trailing-slash",
+              "message": "Server URL must not have trailing slash.",
+              "path": ["servers", "3", "url"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 17,
+                  "character": 9
+                },
+                "end": {
+                  "line": 17,
+                  "character": 57
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "oas3-operation-security-defined",
+              "message": "API \"security\" values must match a scheme defined in the \"components.securitySchemes\" object.",
+              "path": ["security", "0", "itxBearerAuth"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 28,
+                  "character": 18
+                },
+                "end": {
+                  "line": 28,
+                  "character": 22
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "post-http-status-codes-collections",
+              "message": "Missing the responses[500] http definition",
+              "path": ["paths", "/api/v1/events/truck", "post", "responses"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 42,
+                  "character": 16
+                },
+                "end": {
+                  "line": 50,
+                  "character": 50
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "post-http-status-codes-collections",
+              "message": "Missing the responses[503] http definition",
+              "path": ["paths", "/api/v1/events/truck", "post", "responses"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 42,
+                  "character": 16
+                },
+                "end": {
+                  "line": 50,
+                  "character": 50
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "post-http-status-codes-collections",
+              "message": "Missing the responses[504] http definition",
+              "path": ["paths", "/api/v1/events/truck", "post", "responses"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 42,
+                  "character": 16
+                },
+                "end": {
+                  "line": 50,
+                  "character": 50
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "post-http-status-codes-collections",
+              "message": "Missing the responses[500] http definition",
+              "path": ["paths", "/api/v1/events/supplier/truck", "post", "responses"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 63,
+                  "character": 16
+                },
+                "end": {
+                  "line": 71,
+                  "character": 50
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "post-http-status-codes-collections",
+              "message": "Missing the responses[503] http definition",
+              "path": ["paths", "/api/v1/events/supplier/truck", "post", "responses"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 63,
+                  "character": 16
+                },
+                "end": {
+                  "line": 71,
+                  "character": 50
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "post-http-status-codes-collections",
+              "message": "Missing the responses[504] http definition",
+              "path": ["paths", "/api/v1/events/supplier/truck", "post", "responses"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 63,
+                  "character": 16
+                },
+                "end": {
+                  "line": 71,
+                  "character": 50
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "post-http-status-codes-collections",
+              "message": "Missing the responses[500] http definition",
+              "path": ["paths", "/api/v1/events/inditex/truck", "post", "responses"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 84,
+                  "character": 16
+                },
+                "end": {
+                  "line": 92,
+                  "character": 50
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "post-http-status-codes-collections",
+              "message": "Missing the responses[503] http definition",
+              "path": ["paths", "/api/v1/events/inditex/truck", "post", "responses"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 84,
+                  "character": 16
+                },
+                "end": {
+                  "line": 92,
+                  "character": 50
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "post-http-status-codes-collections",
+              "message": "Missing the responses[504] http definition",
+              "path": ["paths", "/api/v1/events/inditex/truck", "post", "responses"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 84,
+                  "character": 16
+                },
+                "end": {
+                  "line": 92,
+                  "character": 50
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "paths-uppercase",
+              "message": "paths should not be in uppercase",
+              "path": ["paths", "/api/v1/events/packingList"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 93,
+                  "character": 29
+                },
+                "end": {
+                  "line": 113,
+                  "character": 50
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "post-http-status-codes-collections",
+              "message": "Missing the responses[500] http definition",
+              "path": ["paths", "/api/v1/events/packingList", "post", "responses"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 105,
+                  "character": 16
+                },
+                "end": {
+                  "line": 113,
+                  "character": 50
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "post-http-status-codes-collections",
+              "message": "Missing the responses[503] http definition",
+              "path": ["paths", "/api/v1/events/packingList", "post", "responses"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 105,
+                  "character": 16
+                },
+                "end": {
+                  "line": 113,
+                  "character": 50
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "post-http-status-codes-collections",
+              "message": "Missing the responses[504] http definition",
+              "path": ["paths", "/api/v1/events/packingList", "post", "responses"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 105,
+                  "character": 16
+                },
+                "end": {
+                  "line": 113,
+                  "character": 50
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "post-http-status-codes-collections",
+              "message": "Missing the responses[500] http definition",
+              "path": ["paths", "/api/v2/events/packing-list", "post", "responses"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 126,
+                  "character": 16
+                },
+                "end": {
+                  "line": 134,
+                  "character": 50
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "post-http-status-codes-collections",
+              "message": "Missing the responses[503] http definition",
+              "path": ["paths", "/api/v2/events/packing-list", "post", "responses"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 126,
+                  "character": 16
+                },
+                "end": {
+                  "line": 134,
+                  "character": 50
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "post-http-status-codes-collections",
+              "message": "Missing the responses[504] http definition",
+              "path": ["paths", "/api/v2/events/packing-list", "post", "responses"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 126,
+                  "character": 16
+                },
+                "end": {
+                  "line": 134,
+                  "character": 50
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "post-http-status-codes-collections",
+              "message": "Missing the responses[500] http definition",
+              "path": ["paths", "/api/v1/events/transport", "post", "responses"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 147,
+                  "character": 16
+                },
+                "end": {
+                  "line": 155,
+                  "character": 50
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "post-http-status-codes-collections",
+              "message": "Missing the responses[503] http definition",
+              "path": ["paths", "/api/v1/events/transport", "post", "responses"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 147,
+                  "character": 16
+                },
+                "end": {
+                  "line": 155,
+                  "character": 50
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "oas3-unused-component",
+              "message": "Potentially unused component has been detected.",
+              "path": ["components", "parameters", "unloadingDate"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 2928,
+                  "character": 18
+                },
+                "end": {
+                  "line": 2936,
+                  "character": 39
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            }
+          ]
+        },
+        "protolintValidation": {
+          "issues": []
+        },
+        "score": 79.22,
+        "rating": "B",
+        "ratingDescription": "Good"
+      }
+    },
+    {
+      "securityValidation": {
+        "validationType": 3,
+        "spectralValidation": {
+          "issues": [
+            {
+              "code": "string-parameters-required-maxLength",
+              "message": "\"schema.maxLength\" property must be truthy",
+              "path": ["paths", "/api/v1/trucks", "get", "parameters", "2", "schema"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 264,
+                  "character": 17
+                },
+                "end": {
+                  "line": 265,
+                  "character": 24
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "array-required-properties",
+              "message": "Schema of type array must specify maxItems",
+              "path": ["paths", "/api/v1/trucks", "get", "responses", "200", "content", "application/json", "schema"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 271,
+                  "character": 21
+                },
+                "end": {
+                  "line": 274,
+                  "character": 52
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "numeric-required-properties-max",
+              "message": "\"schema.maximum\" property must be truthy",
+              "path": ["paths", "/api/v1/trucks/{truckId}", "get", "parameters", "0", "schema"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 292,
+                  "character": 17
+                },
+                "end": {
+                  "line": 294,
+                  "character": 25
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "numeric-required-properties-min",
+              "message": "\"schema.minimum\" property must be defined",
+              "path": ["paths", "/api/v1/trucks/{truckId}", "get", "parameters", "0", "schema"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 292,
+                  "character": 17
+                },
+                "end": {
+                  "line": 294,
+                  "character": 25
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "numeric-required-properties-max",
+              "message": "\"schema.maximum\" property must be truthy",
+              "path": ["paths", "/api/v1/trucks/{truckId}", "delete", "parameters", "0", "schema"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 318,
+                  "character": 17
+                },
+                "end": {
+                  "line": 320,
+                  "character": 25
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "numeric-required-properties-min",
+              "message": "\"schema.minimum\" property must be defined",
+              "path": ["paths", "/api/v1/trucks/{truckId}", "delete", "parameters", "0", "schema"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 318,
+                  "character": 17
+                },
+                "end": {
+                  "line": 320,
+                  "character": 25
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "numeric-required-properties-max",
+              "message": "\"schema.maximum\" property must be truthy",
+              "path": ["paths", "/api/v1/trucks/{truckId}/quality-details", "get", "parameters", "0", "schema"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 362,
+                  "character": 17
+                },
+                "end": {
+                  "line": 364,
+                  "character": 25
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "numeric-required-properties-min",
+              "message": "\"schema.minimum\" property must be defined",
+              "path": ["paths", "/api/v1/trucks/{truckId}/quality-details", "get", "parameters", "0", "schema"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 362,
+                  "character": 17
+                },
+                "end": {
+                  "line": 364,
+                  "character": 25
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "numeric-required-properties-max",
+              "message": "\"schema.maximum\" property must be truthy",
+              "path": ["paths", "/api/v1/trucks/{truckId}/quality-details", "put", "parameters", "0", "schema"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 388,
+                  "character": 17
+                },
+                "end": {
+                  "line": 390,
+                  "character": 25
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "numeric-required-properties-min",
+              "message": "\"schema.minimum\" property must be defined",
+              "path": ["paths", "/api/v1/trucks/{truckId}/quality-details", "put", "parameters", "0", "schema"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 388,
+                  "character": 17
+                },
+                "end": {
+                  "line": 390,
+                  "character": 25
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "numeric-required-properties-format",
+              "message": "\"schema.format\" property must be defined",
+              "path": ["paths", "/api/v1/packing-lists/{packingListId}", "get", "parameters", "0", "schema"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 416,
+                  "character": 17
+                },
+                "end": {
+                  "line": 417,
+                  "character": 25
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "numeric-required-properties-max",
+              "message": "\"schema.maximum\" property must be truthy",
+              "path": ["paths", "/api/v1/packing-lists/{packingListId}", "get", "parameters", "0", "schema"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 416,
+                  "character": 17
+                },
+                "end": {
+                  "line": 417,
+                  "character": 25
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "numeric-required-properties-min",
+              "message": "\"schema.minimum\" property must be defined",
+              "path": ["paths", "/api/v1/packing-lists/{packingListId}", "get", "parameters", "0", "schema"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 416,
+                  "character": 17
+                },
+                "end": {
+                  "line": 417,
+                  "character": 25
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "numeric-required-properties-format",
+              "message": "\"schema.format\" property must be defined",
+              "path": ["paths", "/api/v1/packing-list/quality-details", "get", "parameters", "0", "schema"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 439,
+                  "character": 17
+                },
+                "end": {
+                  "line": 440,
+                  "character": 25
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "numeric-required-properties-max",
+              "message": "\"schema.maximum\" property must be truthy",
+              "path": ["paths", "/api/v1/packing-list/quality-details", "get", "parameters", "0", "schema"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 439,
+                  "character": 17
+                },
+                "end": {
+                  "line": 440,
+                  "character": 25
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "numeric-required-properties-min",
+              "message": "\"schema.minimum\" property must be defined",
+              "path": ["paths", "/api/v1/packing-list/quality-details", "get", "parameters", "0", "schema"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 439,
+                  "character": 17
+                },
+                "end": {
+                  "line": 440,
+                  "character": 25
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "numeric-required-properties-format",
+              "message": "\"schema.format\" property must be defined",
+              "path": ["paths", "/api/v1/packing-list/quality-details", "get", "parameters", "1", "schema"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 444,
+                  "character": 17
+                },
+                "end": {
+                  "line": 445,
+                  "character": 25
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "numeric-required-properties-max",
+              "message": "\"schema.maximum\" property must be truthy",
+              "path": ["paths", "/api/v1/packing-list/quality-details", "get", "parameters", "1", "schema"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 444,
+                  "character": 17
+                },
+                "end": {
+                  "line": 445,
+                  "character": 25
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "numeric-required-properties-min",
+              "message": "\"schema.minimum\" property must be defined",
+              "path": ["paths", "/api/v1/packing-list/quality-details", "get", "parameters", "1", "schema"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 444,
+                  "character": 17
+                },
+                "end": {
+                  "line": 445,
+                  "character": 25
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "array-required-properties",
+              "message": "Schema of type array must specify maxItems",
+              "path": [
+                "paths",
+                "/api/v1/packing-list/quality-details",
+                "get",
+                "responses",
+                "200",
+                "content",
+                "application/json",
+                "schema"
+              ],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 454,
+                  "character": 21
+                },
+                "end": {
+                  "line": 457,
+                  "character": 60
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "numeric-required-properties-format",
+              "message": "\"schema.format\" property must be defined",
+              "path": ["paths", "/api/v1/orders/quality-details", "get", "parameters", "0", "schema"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 472,
+                  "character": 17
+                },
+                "end": {
+                  "line": 473,
+                  "character": 25
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "numeric-required-properties-max",
+              "message": "\"schema.maximum\" property must be truthy",
+              "path": ["paths", "/api/v1/orders/quality-details", "get", "parameters", "0", "schema"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 472,
+                  "character": 17
+                },
+                "end": {
+                  "line": 473,
+                  "character": 25
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "numeric-required-properties-min",
+              "message": "\"schema.minimum\" property must be defined",
+              "path": ["paths", "/api/v1/orders/quality-details", "get", "parameters", "0", "schema"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 472,
+                  "character": 17
+                },
+                "end": {
+                  "line": 473,
+                  "character": 25
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "numeric-required-properties-format",
+              "message": "\"schema.format\" property must be defined",
+              "path": ["paths", "/api/v1/orders/quality-details", "get", "parameters", "1", "schema"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 477,
+                  "character": 17
+                },
+                "end": {
+                  "line": 478,
+                  "character": 25
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "numeric-required-properties-max",
+              "message": "\"schema.maximum\" property must be truthy",
+              "path": ["paths", "/api/v1/orders/quality-details", "get", "parameters", "1", "schema"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 477,
+                  "character": 17
+                },
+                "end": {
+                  "line": 478,
+                  "character": 25
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "numeric-required-properties-min",
+              "message": "\"schema.minimum\" property must be defined",
+              "path": ["paths", "/api/v1/orders/quality-details", "get", "parameters", "1", "schema"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 477,
+                  "character": 17
+                },
+                "end": {
+                  "line": 478,
+                  "character": 25
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            },
+            {
+              "code": "string-parameters-required-maxLength",
+              "message": "\"schema.maxLength\" property must be truthy",
+              "path": ["components", "parameters", "textFilter", "schema"],
+              "severity": 1,
+              "source": "rmumwsc/rest/openapi-rest.yml",
+              "range": {
+                "start": {
+                  "line": 2925,
+                  "character": 13
+                },
+                "end": {
+                  "line": 2926,
+                  "character": 20
+                }
+              },
+              "fileName": "rmumwsc/rest/openapi-rest.yml"
+            }
+          ]
+        },
+        "protolintValidation": {
+          "issues": []
+        },
+        "score": 69.57,
+        "rating": "C",
+        "ratingDescription": "Adequate"
+      }
+    },
+    {
+      "documentationValidation": {
+        "validationType": 2,
+        "issues": [
+          {
+            "lineNumber": 1,
+            "ruleNames": ["EX_MD060", "inditex-mandatory-getting-started"],
+            "ruleDescription": "Mandatory Getting Started Section",
+            "ruleInformation": "https://axinic.central.inditex.grp/confluence/display/ArqSoft/Markdown+Rules",
+            "errorDetail": null,
+            "errorContext": "Section 'getting started' must exist",
+            "errorRange": null,
+            "severity": 1,
+            "fileName": "README.md"
+          },
+          {
+            "lineNumber": 1,
+            "ruleNames": ["EX_MD061", "inditex-mandatory-summary"],
+            "ruleDescription": "Mandatory Summary Section",
+            "ruleInformation": "https://axinic.central.inditex.grp/confluence/display/ArqSoft/Markdown+Rules",
+            "errorDetail": null,
+            "errorContext": "Section 'summary' must exist",
+            "errorRange": null,
+            "severity": 1,
+            "fileName": "README.md"
+          },
+          {
+            "lineNumber": 1,
+            "ruleNames": ["EX_MD062", "inditex-mandatory-support"],
+            "ruleDescription": "Mandatory Support Section",
+            "ruleInformation": "https://axinic.central.inditex.grp/confluence/display/ArqSoft/Markdown+Rules",
+            "errorDetail": null,
+            "errorContext": "Section 'support' must exist",
+            "errorRange": null,
+            "severity": 1,
+            "fileName": "README.md"
+          },
+          {
+            "lineNumber": 25,
+            "ruleNames": ["MD047", "single-trailing-newline"],
+            "ruleDescription": "Files should end with a single newline character",
+            "ruleInformation": "https://github.com/DavidAnson/markdownlint/blob/v0.25.1/doc/Rules.md#md047",
+            "errorDetail": null,
+            "errorContext": null,
+            "errorRange": [8, 1],
+            "severity": 1,
+            "fileName": "README.md"
+          },
+          {
+            "lineNumber": 1,
+            "ruleNames": ["EX_MD063", "inditex-readme-does-not-exist"],
+            "ruleDescription": "API README file must exist",
+            "ruleInformation": "https://axinic.central.inditex.grp/confluence/display/ArqSoft/Markdown+Rules",
+            "errorDetail": null,
+            "errorContext": "API README file must exist",
+            "errorRange": null,
+            "severity": 1
+          },
+          {
+            "lineNumber": 0,
+            "ruleNames": ["inditex-visibility-defined", "inditex-visibility-defined"],
+            "ruleDescription": "visibility should be set on metadata.yml",
+            "ruleInformation": "",
+            "errorDetail": "visibility should be set on metadata.yml",
+            "errorContext": null,
+            "errorRange": [19, 4],
+            "severity": 1,
+            "fileName": "rmumwsc/rest/metadata.yml"
+          }
+        ],
+        "score": 79.91,
+        "rating": "B",
+        "ratingDescription": "Good"
+      }
+    }
+  ],
+  "rating": "C",
+  "ratingDescription": "Adequate",
+  "score": 74.98
+}

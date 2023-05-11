@@ -1,0 +1,11 @@
+{
+  "amigaApplication.title": "API 360 HUB",
+  "app.name": "API 360 HUB",
+  "products.title": "Productos",
+  "products.counter": "{amount} Productos",
+  "products.loading": "Cargando los Productos...",
+  "header.files": "ficheros",
+  "file-form.file-uploader": "Selecciona un fichero *:",
+  "file-form.select-rule": "Selecciona una regla *:",
+  "file-form.select-rule-label": "Selecciona una regla"
+}
