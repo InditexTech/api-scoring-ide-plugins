@@ -3,7 +3,7 @@
   "displayName": "API 360 hub",
   "description": "Webview to display the errors and warnings in the linted APIs and display the different grades.",
   "icon": "resources/logo.png",
-  "version": "1.0.5-SNAPSHOT",
+  "version": "1.0.0",
   "publisher": "APITeam",
   "bugs": {
     "url": "https://github.com/inditex/cac-opencertificationplugins/issues"

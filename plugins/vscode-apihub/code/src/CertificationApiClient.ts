@@ -7,12 +7,12 @@ const FormData = require('form-data');
 export async function validateRepo(serviceUrl: string, zipFile: string, apiModule?: ValidationModuleType): Promise<AxiosResponse> {
     const form = new FormData();
     form.append('isVerbose', 'true');
-    form.append('url', fs.createReadStream(zipFile), `apiHub-${Date.now()}.zip`);
+    form.append('file', fs.createReadStream(zipFile), `apiHub-${Date.now()}.zip`);
     form.append('validationType', checkValidationType(apiModule?.validationType));
 
     const options = {
         method: 'POST' as Method,
-        url: serviceUrl + (serviceUrl.endsWith('/') ? '' : '/') + 'validations',
+        url: serviceUrl + (serviceUrl.endsWith('/') ? '' : '/') + 'apis/verify',
         data: form,
         headers: {
             Accept: 'application/json',
@@ -29,19 +29,19 @@ export async function validateRepo(serviceUrl: string, zipFile: string, apiModul
             console.error(error);
             return error.response;
         })
-        .finally(function(){
+        .finally(function () {
             process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "1";
         });
 }
 
-export async function validateFile(serviceUrl: string, content: any, fileName:any, apiProtocol: string): Promise<AxiosResponse> {
+export async function validateFile(serviceUrl: string, content: any, fileName: any, apiProtocol: string): Promise<AxiosResponse> {
     const form = new FormData();
-    form.append('url', await fs.createReadStream(content.fileName), fileName);
+    form.append('file', await fs.createReadStream(content.fileName), fileName);
     form.append('apiProtocol', checkProtocol(apiProtocol));
 
     const options = {
         method: 'POST' as Method,
-        url: serviceUrl + (serviceUrl.endsWith('/') ? '' : '/') + 'file-verify-protocol',
+        url: serviceUrl + (serviceUrl.endsWith('/') ? '' : '/') + 'apis/validate',
         data: form,
         headers: {
             Accept: 'application/json',
@@ -59,28 +59,28 @@ export async function validateFile(serviceUrl: string, content: any, fileName:an
             console.error(error);
             return error.response;
         })
-        .finally(function(){
+        .finally(function () {
             process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "1";
         });
 }
 
-function checkValidationType(validationType: number | undefined): any {
-    if(!validationType){
-        return 4;
+function checkValidationType(validationType: string | undefined): any {
+    if (!validationType) {
+        return "OVERALL_SCORE";
     }
     return validationType;
 }
 
 function checkProtocol(apiProtocol: string): any {
-    switch(apiProtocol){
+    switch (apiProtocol) {
         case 'rest':
-            return 1;
+            return "REST";
         case 'asyncapi':
-            return 2;
+            return "EVENT";
         case 'grpc':
-            return 3;
+            return "GRPC";
         default:
-            return 1;
+            return "REST";
     }
 }
 export type ValidationsResults = ValidationsResult[];

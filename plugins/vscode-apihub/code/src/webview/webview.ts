@@ -3,7 +3,7 @@ import * as vscode from 'vscode';
 export type ValidationModuleType = {
     apiName: string;
     definitionPath?: string;
-    validationType: number;
+    validationType: string;
 };
 
 export type ValidationFileModuleType = {
