@@ -36,14 +36,14 @@ public class CertificationApi {
         if (eventRequestDto == null) {
             multipartBody = new MultipartBody.Builder()
                     .setType(MultipartBody.FORM)
-                    .addFormDataPart("url", f.getName(), fileBody)
+                    .addFormDataPart("file", f.getName(), fileBody)
                     .addFormDataPart("isVerbose", "true")
                     .addFormDataPart("validationType", String.valueOf(ValidationType.OVERALL_SCORE.getType()))
                     .build();
         } else {
             multipartBody = new MultipartBody.Builder()
                     .setType(MultipartBody.FORM)
-                    .addFormDataPart("url", f.getName(), fileBody)
+                    .addFormDataPart("file", f.getName(), fileBody)
                     .addFormDataPart("isVerbose", "true")
                     .addFormDataPart("validationType", String.valueOf(eventRequestDto.getValidationType().getType()))
                     .build();

@@ -26,7 +26,7 @@ public class ApiHubSettingsStateTest {
     @Test
     public void should_get_state() {
         ApiHubSettingsState state = new ApiHubSettingsState().getState();
-        Assert.assertEquals("http://localhost:8080/apifirst/v1/validations", state.getServiceUrl());
+        Assert.assertEquals("http://localhost:8080/apifirst/v1/apis/verify", state.getServiceUrl());
         Assert.assertEquals("http://localhost:3000/", state.getFrontendUrl());
     }
 
@@ -37,7 +37,7 @@ public class ApiHubSettingsStateTest {
             applicationManagerMock.when(ApplicationManager::getApplication).thenReturn(application);
             when(application.getService(ApiHubSettingsState.class)).thenReturn(new ApiHubSettingsState());
             ApiHubSettingsState instance = ApiHubSettingsState.getInstance();
-            Assert.assertEquals("http://localhost:8080/apifirst/v1/validations", instance.getServiceUrl());
+            Assert.assertEquals("http://localhost:8080/apifirst/v1/apis/verify", instance.getServiceUrl());
             Assert.assertEquals("http://localhost:3000/", instance.getFrontendUrl());
         }
     }

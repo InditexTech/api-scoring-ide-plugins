@@ -98,7 +98,6 @@ public class FileUtils {
 
     public static MetadataDto readMetadata(Project project, Path selectFolderPath) {
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
-        mapper.findAndRegisterModules();
 
         VirtualFile metadataFile = ApplicationManager.getApplication().runReadAction((Computable<VirtualFile>) () -> {
             PsiFile[] files = FilenameIndex.getFilesByName(project, "metadata.yml", GlobalSearchScope.allScope(project));

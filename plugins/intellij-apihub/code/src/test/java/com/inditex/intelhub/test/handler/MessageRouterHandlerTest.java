@@ -133,7 +133,7 @@ public class MessageRouterHandlerTest {
             doNothing().when(webViewerWindow).executeJavaScript(any());
 
             messageRouterHandler.onQuery(mock(CefBrowser.class), mock(CefFrame.class), 1L,
-                    "{\"request\":\"revalidateApi\",\"apiName\":\"REST Sample\",\"apiSpecType\":\"1\",\"validationType\":4,\"apiDefinitionPath\":\"\"}",
+                    "{\"request\":\"revalidateApi\",\"apiName\":\"REST Sample\",\"apiSpecType\":\"1\",\"validationType\":\"OVERALL_SCORE\",\"apiDefinitionPath\":\"\"}",
                     Boolean.FALSE, mock(CefQueryCallback.class));
 
             verify(webViewerWindow).executeJavaScript(any());

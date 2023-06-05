@@ -8,23 +8,23 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 public enum ApiProtocol {
-    REST(1),
-    EVENT(2),
-    GRPC(3);
+    REST("REST"),
+    EVENT("EVENT"),
+    GRPC("GRPC");
     
-    private final Integer type;
+    private final String type;
 
-    ApiProtocol(Integer type) {
+    ApiProtocol(String type) {
         this.type = type;
     }
 
     @JsonValue
-    public Integer getType() {
+    public String getType() {
         return type;
     }
 
     @JsonCreator(mode = JsonCreator.Mode.DELEGATING)
-    static ApiProtocol fromType(Integer type) {
+    static ApiProtocol fromType(String type) {
         Optional<ApiProtocol> apiProtocol = Stream.of(ApiProtocol.values()).filter(it -> it.type.equals(type)).findFirst();
         if (apiProtocol.isPresent()) {
             return apiProtocol.get();

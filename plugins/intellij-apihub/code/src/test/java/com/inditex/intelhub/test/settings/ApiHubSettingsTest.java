@@ -46,7 +46,7 @@ public class ApiHubSettingsTest {
         try (MockedStatic<ApplicationManager> applicationManagerMock = mockStatic(ApplicationManager.class);
              MockedConstruction<ApiHubSettingsComponent> apiHubSettingsComponentMock = mockConstruction(ApiHubSettingsComponent.class, (mocked, context) -> {
                  when(mocked.getPanel()).thenReturn(mock(JPanel.class));
-                 when(mocked.getServiceUrl()).thenReturn("http://localhost:8080/apifirst/v1/validations");
+                 when(mocked.getServiceUrl()).thenReturn("http://localhost:8080/apifirst/v1/apis/verify");
                  when(mocked.getFrontendUrl()).thenReturn("http://localhost:3000/");
              })) {
             Application application = mock(Application.class);
@@ -89,7 +89,7 @@ public class ApiHubSettingsTest {
             apiHubSettings.reset();
 
             ApiHubSettingsComponent mockedComponent = apiHubSettingsComponentMock.constructed().get(0);
-            verify(mockedComponent).setServiceUrl("http://localhost:8080/apifirst/v1/validations");
+            verify(mockedComponent).setServiceUrl("http://localhost:8080/apifirst/v1/apis/verify");
             verify(mockedComponent).setFrontendUrl("http://localhost:3000/");
         }
     }

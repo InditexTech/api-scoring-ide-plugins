@@ -13,7 +13,7 @@ import org.jetbrains.annotations.Nullable;
         storages = @Storage("ApiHubSettingsPlugin.xml")
 )
 public class ApiHubSettingsState implements PersistentStateComponent<ApiHubSettingsState> {
-    private String serviceUrl = "http://localhost:8080/apifirst/v1/validations";
+    private String serviceUrl = "http://localhost:8080/apifirst/v1/apis/verify";
     private String frontendUrl = "http://localhost:3000/";
 
 
