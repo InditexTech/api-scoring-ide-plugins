@@ -4,7 +4,7 @@
     "description": "Adds quick fixes and code actions to Spectral linting problems",
     "icon": "resources/logo.png",
     "version": "1.0.0",
-    "publisher": "Inditex",
+    "publisher": "InditexTech",
     "bugs": {
         "url": "https://github.com/InditexTech/api-scoring-ide-plugins/issues"
     },

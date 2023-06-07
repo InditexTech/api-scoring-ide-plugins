@@ -1,6 +1,6 @@
 *target*
 *node_modules*
-*.jar
+
 *.war
 *.ear
 *.class

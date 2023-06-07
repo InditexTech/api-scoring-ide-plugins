@@ -4,7 +4,7 @@
   "description": "Webview to display the errors and warnings in the linted APIs and display the different grades.",
   "icon": "resources/logo.png",
   "version": "1.0.0",
-  "publisher": "APITeam",
+  "publisher": "InditexTech",
   "bugs": {
     "url": "https://github.com/InditexTech/api-scoring-ide-plugins/issues"
   },
