@@ -3,18 +3,18 @@
     "displayName": "Spectral QuickFix",
     "description": "Adds quick fixes and code actions to Spectral linting problems",
     "icon": "resources/logo.png",
-    "version": "1.1.0-SNAPSHOT",
+    "version": "1.0.0",
     "publisher": "Inditex",
     "bugs": {
-        "url": "https://github.com/inditex/cac-opencertificationplugins.html"
+        "url": "https://github.com/InditexTech/api-scoring-ide-plugins/issues"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/inditex/cac-opencertificationplugins.git"
+        "url": "https://github.com/InditexTech/api-scoring-ide-plugins"
     },
     "author": {
         "name": "API 360 Team",
-        "url": "https://developers.inditex.com/sections/apis/tools/"
+        "url": "https://github.com/InditexTech/api-scoring-ide-plugins"
     },
     "engines": {
         "vscode": "^1.62.0"

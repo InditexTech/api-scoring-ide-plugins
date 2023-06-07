@@ -1,5 +1,5 @@
 {
-  "name": "apihub",
+  "name": "@inditextech/apihub",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -64,7 +64,7 @@
     "@types/react-virtualized-auto-sizer": "^1.0.1",
     "jest-preview": "^0.3.1",
     "jest-sonar": "^0.2.15",
-    "msw": "^0.0.0-fetch.rc-3"
+    "msw": "0.0.0-fetch.rc-3"
   },
   "msw": {
     "workerDirectory": "public"

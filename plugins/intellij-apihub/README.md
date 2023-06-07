@@ -16,7 +16,7 @@
 1. Clone the repository:
 
 	```
-	git clone git@github.com:inditex/cac-opencertificationplugins.git
+    git clone git@github.com:InditexTech/api-scoring-ide-plugins.git
 	```
 
 2. Build the application from `plugins/intellij-apihub/code`:

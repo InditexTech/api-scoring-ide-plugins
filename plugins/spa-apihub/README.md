@@ -39,7 +39,7 @@ This folder contains the **SPA** of the API Hub extension. The structure is the 
 1. Clone the repository:
 
 	```
-	git clone git@github.com:inditex/cac-opencertificationplugins.git
+    git clone git@github.com:InditexTech/api-scoring-ide-plugins.git
 	```
 
 2. Place yourself in the correct directory:
@@ -60,6 +60,10 @@ This folder contains the **SPA** of the API Hub extension. The structure is the 
 	npm run start
 	```
 
+6. If you are executing it on local, validate it works using mock server:
+ ```
+ http://localhost:3000/protocols/REST/apis/API%20Sample
+ ```
 <br>
 
 ## Usage

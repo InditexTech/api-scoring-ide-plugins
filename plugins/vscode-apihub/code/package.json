@@ -6,16 +6,16 @@
   "version": "1.0.0",
   "publisher": "APITeam",
   "bugs": {
-    "url": "https://github.com/inditex/cac-opencertificationplugins/issues"
+    "url": "https://github.com/InditexTech/api-scoring-ide-plugins/issues"
   },
-  "homepage": "https://github.com/inditex/cac-opencertificationplugins",
+  "homepage": "https://github.com/InditexTech/api-scoring-ide-plugins",
   "repository": {
     "type": "git",
-    "url": "https://github.com/inditex/cac-opencertificationplugins"
+    "url": "https://github.com/InditexTech/api-scoring-ide-plugins"
   },
   "author": {
     "name": "API 360 team",
-    "url": "https://github.com/inditex/lib-vscodehub"
+    "url": "https://github.com/InditexTech/api-scoring-ide-plugins"
   },
   "engines": {
     "vscode": "^1.62.0"
