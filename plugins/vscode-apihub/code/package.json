@@ -17,6 +17,7 @@
     "name": "API 360 team",
     "url": "https://github.com/InditexTech/api-scoring-ide-plugins"
   },
+  "license": "Apache-2.0",
   "engines": {
     "vscode": "^1.62.0"
   },
