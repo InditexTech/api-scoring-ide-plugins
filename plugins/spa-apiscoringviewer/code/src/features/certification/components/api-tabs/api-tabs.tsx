@@ -72,7 +72,7 @@ export default function ApiTabs({
 
       <Flex h="100%">
         <AutoSizer disableWidth style={{ width: "100%" }}>
-          {({ height }) => {
+          {({height}: {height: number}) => {
             return <>{
               apis.map((api) => {
                 const { apiName, apiProtocol } = api;
