@@ -90,8 +90,8 @@ export const buildResponse: SourceFunction = async (document, parsed, diagnostic
 export const addMissingResponseCode : SourceFunction = async (document, parsed, diagnostic, fix, parameter) => {
     const responseCode = diagnostic.message.split('[')[1].split(']')[0];
     let extensionPath;
-    if(vscode.extensions.getExtension("Inditex.vscode-spectral-quickfix") !== undefined){
-        extensionPath = vscode.extensions.getExtension("Inditex.vscode-spectral-quickfix")!.extensionPath;
+    if (vscode.extensions.getExtension("InditexTech.vscode-spectral-quickfix") !== undefined){
+        extensionPath = vscode.extensions.getExtension("InditexTech.vscode-spectral-quickfix")!.extensionPath;
     } else{
         const message = "QUICKFIX: Working folder not found, open a folder and try again" ;
         vscode.window.showErrorMessage(message);

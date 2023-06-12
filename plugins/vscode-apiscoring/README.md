@@ -3,9 +3,9 @@
 </p>
 
 <p align="center">
-    <h1 align="center">Quick fix</h1>
-    <p align="center">The tool that focuses on establishing a ruleset file where you can find the compromised rule and fix it.</p>
-    <p align="center"><strong><a href="https://albalro.github.io/ide-extensions/quick-fix/">Learn more in the doc!</a></strong></p>
+    <h1 align="center">API Scoring (VS Code)</h1>
+    <p align="center">The tool that establishes communication between the certification SPA and the files in your IDE.</p>
+    <p align="center"><strong><a href="https://albalro.github.io/ide-extensions/api-hub/">Learn more in the doc!</a></strong></p>
     <br>
 </p>
 
@@ -15,7 +15,7 @@
 
 1. Clone the repository:
 
-	```bash
+	```
     git clone git@github.com:InditexTech/api-scoring-ide-plugins.git
 	```
 
@@ -38,6 +38,6 @@
 
 ## Usage
 
-[View the documentation](https://albalro.github.io/ide-extensions/quick-fix/) for usage information.
+[View the documentation](https://albalro.github.io/ide-extensions/api-hub/) for usage information.
 
 
