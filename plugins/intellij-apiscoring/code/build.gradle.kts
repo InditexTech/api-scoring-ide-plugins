@@ -4,7 +4,7 @@ plugins {
     id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
-group = "com.inditextech.intelhub"
+group = "com.inditextech.apiscoring"
 version = "1.0.0"
 
 repositories {

@@ -1,7 +1,7 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
-    <id>com.inditextech.intelhub</id>
+    <id>com.inditextech.apiscoring</id>
 
     <!-- Public plugin name should be written in Title Case.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
@@ -25,22 +25,22 @@
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow id="APIScoring" anchor="right" factoryClass="com.inditextech.intelhub.window.WindowFactory"
+        <toolWindow id="APIScoring" anchor="right" factoryClass="com.inditextech.apiscoring.window.WindowFactory"
                     doNotActivateOnStart="true"/>
-        <projectService id="APIScoringService" serviceImplementation="com.inditextech.intelhub.service.WebViewerWindowService"/>
-        <projectService serviceImplementation="com.inditextech.intelhub.service.CertificationService"/>
-        <projectService serviceImplementation="com.inditextech.intelhub.service.CertificationApi"/>
+        <projectService id="APIScoringService" serviceImplementation="com.inditextech.apiscoring.service.WebViewerWindowService"/>
+        <projectService serviceImplementation="com.inditextech.apiscoring.service.CertificationService"/>
+        <projectService serviceImplementation="com.inditextech.apiscoring.service.CertificationApi"/>
         <notificationGroup id="APIScoring" displayType="BALLOON"/>
         <applicationConfigurable
                 parentId="tools"
-                instance="com.inditextech.intelhub.settings.ApiScoringSettings"
-                id="com.inditextech.intelhub.settings.ApiScoringSettings"
+                instance="com.inditextech.apiscoring.settings.ApiScoringSettings"
+                id="com.inditextech.apiscoring.settings.ApiScoringSettings"
                 displayName="APIScoring Settings"/>
-        <applicationService serviceImplementation="com.inditextech.intelhub.settings.ApiScoringSettingsState"/>
+        <applicationService serviceImplementation="com.inditextech.apiscoring.settings.ApiScoringSettingsState"/>
     </extensions>
     <projectListeners>
         <listener
-                class="com.inditextech.intelhub.listeners.WebViewerWindowListener"
+                class="com.inditextech.apiscoring.listeners.WebViewerWindowListener"
                 topic="com.intellij.openapi.wm.ex.ToolWindowManagerListener"/>
     </projectListeners>
 </idea-plugin>

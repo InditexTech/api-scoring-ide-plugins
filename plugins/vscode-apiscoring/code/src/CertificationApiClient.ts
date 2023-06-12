@@ -12,7 +12,7 @@ export async function validateRepo(serviceUrl: string, zipFile: string, apiModul
 
     const options = {
         method: 'POST' as Method,
-        url: serviceUrl + (serviceUrl.endsWith('/') ? '' : '/') + 'apis/verify',
+        url: serviceUrl + (serviceUrl.endsWith('/') ? '' : '/') + 'apis/validate',
         data: form,
         headers: {
             Accept: 'application/json',
@@ -41,7 +41,7 @@ export async function validateFile(serviceUrl: string, content: any, fileName: a
 
     const options = {
         method: 'POST' as Method,
-        url: serviceUrl + (serviceUrl.endsWith('/') ? '' : '/') + 'apis/validate',
+        url: serviceUrl + (serviceUrl.endsWith('/') ? '' : '/') + 'apis/verify',
         data: form,
         headers: {
             Accept: 'application/json',
