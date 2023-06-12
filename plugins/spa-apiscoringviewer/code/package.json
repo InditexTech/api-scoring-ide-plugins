@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "license": "Apache-2.0",
+  "author": {
+    "name": "Inditex Open Source Team",
+    "url": "https://github.com/InditexTech/api-scoring-ide-plugins"
+  },
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@mantine/core": "^5.9.5",
