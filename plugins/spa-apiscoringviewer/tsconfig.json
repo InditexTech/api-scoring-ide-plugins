@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "lib": ["ES2015", "DOM"],
+    "module": "es2020",
+    "moduleResolution": "NodeNext",
+    "noImplicitAny": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "typeRoots": ["node_modules/@types", "definitions"],
+    "types": ["node"]
+  },
+  "exclude": ["node_modules"],
+  "include": ["definitions/*.d.ts", "packages/**/*.ts", "packages/**/*.tsx"]
+}
