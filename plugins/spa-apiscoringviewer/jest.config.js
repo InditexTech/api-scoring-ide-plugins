@@ -6,10 +6,6 @@ module.exports = {
     customExportConditions: ["development"],
   },
   testMatch: ["**/*.test.{ts,tsx}"],
-  // transformIgnorePatterns: [
-  //   "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$",
-  //   "mocks",
-  // ],
   transform: {
     "^.+\\.tsx?$": "ts-jest",
   },
