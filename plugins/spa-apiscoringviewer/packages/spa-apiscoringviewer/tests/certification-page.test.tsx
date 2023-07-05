@@ -30,8 +30,6 @@ const isVsCodeMock = jest.mocked(isVsCode);
 window.cefQuery = jest.fn();
 const postMessage = jest.fn();
 
-// jest.spyOn(window, "getComputedStyle").mockImplementation(elt => )
-
 beforeAll(() => {
   Object.defineProperty(global.window, "parent", {
     value: {
