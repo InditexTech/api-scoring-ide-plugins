@@ -1,13 +1,25 @@
 import { useCallback, useReducer, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { ActionIcon, Container, FileInput, Grid, Loader, Select, Stack } from "@mantine/core";
+import {
+  ActionIcon,
+  Container,
+  FileInput,
+  Grid,
+  Loader,
+  Select,
+  Stack,
+} from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { IconPlayerPlay, IconUpload } from "@tabler/icons-react";
 import { sendMessageVscode } from "../../../utils/send-message-vscode";
 import useEventHandler from "../../../hooks/use-event-handler";
 import Feedback from "../../../components/feedback";
 import CodeValidation from "../../../components/validation-result/code-validation";
-import type { CodeIssue, SetFileResults, SetFileResultsError } from "../../../types";
+import type {
+  CodeIssue,
+  SetFileResults,
+  SetFileResultsError,
+} from "../../../types";
 
 const protocolOptions = [
   { label: "REST", value: "rest" },
@@ -57,14 +69,14 @@ export default function FilesForm() {
     "setFileResults",
     useCallback((payload) => {
       dispatch({ type: "success", payload });
-    }, []),
+    }, [])
   );
 
   useEventHandler<SetFileResultsError["payload"]>(
     "setFileResultsError",
     useCallback((payload) => {
       dispatch({ type: "error", payload });
-    }, []),
+    }, [])
   );
 
   function onSubmit({ file, ...restValues }: NonNullable<FormType>) {
@@ -73,7 +85,10 @@ export default function FilesForm() {
     if (typeof file !== "string" && file instanceof File) {
       const { path: filePath } = file;
       setSelectedFilePath(filePath);
-      sendMessageVscode("onClickValidateFile", { filePath: filePath, ...restValues });
+      sendMessageVscode("onClickValidateFile", {
+        filePath: filePath,
+        ...restValues,
+      });
     }
   }
 
@@ -111,20 +126,33 @@ export default function FilesForm() {
             </Grid.Col>
 
             <Grid.Col span="content">
-              <ActionIcon type="submit" variant="filled" size="xl" aria-label="submit">
+              <ActionIcon
+                type="submit"
+                variant="filled"
+                size="xl"
+                aria-label="submit"
+              >
                 <IconPlayerPlay />
               </ActionIcon>
             </Grid.Col>
           </Grid>
 
-          {error && <Feedback.Error mainText="Error loading file validation" data-testid="FilesForm-ValidationError" />}
+          {error && (
+            <Feedback.Error
+              mainText="Error loading file validation"
+              data-testid="FilesForm-ValidationError"
+            />
+          )}
 
           {loading && <Loader size={22} data-testid="FilesPage-Loader" />}
 
           {!loading && fileResults?.results && (
             <output>
               <CodeValidation
-                spectralIssues={patchSourceFile(fileResults.results, selectedFilePath)}
+                spectralIssues={patchSourceFile(
+                  fileResults.results,
+                  selectedFilePath
+                )}
                 protoIssues={[]}
               />
             </output>

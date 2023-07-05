@@ -1,13 +1,4 @@
 import type { JSX } from "react";
-import type { JsonObject } from "type-fest";
-
-export declare function acquireVsCodeApi(): unknown | never;
-
-declare global {
-  interface Window {
-    cefQuery: (request: JsonObject) => void;
-  }
-}
 
 export enum ProtocolType {
   REST = 1,
@@ -202,7 +193,9 @@ export type VSCodeMessage = {
 
 export type PickRenameMulti<
   T,
-  R extends { [K in keyof R]: K extends keyof T ? PropertyKey : "Error: key not in T" },
+  R extends {
+    [K in keyof R]: K extends keyof T ? PropertyKey : "Error: key not in T";
+  }
 > = {
   [P in keyof T as P extends keyof R ? R[P] : P]: T[P];
 };

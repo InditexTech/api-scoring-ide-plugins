@@ -18,7 +18,9 @@ function ErrorFallback() {
 type DataProviderType = ComponentType<{ children: DataProviderChildFn }>;
 type CertificationProps = { DataProvider: DataProviderType };
 
-export default function Certification({ DataProvider }: CertificationProps) {
+export default function CertificationPage({
+  DataProvider,
+}: CertificationProps) {
   const [intelliJLoading, setIntelliJLoading] = useState(false);
 
   function onClick() {
@@ -42,7 +44,8 @@ export default function Certification({ DataProvider }: CertificationProps) {
           revalidateModule,
           revalidateApi,
         }) => {
-          const showTriggerButton = !certification && !intelliJLoading && isIntelliJ();
+          const showTriggerButton =
+            !certification && !intelliJLoading && isIntelliJ();
 
           return (
             <>
@@ -66,15 +69,21 @@ export default function Certification({ DataProvider }: CertificationProps) {
 
               {(loading || intelliJLoading) && (
                 <Center w="100%">
-                  <Loader color="gray" size="lg" data-testid="Certification-Loading" />
+                  <Loader
+                    color="gray"
+                    size="lg"
+                    data-testid="Certification-Loading"
+                  />
                 </Center>
               )}
 
               {error && (
                 <Feedback.Error
                   fullHeight
-                  mainText={<FormattedMessage id="certification.network-error" />}
-                  data-testid="Certification-NetworkError"
+                  mainText={
+                    <FormattedMessage id="certification.network-error" />
+                  }
+                  data-testid="CertificationPage-NetworkError"
                 />
               )}
             </>

@@ -1,7 +1,11 @@
-import { act, fireEvent, render, screen, waitFor, waitForElementToBeRemoved } from "@testing-library/react";
+import { act, fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import React from "react";
-import { FileReaderMock, Providers, VALIDATION_FILE_RESULT, createJSONFile } from "utils/test-utils";
+import {
+  FileReaderMock,
+  Providers,
+  VALIDATION_FILE_RESULT,
+  createJSONFile,
+} from "../../utils/test-utils";
 import FilesPage from "../files-page";
 
 const postMessage = jest.fn();
@@ -32,19 +36,23 @@ test("file results are displayed", async () => {
       command: "onFileLoaded",
       payload: {},
     },
-    "*",
+    "*"
   );
 
   postMessage.mockClear();
 
-  const fileInput = screen.getByTestId("File").querySelector("input") as HTMLInputElement;
+  const fileInput = screen
+    .getByTestId("File")
+    .querySelector("input") as HTMLInputElement;
 
   const file = createJSONFile();
   await userEvent.upload(fileInput!, file);
 
   expect(fileInput.files?.[0]).toStrictEqual(file);
 
-  await userEvent.click(screen.getByRole("searchbox", { name: /Select protocol/ }));
+  await userEvent.click(
+    screen.getByRole("searchbox", { name: /Select protocol/ })
+  );
   await userEvent.click(screen.getByRole("option", { name: /gRPC/ }));
 
   fireEvent.submit(screen.getByRole("button", { name: /submit/ }));
@@ -61,7 +69,7 @@ test("file results are displayed", async () => {
         apiProtocol: "grpc",
       },
     },
-    "*",
+    "*"
   );
 
   const validationSuccessEvent = new MessageEvent("message", {
@@ -73,8 +81,16 @@ test("file results are displayed", async () => {
     window.dispatchEvent(validationSuccessEvent);
   });
 
-  expect(screen.getByTestId("Issue-/Users/inditex/path/to/file.json-global-doc-0-0-6-20-0")).toBeInTheDocument();
-  expect(screen.getByText("Definition `doc` must be present and non-empty string in all types")).toBeInTheDocument();
+  expect(
+    screen.getByTestId(
+      "Issue-/Users/inditex/path/to/file.json-global-doc-0-0-6-20-0"
+    )
+  ).toBeInTheDocument();
+  expect(
+    screen.getByText(
+      "Definition `doc` must be present and non-empty string in all types"
+    )
+  ).toBeInTheDocument();
 
   // Unhappy path
   const validationErrorEvent = new MessageEvent("message", {

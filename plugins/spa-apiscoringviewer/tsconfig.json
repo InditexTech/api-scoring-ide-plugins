@@ -7,9 +7,11 @@
     "noImplicitAny": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
-    "typeRoots": ["node_modules/@types", "definitions"],
-    "types": ["node"]
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "typeRoots": ["node_modules/@types"],
+    "types": ["node", "jest", "testing-library__jest-dom"]
   },
   "exclude": ["node_modules"],
-  "include": ["definitions/*.d.ts", "packages/**/*.ts", "packages/**/*.tsx"]
+  "include": ["packages/**/*.ts", "packages/**/*.tsx", "declaration.d.ts"]
 }

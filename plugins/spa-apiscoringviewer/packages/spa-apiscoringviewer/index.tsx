@@ -3,8 +3,7 @@ import { createRoot } from "react-dom/client";
 import { IntlProvider } from "react-intl";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { MantineProvider } from "@mantine/core";
-import { CertificationPage, FilesPage, theme } from "@inditextech/apiscoringviewer";
-import messages from "./src/locales";
+import { CertificationPage, FilesPage, theme, messages } from "@inditextech/apiscoringviewer";;
 import Layout from "./src/components/layout";
 import VscodeDataProvider from "./src/components/vscode-data-provider";
 

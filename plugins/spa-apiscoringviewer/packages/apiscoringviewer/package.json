@@ -71,7 +71,6 @@
     "@sindresorhus/slugify": "^2.2.1",
     "@tabler/icons-react": "^2.23.0",
     "@testing-library/jest-dom": "^5.16.5",
-    "core-js-pure": "^3.31.0",
     "lodash": "^4.17.21",
     "react-error-boundary": "^4.0.10",
     "react-intl": "^6.4.4",
