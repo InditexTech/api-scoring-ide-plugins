@@ -9,7 +9,7 @@
     <br>
 </p>
 
-This repository contains the API Hub and Quick Fix extensions that integrate with your IDE to interact with breached API rules, and the SPA that is displayed on the IDE.
+This repository contains the API Scoring and Quick Fix extensions that integrate with your IDE to interact with breached API rules, and the SPA that is displayed on the IDE.
 
 > You can find further information regarding the **API Certification Suite** in our [documentation site](https://albalro.github.io)!
 
@@ -17,7 +17,7 @@ This repository contains the API Hub and Quick Fix extensions that integrate wit
 
 ## Installation
 
-You can see that in the root of this repository, there is a `plugins/` folder. This folder contains the [SPA package](/plugins/spa-apihub), the [API Hub for VS Code package](/plugins/vscode-apihub), the [API Hub for IntelliJ package](/plugins/intellij-apihub), and the [Quick Fix for VS Code package](/plugins/vscode-quickfix).
+You can see that in the root of this repository, there is a `plugins/` folder. This folder contains the [SPA package](/plugins/spa-apiscoringviewer), the [API Scoring for VS Code package](/plugins/vscode-apiscoring), the [API Scoring for IntelliJ package](/plugins/intellij-apiscoring), and the [Quick Fix for VS Code package](/plugins/vscode-quickfix).
 
 To proceed with their installation, please, place yourself in their path and follow the installation guides suggested in the READMEs. It is convenient that you follow a specific order of installation:
 
