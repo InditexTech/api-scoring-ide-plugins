@@ -3,7 +3,12 @@ import { createRoot } from "react-dom/client";
 import { IntlProvider } from "react-intl";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { MantineProvider } from "@mantine/core";
-import { CertificationPage, FilesPage, theme, messages } from "@inditextech/apiscoringviewer";;
+import {
+  CertificationPage,
+  FilesPage,
+  theme,
+  messages,
+} from "@inditextech/apiscoringviewer";
 import Layout from "./src/components/layout";
 import VscodeDataProvider from "./src/components/vscode-data-provider";
 
@@ -16,12 +21,18 @@ root.render(
         <Router basename={process.env.PUBLIC_URL}>
           <Layout>
             <Switch>
-              <Route exact path="/" render={() => <CertificationPage DataProvider={VscodeDataProvider} />} />
+              <Route
+                exact
+                path="/"
+                render={() => (
+                  <CertificationPage DataProvider={VscodeDataProvider} />
+                )}
+              />
               <Route path="/files" component={FilesPage} />
             </Switch>
           </Layout>
         </Router>
       </IntlProvider>
     </MantineProvider>
-  </StrictMode>,
+  </StrictMode>
 );

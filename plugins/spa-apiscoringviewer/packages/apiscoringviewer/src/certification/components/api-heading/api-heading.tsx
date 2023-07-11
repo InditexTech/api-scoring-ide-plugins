@@ -1,12 +1,11 @@
 import ScoreLabel from "../score-label";
-import {
+import type {
   ApiIdentifier,
   Certification,
   ModuleMetadata,
   ModuleValidation,
   PickRenameMulti,
   RevalidateModule,
-  ValidationType,
 } from "../../../types";
 import { useCallback } from "react";
 import { FormattedMessage } from "react-intl";
@@ -47,7 +46,7 @@ export default function ApiHeading({
       const payload: ModuleValidation = {
         apiName: name,
         apiSpecType: protocol,
-        validationType: ValidationType.OVERALL_SCORE,
+        validationType: "OVERALL_SCORE",
         apiDefinitionPath: definitionPath,
       };
 

@@ -2,6 +2,7 @@ import { FormattedMessage } from "react-intl";
 import { ActionIcon, Tooltip } from "@mantine/core";
 import { IconPlayerPlay } from "@tabler/icons-react";
 import isVsCode from "../../../utils/is-vscode";
+import isIntelliJ from "../../../utils/is-intellij";
 import type {
   Certification,
   RevalidateModule,
@@ -24,14 +25,14 @@ export default function RevalidateModuleAction({
   loading,
 }: RevalidateModuleActionProps) {
   const onRevalidateClick = () => {
-    if (typeof revalidateModule === "function") {
+    if (typeof revalidateModule === "function" && isVsCode()) {
       revalidateModule({
         apiName,
         apiSpecType: apiProtocol,
         validationType,
         apiDefinitionPath: definitionPath,
       });
-
+    } else if (isIntelliJ()) {
       window.cefQuery({
         request: JSON.stringify({
           request: "revalidateModule",

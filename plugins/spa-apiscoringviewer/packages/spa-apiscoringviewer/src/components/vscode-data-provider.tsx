@@ -14,7 +14,11 @@ import type {
   SetModuleResults,
 } from "@inditextech/apiscoringviewer";
 
-export default function VSCodeDataProvider({ children }: { children: DataProviderChildFn }) {
+export default function VSCodeDataProvider({
+  children,
+}: {
+  children: DataProviderChildFn;
+}) {
   return children(useVSCodeDataProvider());
 }
 
@@ -22,11 +26,15 @@ function useVSCodeDataProvider() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
   const [certification, dispatch] = useVSCodeCertification();
-  const [apisRevalidationMetadata, setApisRevalidationMetadata] = useState<ModulesMetadata>({});
+  const [apisRevalidationMetadata, setApisRevalidationMetadata] =
+    useState<ModulesMetadata>({});
   const [modulesMetadata, setModulesMetadata] = useState<ModulesMetadata>({});
 
   const onMessageReceived = useCallback(
-    ({ origin, data }: MessageEvent<SetCertificationResults | SetModuleResults>) => {
+    ({
+      origin,
+      data,
+    }: MessageEvent<SetCertificationResults | SetModuleResults>) => {
       //origin is vsCode or intelliiJ
       if (origin.startsWith("vscode-webview://") || origin === "null") {
         const { command, payload } = data;
@@ -41,13 +49,19 @@ function useVSCodeDataProvider() {
             apiModule: { apiName, apiSpecType, validationType },
           } = payload;
 
-          if (validationType === ValidationType.OVERALL_SCORE) {
+          if (validationType === "OVERALL_SCORE") {
             // The inconming validation is an API validation.
-            setApisRevalidationMetadata((prev) => ({ ...prev, [apiName]: { loading: false } }));
+            setApisRevalidationMetadata((prev) => ({
+              ...prev,
+              [apiName]: { loading: false },
+            }));
           } else {
             // The inconming validation is an API module validation.
             const moduleId = getModuleId({ apiName, apiProtocol: apiSpecType });
-            setModulesMetadata((prev) => ({ ...prev, [moduleId]: { loading: false } }));
+            setModulesMetadata((prev) => ({
+              ...prev,
+              [moduleId]: { loading: false },
+            }));
           }
         } else if (command === "throwExtensionError") {
           const extensionError = new Error();
@@ -59,12 +73,15 @@ function useVSCodeDataProvider() {
         }
       }
     },
-    [dispatch],
+    [dispatch]
   );
 
   const revalidateApi = useCallback((validationBody: ModuleValidation) => {
     const { apiName } = validationBody;
-    setApisRevalidationMetadata((prev) => ({ ...prev, [apiName]: { loading: true } }));
+    setApisRevalidationMetadata((prev) => ({
+      ...prev,
+      [apiName]: { loading: true },
+    }));
 
     sendMessageVscode("onClickValidateModule", validationBody);
   }, []);
@@ -109,6 +126,6 @@ function resetModulesMetadata(prev: ModulesMetadata) {
       ...memo,
       [key]: { ...value, loading: false },
     }),
-    {},
+    {}
   );
 }

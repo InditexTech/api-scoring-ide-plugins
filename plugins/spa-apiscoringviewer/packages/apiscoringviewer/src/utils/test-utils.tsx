@@ -40,12 +40,12 @@ export const CERTS_PAYLOAD: CertificationPayload = {
     apis: [
       {
         name: API_NAME_1,
-        apiSpecType: ProtocolType.REST,
+        apiSpecType: "REST",
         definitionPath: "portal/v3",
       },
       {
         name: API_NAME_2,
-        apiSpecType: ProtocolType.REST,
+        apiSpecType: "REST",
         definitionPath: "portal/operations",
       },
     ],
@@ -54,11 +54,11 @@ export const CERTS_PAYLOAD: CertificationPayload = {
   results: [
     {
       apiName: API_NAME_1,
-      apiProtocol: ProtocolType.REST,
+      apiProtocol: "REST",
       result: [
         {
           designValidation: {
-            validationType: ValidationType.DESIGN,
+            validationType: "DESIGN",
             spectralValidation: {
               issues: [
                 {
@@ -145,7 +145,7 @@ export const CERTS_PAYLOAD: CertificationPayload = {
         },
         {
           securityValidation: {
-            validationType: ValidationType.SECURITY,
+            validationType: "SECURITY",
             spectralValidation: {
               issues: [
                 {
@@ -221,7 +221,7 @@ export const CERTS_PAYLOAD: CertificationPayload = {
         },
         {
           documentationValidation: {
-            validationType: ValidationType.DOCUMENTATION,
+            validationType: "DOCUMENTATION",
             issues: [
               {
                 lineNumber: 7,
@@ -247,11 +247,11 @@ export const CERTS_PAYLOAD: CertificationPayload = {
     },
     {
       apiName: API_NAME_2,
-      apiProtocol: ProtocolType.REST,
+      apiProtocol: "REST",
       result: [
         {
           designValidation: {
-            validationType: ValidationType.DESIGN,
+            validationType: "DESIGN",
             spectralValidation: {
               issues: [
                 {
@@ -314,7 +314,7 @@ export const CERTS_PAYLOAD: CertificationPayload = {
         },
         {
           securityValidation: {
-            validationType: ValidationType.SECURITY,
+            validationType: "SECURITY",
             spectralValidation: {
               issues: [],
             },
@@ -338,7 +338,7 @@ export const CERTS_PAYLOAD: CertificationPayload = {
         },
         {
           documentationValidation: {
-            validationType: ValidationType.DOCUMENTATION,
+            validationType: "DOCUMENTATION",
             issues: [
               {
                 lineNumber: 13,
@@ -419,13 +419,13 @@ export const API_VALIDATION_RESULTS: ModulePayload = {
   apiModule: {
     apiName: API_NAME_1,
     apiDefinitionPath: "different/apis/route/portal/v3",
-    validationType: ValidationType.OVERALL_SCORE,
-    apiSpecType: ProtocolType.REST,
+    validationType: "OVERALL_SCORE",
+    apiSpecType: "REST",
   },
   results: [
     {
       apiName: API_NAME_1,
-      apiProtocol: ProtocolType.REST,
+      apiProtocol: "REST",
       rating: "C",
       ratingDescription: "You have to fix some errors to improve",
       score: 0,
@@ -438,12 +438,12 @@ export const API_VALIDATION_RESULTS: ModulePayload = {
             rating: "A",
             ratingDescription: "Very Good",
             score: 95,
-            validationType: ValidationType.DESIGN,
+            validationType: "DESIGN",
           },
         },
         {
           securityValidation: {
-            validationType: ValidationType.SECURITY,
+            validationType: "SECURITY",
             spectralValidation: {
               issues: [],
             },
@@ -466,7 +466,7 @@ export const API_VALIDATION_RESULTS: ModulePayload = {
         },
         {
           documentationValidation: {
-            validationType: ValidationType.DOCUMENTATION,
+            validationType: "DOCUMENTATION",
             issues: [
               {
                 lineNumber: 13,
@@ -493,7 +493,7 @@ export const API_VALIDATION_RESULTS: ModulePayload = {
 export const MODULE_RESULTS: ModulePayload = {
   apiModule: {
     ...API_VALIDATION_RESULTS.apiModule,
-    validationType: ValidationType.DESIGN,
+    validationType: "DESIGN",
   },
   results: [
     {

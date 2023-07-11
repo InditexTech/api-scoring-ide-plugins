@@ -1,3 +1,4 @@
+import { isIntelliJ, isVsCode } from "../..";
 import { sendMessageVscode } from "../../utils/send-message-vscode";
 
 type FileLocation = {
@@ -7,7 +8,10 @@ type FileLocation = {
   endCharacter?: number;
 };
 
-export default function openFile(filePath: string, { startLine, startCharacter, endLine, endCharacter }: FileLocation) {
+export default function openFile(
+  filePath: string,
+  { startLine, startCharacter, endLine, endCharacter }: FileLocation
+) {
   const infoPosition = {
     line: startLine,
     char: startCharacter,
@@ -15,13 +19,15 @@ export default function openFile(filePath: string, { startLine, startCharacter, 
     lastchar: endCharacter,
   };
 
-  sendMessageVscode("onClickOpenFile", { fileName: filePath, infoPosition });
-
-  window.cefQuery({
-    request: JSON.stringify({
-      request: "onClickOpenFile",
-      fileName: filePath,
-      infoPosition,
-    }),
-  });
+  if (isVsCode()) {
+    sendMessageVscode("onClickOpenFile", { fileName: filePath, infoPosition });
+  } else if (isIntelliJ()) {
+    window.cefQuery({
+      request: JSON.stringify({
+        request: "onClickOpenFile",
+        fileName: filePath,
+        infoPosition,
+      }),
+    });
+  }
 }

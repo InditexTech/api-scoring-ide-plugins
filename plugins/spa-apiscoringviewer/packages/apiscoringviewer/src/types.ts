@@ -1,17 +1,13 @@
 import type { JSX } from "react";
 
-export enum ProtocolType {
-  REST = 1,
-  EVENT,
-  GRPC,
-}
+export type ProtocolType = "REST" | "EVENT" | "GRPC";
 export type Rating = "A+" | "A" | "B" | "C" | "D";
-export enum ValidationType {
-  DESIGN = 1,
-  DOCUMENTATION,
-  SECURITY,
-  OVERALL_SCORE,
-}
+export type ValidationType =
+  | "DESIGN"
+  | "DOCUMENTATION"
+  | "SECURITY"
+  | "OVERALL_SCORE";
+
 export enum Severity {
   Error = 0,
   Warning,
