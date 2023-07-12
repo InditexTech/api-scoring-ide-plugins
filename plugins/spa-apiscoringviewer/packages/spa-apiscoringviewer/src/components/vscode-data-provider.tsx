@@ -41,6 +41,7 @@ function useVSCodeDataProvider() {
         if (command === "setCertificationResults") {
           dispatch({ type: "replace", payload });
           setLoading(false);
+          setError(null);
         } else if (command === "setModuleResults") {
           // Patch certification payload and add new info
           dispatch({ type: "patch", payload });
