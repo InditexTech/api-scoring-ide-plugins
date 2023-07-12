@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: ©2023 Inditex
+//
+// SPDX-License-Identifier: Apache-2.0
+
 import FilesForm from "features/files/components/files-form";
 import React, { useEffect } from "react";
 import { sendMessageVscode } from "utils/send-message-vscode";

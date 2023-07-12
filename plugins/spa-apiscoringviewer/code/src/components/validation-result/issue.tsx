@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: ©2023 Inditex
+//
+// SPDX-License-Identifier: Apache-2.0
+
 import openFile from "features/certification/utils/open-file";
 import React, { MouseEvent, useCallback } from "react";
 import { NavLink } from "@mantine/core";

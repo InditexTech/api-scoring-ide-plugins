@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: ©2023 Inditex
+//
+// SPDX-License-Identifier: Apache-2.0
+
 import ScoreLabel from "features/certification/components/score-label";
 import React, { ReactNode } from "react";
 import { FormattedMessage } from "react-intl";

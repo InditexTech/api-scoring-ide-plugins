@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: ©2023 Inditex
+//
+// SPDX-License-Identifier: Apache-2.0
+
 import type { VSCodeMessage } from "types";
 
 function tryAcquireVsCodeApi() {

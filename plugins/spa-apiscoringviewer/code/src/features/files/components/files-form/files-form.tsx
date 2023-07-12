@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: ©2023 Inditex
+//
+// SPDX-License-Identifier: Apache-2.0
+
 import React, { useCallback, useReducer, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { ActionIcon, Container, FileInput, Grid, Loader, Select, Stack } from "@mantine/core";

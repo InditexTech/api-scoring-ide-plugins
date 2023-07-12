@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: ©2023 Inditex
+//
+// SPDX-License-Identifier: Apache-2.0
+
 import { useCallback, useEffect, useRef } from "react";
 import EventBus from "utils/event-bus";
 import type { MessageHandler } from "types";

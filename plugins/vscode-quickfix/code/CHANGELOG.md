@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: ©2023 Inditex
+
+SPDX-License-Identifier: Apache-2.0
+-->
+
 # Change Log
 
 All notable changes to the "vscode-spectral-autofix" extension will be documented in this file.

@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: ©2023 Inditex
+//
+// SPDX-License-Identifier: Apache-2.0
+
 plugins {
     id("java")
     id("org.jetbrains.intellij") version "1.12.0"

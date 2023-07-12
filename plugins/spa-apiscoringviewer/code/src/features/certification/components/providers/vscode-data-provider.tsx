@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: ©2023 Inditex
+//
+// SPDX-License-Identifier: Apache-2.0
+
 import useVSCodeCertification from "features/certification/hooks/use-vscode-certification";
 import getModuleId from "features/certification/utils/get-module-id";
 import {

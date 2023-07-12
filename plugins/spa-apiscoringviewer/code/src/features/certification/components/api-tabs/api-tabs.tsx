@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: ©2023 Inditex
+//
+// SPDX-License-Identifier: Apache-2.0
+
 import ApiValidation from "features/certification/components/api-validation/api-validation";
 import getModuleId from "features/certification/utils/get-module-id";
 import React, { useState } from "react";

@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: ©2023 Inditex
+//
+// SPDX-License-Identifier: Apache-2.0
+
 import * as vscode from 'vscode';
 import * as fs from 'fs';
 import { parse } from '@stoplight/yaml';

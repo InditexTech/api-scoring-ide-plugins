@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: ©2023 Inditex
+//
+// SPDX-License-Identifier: Apache-2.0
+
 import { act, render, screen } from "@testing-library/react";
 import React, { ReactNode } from "react";
 import { MemoryRouter, MemoryRouterProps } from "react-router-dom";

@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: ©2023 Inditex
+//
+// SPDX-License-Identifier: Apache-2.0
+
 import ApiTabs from "features/certification/components/api-tabs";
 import NetworkDataProvider from "features/certification/components/providers/network-data-provider";
 import VSCodeDataProvider from "features/certification/components/providers/vscode-data-provider";

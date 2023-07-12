@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: ©2023 Inditex
+
+SPDX-License-Identifier: Apache-2.0
+-->
+
 # Welcome to your VS Code Extension
 
 ## What's in the folder
