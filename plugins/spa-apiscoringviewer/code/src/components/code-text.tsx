@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: ©2023 Inditex
-//
-// SPDX-License-Identifier: Apache-2.0
-
 import React, { useCallback } from "react";
 import { MantineTheme, Text, TextProps, packSx } from "@mantine/core";
 

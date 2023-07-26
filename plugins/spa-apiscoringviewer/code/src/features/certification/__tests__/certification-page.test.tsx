@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: ©2023 Inditex
-//
-// SPDX-License-Identifier: Apache-2.0
-
 import { act, fireEvent, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import CertificationPage from "features/certification/certification-page";

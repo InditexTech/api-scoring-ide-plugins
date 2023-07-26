@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: ©2023 Inditex
-//
-// SPDX-License-Identifier: Apache-2.0
-
 import { messages } from "modules";
 import { theme } from "theme";
 import { CertificationPayload, ModulePayload, ProtocolType, Severity, ValidationType } from "types";

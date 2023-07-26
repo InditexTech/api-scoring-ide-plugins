@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: ©2023 Inditex
-//
-// SPDX-License-Identifier: Apache-2.0
-
 import groupBy from "core-js-pure/actual/array/group-by";
 import React, { Fragment } from "react";
 import { useIntl } from "react-intl";

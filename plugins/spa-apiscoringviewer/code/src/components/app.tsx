@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: ©2023 Inditex
-//
-// SPDX-License-Identifier: Apache-2.0
-
 import CertificationPage from "features/certification/certification-page";
 import FilesPage from "features/files/files-page";
 import { messages } from "modules";

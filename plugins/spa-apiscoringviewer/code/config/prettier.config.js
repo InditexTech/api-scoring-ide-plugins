@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: ©2023 Inditex
-//
-// SPDX-License-Identifier: Apache-2.0
-
 // Prettier configuration
 // https://prettier.io/docs/en/options.html
 module.exports = {

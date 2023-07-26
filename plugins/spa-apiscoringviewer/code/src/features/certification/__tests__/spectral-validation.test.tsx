@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: ©2023 Inditex
-//
-// SPDX-License-Identifier: Apache-2.0
-
 import { render, screen } from "@testing-library/react";
 import React from "react";
 import { Providers } from "utils/test-utils";

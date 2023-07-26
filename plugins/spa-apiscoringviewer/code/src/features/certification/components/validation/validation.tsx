@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: ©2023 Inditex
-//
-// SPDX-License-Identifier: Apache-2.0
-
 import React, { useEffect, useState } from "react";
 import { Accordion, MantineTheme } from "@mantine/core";
 import isCodeValidation from "utils/is-code-validation";

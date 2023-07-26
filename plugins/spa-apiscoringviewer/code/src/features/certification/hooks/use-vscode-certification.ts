@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: ©2023 Inditex
-//
-// SPDX-License-Identifier: Apache-2.0
-
 import { cloneDeep } from "lodash";
 import { useReducer } from "react";
 import isModuleValidation from "../utils/is-module-validation";

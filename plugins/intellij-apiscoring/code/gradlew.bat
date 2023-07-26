@@ -1,7 +1,3 @@
-REM SPDX-FileCopyrightText: ©2023 Inditex
-REM
-REM SPDX-License-Identifier: Apache-2.0
-
 @rem
 @rem Copyright 2015 the original author or authors.
 @rem

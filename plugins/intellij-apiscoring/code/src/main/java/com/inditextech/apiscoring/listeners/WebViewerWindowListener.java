@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: ©2023 Inditex
-//
-// SPDX-License-Identifier: Apache-2.0
-
 package com.inditextech.apiscoring.listeners;
 
 import com.inditextech.apiscoring.service.WebViewerWindowService;

@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: ©2023 Inditex
-//
-// SPDX-License-Identifier: Apache-2.0
-
 import { DEFAULT_THEME, type MantineThemeOverride } from "@mantine/core";
 
 const vsCodeTheme = getVSCodeThemeValues();

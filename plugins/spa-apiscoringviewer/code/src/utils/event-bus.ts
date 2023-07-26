@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: ©2023 Inditex
-//
-// SPDX-License-Identifier: Apache-2.0
-
 import type { MessageHandler } from "types";
 
 // Centralizes messages comming from VSCode side

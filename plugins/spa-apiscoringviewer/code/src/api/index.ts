@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: ©2023 Inditex
-//
-// SPDX-License-Identifier: Apache-2.0
-
 const DEFAULT_TIMEOUT = 15000;
 
 export class ResponseError extends Error {
