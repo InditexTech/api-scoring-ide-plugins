@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2023 Industria de Diseño Textil S.A. INDITEX
+//
+// SPDX-License-Identifier: Apache-2.0
+
 import { YamlParserResult } from '@stoplight/yaml';
 import * as assert from 'assert';
 import path = require('path');

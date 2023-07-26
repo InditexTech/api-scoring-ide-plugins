@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2023 Industria de Diseño Textil S.A. INDITEX
+//
+// SPDX-License-Identifier: Apache-2.0
+
 import * as vscode from 'vscode';
 import { AutoFix, AutoFixParameter} from '../rules/rules';
 import { getKeyLocationForJsonPath, parseWithPointers, getJsonPathForPosition, selectDocumentRange, resolveValue} from './utils';

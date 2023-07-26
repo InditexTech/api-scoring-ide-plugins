@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2023 Industria de Diseño Textil S.A. INDITEX
+//
+// SPDX-License-Identifier: Apache-2.0
+
 import * as path from 'path';
 import * as Mocha from 'mocha';
 const NYC = require('nyc');
