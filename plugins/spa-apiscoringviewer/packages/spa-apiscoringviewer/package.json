@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "build": "parcel build 'index.html'",
+    "build": "parcel build index.html",
     "kill-port": "kill-port ${PORT:-1234}",
     "test": "jest --config=jest.config.js",
-    "watch": "parcel 'index.html' -p 3000"
+    "watch": "parcel index.html -p 3000"
   },
   "dependencies": {
     "@inditextech/apiscoringviewer": "*",
