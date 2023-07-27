@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2023 Industria de Diseño Textil S.A. INDITEX
+//
+// SPDX-License-Identifier: Apache-2.0
+
 import { Box, Text } from "@mantine/core";
 import { getLabelColor } from "../../../utils/get-label-color";
 import type { CommonProps } from "../../../types";

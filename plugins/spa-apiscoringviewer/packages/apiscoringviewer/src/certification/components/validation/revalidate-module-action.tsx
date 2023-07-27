@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2023 Industria de Diseño Textil S.A. INDITEX
+//
+// SPDX-License-Identifier: Apache-2.0
+
 import { FormattedMessage } from "react-intl";
 import { ActionIcon, Tooltip } from "@mantine/core";
 import { IconPlayerPlay } from "@tabler/icons-react";

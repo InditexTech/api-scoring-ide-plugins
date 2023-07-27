@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2023 Industria de Diseño Textil S.A. INDITEX
+//
+// SPDX-License-Identifier: Apache-2.0
+
 import ScoreLabel from "../../components/score-label";
 import { FormattedMessage } from "react-intl";
 import { Accordion, Flex, Text } from "@mantine/core";
