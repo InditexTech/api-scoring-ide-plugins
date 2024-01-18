@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "lib": ["ES2015", "DOM"],
+    "module": "es2020",
+    "moduleResolution": "NodeNext",
+    "noImplicitAny": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "typeRoots": ["node_modules/@types"],
+    "types": ["node", "jest", "testing-library__jest-dom"]
+  },
+  "exclude": ["node_modules"],
+  "include": ["packages/**/*.ts", "packages/**/*.tsx", "declaration.d.ts"]
+}

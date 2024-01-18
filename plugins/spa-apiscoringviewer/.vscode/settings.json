@@ -1,8 +1,0 @@
-{
-  "css.validate": false,
-  "eslint.options": {
-    "configFile": "code/config/.eslintrc.js"
-  },
-  "prettier.configPath": "code/config/prettier.config.js",
-  "stylelint.configFile": "code/config/.stylelintrc.json"
-}
