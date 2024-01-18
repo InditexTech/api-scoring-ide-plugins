@@ -34,6 +34,7 @@ SPDX-License-Identifier: Apache-2.0
 3. In the terminal, use the next command inside the `/code` folder:
 
     ```bash
+    npm install
     vsce package
     ```
 
@@ -45,5 +46,3 @@ SPDX-License-Identifier: Apache-2.0
 ## Usage
 
 [View the documentation](https://albalro.github.io/ide-extensions/quick-fix/) for usage information.
-
-
