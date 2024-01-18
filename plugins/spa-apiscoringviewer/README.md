@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2023 Industria de Diseño Textil S.A. INDITEX
+
+SPDX-License-Identifier: Apache-2.0
+-->
+
 <p align="right">
     <a href="CODE_OF_CONDUCT.md"><img src="https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg" alt="Code of conduct"></a>
 </p>
@@ -13,60 +19,59 @@
 
 This folder contains the **SPA** of the API Scoring extension. The structure is the following:
 
-
 ```bash
 └─ spa-apiscoringviewer/
-    └─ code/
-    	└─ config/
-      └─ public/
-      └─ scripts/
-      └─ src/
-        └─ api/
-        └─ assets/
-        └─ components/
-        └─ features/
-        └─ hooks/
-        └─ locales/
-        └─ mocks/
-        └─ utils/
-	  └─ images/
-	    
+   └─ packages/
+      └─ apiscoringviewer/
+         └─ src/
+            └─ certification/
+            └─ components/
+            └─ files/
+            └─ hooks/
+            └─ locales/
+            └─ utils/
+      └─ spa-apiscoringviewer/
+         └─ src/
+            └─ components/
 ```
+
 <br>
 
 ## How to run the SPA
 
 1. Clone the repository:
 
-	```
-    git clone git@github.com:InditexTech/api-scoring-ide-plugins.git
-	```
+   ```
+   git clone git@github.com:InditexTech/api-scoring-ide-plugins.git
+   ```
 
 2. Place yourself in the correct directory:
 
-	```
- cd plugins/spa-apiscoringviewer/code
-	```
+   ```
+   cd plugins/spa-apiscoringviewer
+   ```
 
 3. Install the dependencies:
 
-	```
-	npm i
-	```
+   ```
+   pnpm i
+   ```
 
-5. Once the process finishes, start the SPA:
+4. Once the process finishes, start the SPA:
 
-	```
-	npm run start
-	```
+   ```
+   pnpm --filter apiscoringviewer watch
+   pnpm --filter spa-apiscoringviewer watch
+   ```
 
-6. If you are executing it on local, validate it works using mock server:
- ```
- http://localhost:3000/protocols/REST/apis/API%20Sample
- ```
+5. If you are executing it on local, open VSCode with the plugin already installed. In the plugin configuration (Api Scoring › Certification › Frontend: Url) set the frontend URL to:
+
+```
+http://localhost:3000
+```
+
 <br>
 
 ## Usage
 
 [View the documentation](https://albalro.github.io/ide-extensions/api-hub/) for usage information.
-
