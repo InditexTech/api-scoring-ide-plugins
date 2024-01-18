@@ -25,5 +25,4 @@ this project.
 - [Issues](../../issues): Check open issues and look for opportunities to contribute. Make sure to open an issue before
 starting work on a new feature or fix.
 
-Thank you for your time and contribution! Your work helps to grow and improve this project. If you have any questions,
-feel free to reach out to us.
+Thank you for your time and contribution! Your work helps to grow and improve this project. If you have any questions, feel free to reach out to us.
