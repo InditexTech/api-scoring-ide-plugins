@@ -11,7 +11,7 @@ SPDX-License-Identifier: Apache-2.0
 <p align="center">
     <h1 align="center">Quick fix</h1>
     <p align="center">The tool that focuses on establishing a ruleset file where you can find the compromised rule and fix it.</p>
-    <p align="center"><strong><a href="https://albalro.github.io/ide-extensions/quick-fix/">Learn more in the doc!</a></strong></p>
+    <p align="center"><strong><a href="https://inditextech.github.io/api-scoring-doc/ide-extensions/quick-fix/">Learn more in the doc!</a></strong></p>
     <br>
 </p>
 
@@ -45,4 +45,4 @@ SPDX-License-Identifier: Apache-2.0
 
 ## Usage
 
-[View the documentation](https://albalro.github.io/ide-extensions/quick-fix/) for usage information.
+[View the documentation](https://inditextech.github.io/api-scoring-doc/ide-extensions/quick-fix/) for usage information.

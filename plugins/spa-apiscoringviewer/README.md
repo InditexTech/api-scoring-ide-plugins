@@ -11,7 +11,7 @@ SPDX-License-Identifier: Apache-2.0
 <p align="center">
     <h1 align="center">SPA API Scoring</h1>
     <p align="center">The SPA that displays what is wrong in your API and leads you to where you can fix it.</p>
-    <p align="center"><strong><a href="https://albalro.github.io/ide-extensions/overview/">Learn more in the doc!</a></strong></p>
+    <p align="center"><strong><a href="https://inditextech.github.io/api-scoring-doc/ide-extensions/overview/">Learn more in the doc!</a></strong></p>
     <br>
 </p>
 
@@ -74,4 +74,4 @@ http://localhost:3000
 
 ## Usage
 
-[View the documentation](https://albalro.github.io/ide-extensions/api-hub/) for usage information.
+[View the documentation](https://inditextech.github.io/api-scoring-doc/ide-extensions/api-hub/) for usage information.
