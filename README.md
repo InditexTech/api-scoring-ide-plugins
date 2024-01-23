@@ -9,15 +9,15 @@ SPDX-License-Identifier: Apache-2.0
 </p>
 
 <p align="center">
-    <h1 align="center">API Certification IDE Extensions</h1>
+    <h1 align="center">API Scoring IDE Extensions</h1>
     <p align="center">The set of extensions that integrates the API-design essential tools into your everyday work.</p>
-    <p align="center"><strong><a href="https://albalro.github.io/ide-extensions/overview/">Check our doc!</a></strong></p>
+    <p align="center"><strong><a href="https://inditextech.github.io/api-scoring-doc/ide-extensions/overview/">Check our doc!</a></strong></p>
     <br>
 </p>
 
 This repository contains the API Scoring and Quick Fix extensions that integrate with your IDE to interact with breached API rules, and the SPA that is displayed on the IDE.
 
-> You can find further information regarding the **API Certification Suite** in our [documentation site](https://albalro.github.io)!
+> You can find further information regarding the **API Scoring Suite** in our [documentation site](https://inditextech.github.io/api-scoring-doc/)!
 
 <br>
 
@@ -27,15 +27,15 @@ You can see that in the root of this repository, there is a `plugins/` folder. T
 
 To proceed with their installation, please, place yourself in their path and follow the installation guides suggested in the READMEs. It is convenient that you follow a specific order of installation:
 
-1. Deploy the microservice by following its [installation guide](https://albalro.github.io/certification-system/microservice/#installation).
-2. Deploy the SPA following its [installation guide](https://albalro.github.io/ide-extensions/overview/#spa-deployment).
-3. Install the plugins by following their installation guides inside each README file or checking the [installation guide](https://albalro.github.io/ide-extensions/overview/#installation).
+1. Deploy the microservice by following its [installation guide](https://inditextech.github.io/api-scoring-doc/scoring-system/microservice/#installation).
+2. Deploy the SPA following its [installation guide](https://inditextech.github.io/api-scoring-doc/ide-extensions/overview/#spa-deployment).
+3. Install the plugins by following their installation guides inside each README file or checking the [installation guide](https://inditextech.github.io/api-scoring-doc/ide-extensions/overview/#installation).
 
 <br>
 
 ## Usage
 
-[View the documentation](https://albalro.github.io/ide-extensions/overview/) for usage information.
+[View the documentation](https://inditextech.github.io/api-scoring-doc/ide-extensions/overview/) for usage information.
 
 <br>
 

@@ -14,9 +14,9 @@ SPDX-License-Identifier: Apache-2.0
 
 ## 📜 Summary
 
-This extension, within the APIScoring product, is meant to help developers to achieve the best certification grade in their APIs.
+This extension, within the APIScoring product, is meant to help developers to achieve the best grade in their APIs.
 
-With the code on the one hand and the rules that are being broken on the other hand, you can quick-fix the rules by adding, editing, or removing code from your files. Recalculate the obtained score until you have an A+, and your API will be ready to go. 
+With the code on the one hand and the rules that are being broken on the other hand, you can quick-fix the rules by adding, editing, or removing code from your files. Recalculate the obtained score until you have an A+, and your API will be ready to go.
 
 ### Documentation
 
@@ -36,7 +36,7 @@ The **frontal webview** that is displayed in the extension is placed in the apis
 
 ## 🚀 Getting started
 
-Get started with the tool and learn **how to use it**. 
+Get started with the tool and learn **how to use it**.
 
 ## 🤝 Contributing
 

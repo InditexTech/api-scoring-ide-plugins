@@ -10,8 +10,8 @@ SPDX-License-Identifier: Apache-2.0
 
 <p align="center">
     <h1 align="center">API Scoring (VS Code)</h1>
-    <p align="center">The tool that establishes communication between the certification SPA and the files in your IDE.</p>
-    <p align="center"><strong><a href="https://albalro.github.io/ide-extensions/api-hub/">Learn more in the doc!</a></strong></p>
+    <p align="center">The tool that establishes communication between the scoring SPA and the files in your IDE.</p>
+    <p align="center"><strong><a href="https://inditextech.github.io/api-scoring-doc/ide-extensions/api-hub/">Learn more in the doc!</a></strong></p>
     <br>
 </p>
 
@@ -45,4 +45,4 @@ SPDX-License-Identifier: Apache-2.0
 
 ## Usage
 
-[View the documentation](https://albalro.github.io/ide-extensions/api-hub/) for usage information.
+[View the documentation](https://inditextech.github.io/api-scoring-doc/ide-extensions/api-hub/) for usage information.
