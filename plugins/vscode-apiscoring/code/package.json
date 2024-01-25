@@ -1,0 +1,118 @@
+{
+  "name": "vscode-apiscoring",
+  "displayName": "API Scoring",
+  "description": "Webview to display the errors and warnings in the linted APIs and display the different grades.",
+  "icon": "resources/logo.png",
+  "version": "1.0.0",
+  "publisher": "InditexTech",
+  "bugs": {
+    "url": "https://github.com/InditexTech/api-scoring-ide-plugins/issues"
+  },
+  "homepage": "https://github.com/InditexTech/api-scoring-ide-plugins",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/InditexTech/api-scoring-ide-plugins"
+  },
+  "author": {
+    "name": "Inditex Open Source Team",
+    "url": "https://github.com/InditexTech/api-scoring-ide-plugins"
+  },
+  "license": "Apache-2.0",
+  "engines": {
+    "vscode": "^1.62.0"
+  },
+  "categories": [
+    "Linters",
+    "Debuggers",
+    "Other"
+  ],
+  "activationEvents": [
+    "workspaceContains:metadata.yml",
+    "workspaceContains:**/metadata.yml",
+    "onCommand:apiScoring.certification.validateRepository",
+    "onCommand:apiScoring.certification.getValidationRules",
+    "onCommand:apiScoring.certification.validateFile"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "apiScoring.certification.validateRepository",
+        "title": "APIScoring: Validate local APIs & Open APIScoring Application"
+      },
+      {
+        "command": "apiScoring.certification.getValidationRules",
+        "title": "APIScoring: Obtain validation rules"
+      },
+      {
+        "command": "apiScoring.certification.validateFile",
+        "title": "APIScoring: Validate file with a ruleset"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "APIScoring",
+      "properties": {
+        "apiScoring.certification.service.url": {
+          "type": "string",
+          "default": "http://localhost:8080/apifirst/v1",
+          "description": "Certification URL",
+          "scope": "resource"
+        },
+        "apiScoring.certification.frontend.url": {
+          "type": "string",
+          "default": "http://localhost:3000/",
+          "description": "Frontend URL",
+          "scope": "resource"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "clean": "rimraf -rf ./dist",
+    "vscode:prepublish": "npm run clean && npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "copy-test-files": "copyfiles -u 1 src/test/**/*.yml src/test/**/*.json dist",
+    "test-compile": "tsc -p ./ --outDir dist",
+    "test-watch": "npm run copy-test-files && tsc -watch -p ./ --outDir dist",
+    "pretest": "npm run test-compile && npm run lint && npm run copy-test-files",
+    "lint": "eslint src --ext ts",
+    "test": "node ./dist/test/runTest.js",
+    "vsce-package": "yes | ./node_modules/.bin/vsce package",
+    "bump:snapshot": "npm version $npm_package_version.$(date \"+%s\")",
+    "verify": "npm ci"
+  },
+  "devDependencies": {
+    "@types/archiver": "^6.0.2",
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^18.15.11",
+    "@types/vscode": "^1.62.0",
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
+    "@typescript-eslint/parser": "^6.19.1",
+    "@vscode/test-electron": "^2.3.8",
+    "copyfiles": "^2.4.1",
+    "eslint": "^8.56.0",
+    "file-loader": "^6.2.0",
+    "glob": "^10.3.10",
+    "mocha": "^10.2.0",
+    "rimraf": "^5.0.5",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.3.3",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "@stoplight/yaml": "^4.2.3",
+    "archiver": "^6.0.1",
+    "axios": "^1.6.5",
+    "form-data": "^4.0.0",
+    "vsce": "^2.6.7"
+  },
+  "overrides": {
+    "semver": "7.5.2",
+    "xml2js": "0.5.0"
+  }
+}

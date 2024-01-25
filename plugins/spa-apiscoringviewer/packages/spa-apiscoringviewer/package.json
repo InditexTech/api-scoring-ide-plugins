@@ -1,0 +1,28 @@
+{
+  "name": "@inditextech/spa-apiscoringviewer",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "parcel build index.html",
+    "kill-port": "kill-port ${PORT:-1234}",
+    "test": "jest --config=jest.config.js",
+    "watch": "parcel index.html -p 3000"
+  },
+  "dependencies": {
+    "@inditextech/apiscoringviewer": "*",
+    "@mantine/core": "^6.0.15",
+    "kill-port": "latest",
+    "react": "latest",
+    "react-async-hook": "^4.0.0",
+    "react-dom": "latest",
+    "react-intl": "^6.4.4",
+    "react-router-dom": "^5.3.4",
+    "react-virtualized-auto-sizer": "^1.0.10"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.4.0",
+    "@babel/core": "^7.12.0",
+    "@types/node": "^18.15.11",
+    "@types/react-router-dom": "^5.3.3"
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "name": "@inditextech/apiscoringviewer",
+  "description": "React components for API Scoring Viewer",
+  "version": "1.0.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "author": {
+    "name": "Inditex Open Source Team",
+    "url": "https://github.com/InditexTech/apiscoringviewer"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/InditexTech/apiscoringviewer.git"
+  },
+  "source": "src/index.tsx",
+  "main": "dist/inditextech-apiscoringviewer.cjs.js",
+  "module": "dist/inditextech-apiscoringviewer.esm.js",
+  "exports": {
+    ".": {
+      "types": {
+        "import": "./dist/inditextech-apiscoringviewer.cjs.mjs",
+        "default": "./dist/inditextech-apiscoringviewer.cjs.js"
+      },
+      "development": {
+        "module": "./dist/inditextech-apiscoringviewer.development.esm.js",
+        "import": "./dist/inditextech-apiscoringviewer.development.cjs.mjs",
+        "default": "./dist/inditextech-apiscoringviewer.development.cjs.js"
+      },
+      "module": "./dist/inditextech-apiscoringviewer.esm.js",
+      "import": "./dist/inditextech-apiscoringviewer.cjs.mjs",
+      "default": "./dist/inditextech-apiscoringviewer.cjs.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "imports": {
+    "#is-development": {
+      "development": "./src/env-conditions/development.ts",
+      "default": "./src/env-conditions/production.ts"
+    }
+  },
+  "types": "dist/apiscoringviewer.cjs.d.ts",
+  "scripts": {
+    "build": "parcel build",
+    "lint": "eslint \"src/**/*.{ts,tsx}\"",
+    "watch": "parcel watch --port=2345"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.0",
+    "@types/lodash": "^4.14.195",
+    "@types/react-router-dom": "^5.3.3",
+    "eslint": "^8.37.0",
+    "eslint-plugin-no-restricted-imports": "^0.0.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "react": "latest",
+    "react-dom": "latest",
+    "type-fest": "^3.12.0"
+  },
+  "peerDependencies": {
+    "react": "^16.14.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.14.0 || ^17.0.0 || ^18.0.0"
+  },
+  "browserslist": [
+    "Chrome 79"
+  ],
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@mantine/core": "^6.0.15",
+    "@mantine/form": "^6.0.15",
+    "@mantine/hooks": "^6.0.15",
+    "@parcel/optimizer-htmlnano": "^2.9.3",
+    "@sindresorhus/slugify": "^2.2.1",
+    "@tabler/icons-react": "^2.23.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "lodash": "^4.17.21",
+    "react-error-boundary": "^4.0.10",
+    "react-intl": "^6.4.4",
+    "react-router-dom": "5.3.4",
+    "react-virtualized-auto-sizer": "^1.0.10"
+  }
+}
