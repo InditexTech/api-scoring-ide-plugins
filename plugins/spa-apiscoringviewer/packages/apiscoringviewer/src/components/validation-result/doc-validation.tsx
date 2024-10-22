@@ -17,7 +17,7 @@ type DocValidationProps = {
 export default function DocValidation({
   basePath,
   issues,
-}: DocValidationProps) {
+}: Readonly<DocValidationProps>) {
   const issuesByFileName = useMemo(
     () =>
       groupBy<DocIssue>(

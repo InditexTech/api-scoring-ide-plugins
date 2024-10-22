@@ -13,7 +13,11 @@ type CodeValidationProps = {
   protoIssues?: ProtoIssue[];
 };
 
-export default function CodeValidation({ basePath, spectralIssues, protoIssues }: CodeValidationProps) {
+export default function CodeValidation({
+  basePath,
+  spectralIssues,
+  protoIssues,
+}: Readonly<CodeValidationProps>) {
   if (spectralIssues.length === 0 && protoIssues?.length === 0) {
     return <EmptyIssues />;
   }
@@ -22,7 +26,9 @@ export default function CodeValidation({ basePath, spectralIssues, protoIssues }
     <>
       <SpectralValidation basePath={basePath} issues={spectralIssues} />
 
-      {protoIssues && <ProtoValidation basePath={basePath} issues={protoIssues} />}
+      {protoIssues && (
+        <ProtoValidation basePath={basePath} issues={protoIssues} />
+      )}
     </>
   );
 }

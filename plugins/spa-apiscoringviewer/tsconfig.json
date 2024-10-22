@@ -2,8 +2,8 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "lib": ["ES2015", "DOM"],
-    "module": "es2020",
-    "moduleResolution": "NodeNext",
+    "module": "ES2020",
+    "moduleResolution": "Bundler",
     "noImplicitAny": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
@@ -13,5 +13,9 @@
     "types": ["node", "jest", "testing-library__jest-dom"]
   },
   "exclude": ["node_modules"],
-  "include": ["packages/**/*.ts", "packages/**/*.tsx", "declaration.d.ts"]
+  "include": [
+    "packages/**/*.ts",
+    "packages/**/*.tsx",
+    "packages/apiscoringviewer/declaration.d.ts"
+  ]
 }

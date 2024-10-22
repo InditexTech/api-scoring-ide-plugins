@@ -17,7 +17,7 @@ type SpectralValidationProps = {
 export default function SpectralValidation({
   basePath,
   issues,
-}: SpectralValidationProps) {
+}: Readonly<SpectralValidationProps>) {
   const intl = useIntl();
 
   const issuesBySource = groupBy<CodeIssue>(

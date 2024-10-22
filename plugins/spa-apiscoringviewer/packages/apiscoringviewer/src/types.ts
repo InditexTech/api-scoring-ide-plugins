@@ -7,6 +7,7 @@ import type { JSX } from "react";
 export type ProtocolType = "REST" | "EVENT" | "GRPC";
 export type Rating = "A+" | "A" | "B" | "C" | "D";
 export type ValidationType =
+  | "LINTER"
   | "DESIGN"
   | "DOCUMENTATION"
   | "SECURITY"
@@ -74,7 +75,7 @@ export type Certification = ApiIdentifier & {
 
 export type ValidationTypes = CodeValidation & DocValidation;
 
-type BaseValidation = {
+export type BaseValidation = {
   rating: Rating;
   ratingDescription: string;
   validationType: ValidationType;
@@ -195,7 +196,7 @@ export type PickRenameMulti<
   T,
   R extends {
     [K in keyof R]: K extends keyof T ? PropertyKey : "Error: key not in T";
-  }
+  },
 > = {
   [P in keyof T as P extends keyof R ? R[P] : P]: T[P];
 };

@@ -6,7 +6,9 @@ import { ReactNode } from "react";
 import { Box, Divider } from "@mantine/core";
 import { CodeText } from "../components/code-text";
 
-export default function ListGrouper({ label }: { label: ReactNode }) {
+type ListGrouperProps = { label: ReactNode };
+
+export default function ListGrouper({ label }: Readonly<ListGrouperProps>) {
   return (
     <>
       <Box>

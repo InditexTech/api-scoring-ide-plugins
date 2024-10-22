@@ -4,7 +4,11 @@
 
 import { ValidationType } from "../types";
 
-const CODE_VALIDATION_TYPES: ValidationType[] = ["DESIGN", "SECURITY"];
+const CODE_VALIDATION_TYPES: ValidationType[] = [
+  "LINTER",
+  "DESIGN",
+  "SECURITY",
+];
 
 export default function isCodeValidation(type: ValidationType) {
   return CODE_VALIDATION_TYPES.includes(type);

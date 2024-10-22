@@ -9,12 +9,12 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { MantineProvider } from "@mantine/core";
 import {
   CertificationPage,
+  VSCodeDataProvider,
   FilesPage,
   theme,
   messages,
 } from "@inditextech/apiscoringviewer";
 import Layout from "./src/components/layout";
-import VscodeDataProvider from "./src/components/vscode-data-provider";
 
 const rootElement = document.getElementById("root")!;
 const root = createRoot(rootElement);
@@ -29,7 +29,7 @@ root.render(
                 exact
                 path="/"
                 render={() => (
-                  <CertificationPage DataProvider={VscodeDataProvider} />
+                  <CertificationPage DataProvider={VSCodeDataProvider} />
                 )}
               />
               <Route path="/files" component={FilesPage} />

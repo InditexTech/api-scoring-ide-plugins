@@ -33,8 +33,10 @@ export default function Validation({
   definitionPath,
   moduleMetadata,
   revalidateModule,
-}: ValidationProps) {
-  const [collapsed, setCollapsed] = useState<string[]>(() => getOpenedAccordions(result));
+}: Readonly<ValidationProps>) {
+  const [collapsed, setCollapsed] = useState<string[]>(() =>
+    getOpenedAccordions(result)
+  );
 
   useEffect(() => {
     setCollapsed(getOpenedAccordions(result));
@@ -47,21 +49,26 @@ export default function Validation({
       multiple
       value={collapsed}
       onChange={setCollapsed}
-      p="md"
+      py="md"
       styles={getAccordionStyles}
     >
       {result.map((validations) => {
-        const validationValues = Object.values(validations) as ValidationTypes[];
+        const validationValues = Object.values(
+          validations
+        ) as ValidationTypes[];
         if (validationValues.length === 0) {
           return null;
         }
         const [validation] = validationValues;
-        const { validationType, rating } = validation;
+        const { validationType, score } = validation;
 
         return (
-          <Accordion.Item value={`accordion-${validationType}`} key={`accordion-${validationType}`}>
+          <Accordion.Item
+            value={`accordion-${validationType}`}
+            key={`accordion-${validationType}`}
+          >
             <AccordionControl
-              rating={rating}
+              score={score}
               validationType={validationType}
               action={
                 <RevalidateModuleAction
