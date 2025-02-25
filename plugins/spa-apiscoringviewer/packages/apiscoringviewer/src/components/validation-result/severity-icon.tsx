@@ -4,13 +4,17 @@
 
 import { Severity as SeverityEnum } from "../../types";
 import { useMantineTheme } from "@mantine/core";
-import { IconAlertTriangle, IconCircleX, IconInfoCircle } from "@tabler/icons-react";
+import {
+  IconAlertTriangle,
+  IconCircleX,
+  IconInfoCircle,
+} from "@tabler/icons-react";
 
 type SeverityProps = {
   severity: SeverityEnum;
 };
 
-export default function SeverityIcon({ severity }: SeverityProps) {
+export default function SeverityIcon({ severity }: Readonly<SeverityProps>) {
   const theme = useMantineTheme();
 
   switch (severity) {

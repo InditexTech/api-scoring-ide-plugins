@@ -4,8 +4,12 @@
 
 import type { MantineTheme } from "@mantine/core";
 
-const RATINGS = ["A+", "A", "B", "C", "D"];
-
-export function getLabelColor(theme: MantineTheme, scoreLabel: string) {
-  return theme.colors.scoring[RATINGS.indexOf(scoreLabel)];
+export function getLabelColor(theme: MantineTheme, score: number) {
+  if (score >= 90) {
+    return theme.colors.dark[9];
+  }
+  if (score >= 50) {
+    return theme.colors.organe[6];
+  }
+  return theme.colors.red[4];
 }

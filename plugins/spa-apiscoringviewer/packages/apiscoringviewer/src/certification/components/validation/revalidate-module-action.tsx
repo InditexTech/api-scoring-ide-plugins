@@ -27,7 +27,7 @@ export default function RevalidateModuleAction({
   definitionPath,
   revalidateModule,
   loading,
-}: RevalidateModuleActionProps) {
+}: Readonly<RevalidateModuleActionProps>) {
   const onRevalidateClick = () => {
     if (typeof revalidateModule === "function" && isVsCode()) {
       revalidateModule({

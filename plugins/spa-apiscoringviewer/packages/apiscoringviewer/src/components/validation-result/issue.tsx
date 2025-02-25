@@ -32,7 +32,7 @@ export default function Issue({
   infoUrl,
   filePath,
   "data-testid": dataTestId = "Issue",
-}: IssueProps) {
+}: Readonly<IssueProps>) {
   let location = "";
   if (startLine) {
     location += startLine;
@@ -44,10 +44,15 @@ export default function Issue({
   const onItemClick = useCallback(
     (e: MouseEvent<HTMLButtonElement>) => {
       if (e.currentTarget.nodeName !== "A" && filePath) {
-        openFile(filePath, { startLine, startCharacter, endLine, endCharacter });
+        openFile(filePath, {
+          startLine,
+          startCharacter,
+          endLine,
+          endCharacter,
+        });
       }
     },
-    [endCharacter, endLine, filePath, startCharacter, startLine],
+    [endCharacter, endLine, filePath, startCharacter, startLine]
   );
 
   return (

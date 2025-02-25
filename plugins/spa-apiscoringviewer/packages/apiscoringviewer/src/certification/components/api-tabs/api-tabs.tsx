@@ -11,7 +11,20 @@ import { Flex, ScrollArea, Tabs } from "@mantine/core";
 import { IconError404 } from "@tabler/icons-react";
 import { getLabelColor } from "../../../utils/get-label-color";
 import Feedback from "../../../components/feedback";
-import type { ApiIdentifier, CertificationPayload, ModulesMetadata, RevalidateModule } from "../../../types";
+import type {
+  ApiIdentifier,
+  CertificationPayload,
+  ModulesMetadata,
+  RevalidateModule,
+} from "../../../types";
+
+type ApiTabsProps = {
+  certification: CertificationPayload;
+  modulesMetadata: ModulesMetadata;
+  apisRevalidationMetadata: ModulesMetadata;
+  revalidateModule?: RevalidateModule;
+  revalidateApi?: RevalidateModule;
+};
 
 export default function ApiTabs({
   certification: {
@@ -23,15 +36,14 @@ export default function ApiTabs({
   apisRevalidationMetadata,
   revalidateModule,
   revalidateApi,
-}: {
-  certification: CertificationPayload;
-  modulesMetadata: ModulesMetadata;
-  apisRevalidationMetadata: ModulesMetadata;
-  revalidateModule?: RevalidateModule;
-  revalidateApi?: RevalidateModule;
-}) {
-  const [selectedId, setSelectedId] = useState<string | null>(apis.length > 0 ? getApiId(apis[0]) : null);
-  const selectedApi = apis.find(({ apiName, apiProtocol }) => getApiId({ apiName, apiProtocol }) === selectedId);
+}: Readonly<ApiTabsProps>) {
+  const [selectedId, setSelectedId] = useState<string | null>(
+    apis.length > 0 ? getApiId(apis[0]) : null
+  );
+  const selectedApi = apis.find(
+    ({ apiName, apiProtocol }) =>
+      getApiId({ apiName, apiProtocol }) === selectedId
+  );
 
   if (!selectedApi || apis.length === 0) {
     return (
@@ -50,10 +62,15 @@ export default function ApiTabs({
       onTabChange={setSelectedId}
       data-testid="ApiTabs"
       display="flex"
-      sx={{ flex: 1, flexDirection: "column", flexWrap: "nowrap" }}
+      sx={{
+        flex: 1,
+        flexDirection: "column",
+        flexWrap: "nowrap",
+        height: "100%",
+      }}
     >
       <Tabs.List>
-        {apis.map(({ apiName, apiProtocol, rating }) => {
+        {apis.map(({ apiName, apiProtocol, score }) => {
           const id = getApiId({ apiName, apiProtocol });
           return (
             <Tabs.Tab
@@ -61,9 +78,11 @@ export default function ApiTabs({
               value={id}
               data-testid={`ApiTab-${id}`}
               sx={
-                rating
+                typeof score === "number"
                   ? (theme) => ({
-                      "&[data-active]": { borderColor: getLabelColor(theme, rating) },
+                      "&[data-active]": {
+                        borderColor: getLabelColor(theme, score),
+                      },
                     })
                   : {}
               }
@@ -83,10 +102,16 @@ export default function ApiTabs({
                   const { apiName, apiProtocol } = api;
                   const tabId = getApiId({ apiName, apiProtocol });
                   const definitionPath =
-                    apisMetadata.find(({ name, apiSpecType }) => name === apiName && apiProtocol === apiSpecType)
-                      ?.definitionPath ?? "";
-                  const moduleMetadata = modulesMetadata[getModuleId(api)] ?? { loading: false };
-                  const apiRevalidationMetadata = apisRevalidationMetadata[apiName] ?? { loading: false };
+                    apisMetadata.find(
+                      ({ name, apiSpecType }) =>
+                        name === apiName && apiProtocol === apiSpecType
+                    )?.definitionPath ?? "";
+                  const moduleMetadata = modulesMetadata[getModuleId(api)] ?? {
+                    loading: false,
+                  };
+                  const apiRevalidationMetadata = apisRevalidationMetadata[
+                    apiName
+                  ] ?? { loading: false };
                   return (
                     <Tabs.Panel key={tabId} value={tabId} w="100%">
                       <ScrollArea sx={{ height }}>

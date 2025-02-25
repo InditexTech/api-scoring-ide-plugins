@@ -10,9 +10,7 @@ import messages from "../locales";
 import {
   type CertificationPayload,
   type ModulePayload,
-  ProtocolType,
   Severity,
-  ValidationType,
 } from "../types";
 
 export function Providers({ children }: { children?: ReactNode }) {

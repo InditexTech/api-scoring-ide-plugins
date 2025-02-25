@@ -16,7 +16,7 @@ type ProtoValidationProps = {
 export default function ProtoValidation({
   basePath,
   issues,
-}: ProtoValidationProps) {
+}: Readonly<ProtoValidationProps>) {
   const issuesByFileName = useMemo(
     () =>
       groupBy<ProtoIssue>(

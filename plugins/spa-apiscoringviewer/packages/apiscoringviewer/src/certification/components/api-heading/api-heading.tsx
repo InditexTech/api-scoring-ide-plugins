@@ -26,7 +26,7 @@ import { IconPlayerPlay } from "@tabler/icons-react";
 import isIntelliJ from "../../../utils/is-intellij";
 import isVsCode from "../../../utils/is-vscode";
 
-type ApiHeadingProps = Pick<Certification, "rating" | "ratingDescription"> &
+type ApiHeadingProps = Pick<Certification, "score" | "ratingDescription"> &
   PickRenameMulti<
     ApiIdentifier,
     { apiName: "name"; apiProtocol: "protocol" }
@@ -39,12 +39,12 @@ type ApiHeadingProps = Pick<Certification, "rating" | "ratingDescription"> &
 export default function ApiHeading({
   name,
   protocol,
-  rating,
+  score,
   ratingDescription,
   apiRevalidationMetadata,
   revalidateApi,
   definitionPath,
-}: ApiHeadingProps) {
+}: Readonly<ApiHeadingProps>) {
   const onRevalidateApiClick = useCallback(() => {
     if (typeof revalidateApi === "function") {
       const payload: ModuleValidation = {
@@ -68,7 +68,7 @@ export default function ApiHeading({
   }, [definitionPath, name, protocol, revalidateApi]);
 
   return (
-    <Grid grow justify="space-between" align="center" mx={8}>
+    <Grid m={0} grow justify="space-between" align="center">
       <Grid.Col span={4}>
         <Flex gap="md" align="center">
           <div>
@@ -109,9 +109,9 @@ export default function ApiHeading({
         </Flex>
       </Grid.Col>
 
-      {rating && (
+      {typeof score === "number" && (
         <Grid.Col span="auto" data-testid="ApiHeading-CenterCol">
-          <Flex justify="flex-end" gap="md">
+          <Flex align="center" justify="flex-end" gap="md">
             <MediaQuery smallerThan="sm" styles={{ display: "none" }}>
               <span>
                 <span>
@@ -125,8 +125,7 @@ export default function ApiHeading({
             </MediaQuery>
 
             <ScoreLabel
-              rating={rating}
-              size="large"
+              score={score}
               data-testid={`ApiHeading-Score-${name}-${protocol}`}
             />
           </Flex>

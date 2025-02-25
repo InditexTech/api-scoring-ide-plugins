@@ -25,6 +25,16 @@ import type {
   SetFileResultsError,
 } from "../../../types";
 
+// There is a bug in the latest @matine/core lib that does not include the type for
+// the placeholder prop. This is a workaround to add the type to the InputSharedProps
+// interface and it could be remove once we upgrade at least to version 7.4.0
+// See https://github.com/mantinedev/mantine/issues/5401
+declare module "@mantine/core" {
+  interface InputSharedProps {
+    placeholder?: string | undefined;
+  }
+}
+
 const protocolOptions = [
   { label: "REST", value: "rest" },
   { label: "gRPC", value: "grpc" },
@@ -112,7 +122,6 @@ export default function FilesForm() {
                 placeholder="Select file"
                 size="md"
                 wrapperProps={{ "data-testid": "File" }}
-                // eslint-disable-next-line react/jsx-props-no-spreading
                 {...form.getInputProps("file")}
               />
             </Grid.Col>
@@ -124,7 +133,6 @@ export default function FilesForm() {
                 color="dark"
                 data={protocolOptions}
                 size="md"
-                // eslint-disable-next-line react/jsx-props-no-spreading
                 {...form.getInputProps("apiProtocol")}
               />
             </Grid.Col>

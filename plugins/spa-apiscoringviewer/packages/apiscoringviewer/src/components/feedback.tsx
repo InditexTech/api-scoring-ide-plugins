@@ -21,14 +21,13 @@ export default function Feedback({
   secondaryText,
   Icon = IconInfoCircle,
   "data-testid": dataTestId = "ScoreLabel",
-}: FeedbackProps) {
+}: Readonly<FeedbackProps>) {
   const iconProps: ComponentPropsWithoutRef<Icon> = { size: 80 };
   const style = { width: "100%", ...(fullHeight && { height: "100vh" }) };
 
   return (
     <Center style={style} data-testid={dataTestId}>
       <Stack align="center">
-        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
         {Icon && <Icon {...iconProps} />}
 
         <Stack spacing={0}>
@@ -43,7 +42,8 @@ export default function Feedback({
   );
 }
 
-Feedback.Error = function FeedbackError({ ...props }: Omit<FeedbackProps, "Icon">) {
-  // eslint-disable-next-line react/jsx-props-no-spreading
+Feedback.Error = function FeedbackError({
+  ...props
+}: Omit<FeedbackProps, "Icon">) {
   return <Feedback {...props} Icon={IconCircleX} />;
 };

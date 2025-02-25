@@ -10,5 +10,9 @@ type LayoutProps = {
 };
 
 export default function Layout({ children }: LayoutProps) {
-  return <Flex h="100vh">{children}</Flex>;
+  return (
+    <Flex h="100vh" p="md">
+      {children}
+    </Flex>
+  );
 }

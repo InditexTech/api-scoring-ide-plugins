@@ -24,7 +24,7 @@ type CertificationProps = { DataProvider: DataProviderType };
 
 export default function CertificationPage({
   DataProvider,
-}: CertificationProps) {
+}: Readonly<CertificationProps>) {
   const [intelliJLoading, setIntelliJLoading] = useState(false);
 
   function onClick() {

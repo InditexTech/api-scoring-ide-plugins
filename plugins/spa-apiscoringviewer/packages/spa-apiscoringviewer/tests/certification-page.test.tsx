@@ -12,7 +12,7 @@ import {
   MODULE_RESULTS,
   Providers,
 } from "../../apiscoringviewer/src/utils/test-utils";
-import VSCodeDataProvider from "../src/components/vscode-data-provider";
+import VSCodeDataProvider from "../../apiscoringviewer/src/certification/vscode-data-provider";
 
 jest.mock("@inditextech/apiscoringviewer", () => ({
   ...jest.requireActual("@inditextech/apiscoringviewer"),
