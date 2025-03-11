@@ -4,11 +4,12 @@
   "workspaces": [
     "packages/*"
   ],
+  "packageManager": "pnpm@8.15.9",
   "scripts": {
-    "clear": "npm run clear:parcel-cache & npm run clear:builds & npm run clear:node_modules",
-    "clear:builds": "rm -rf ./packages/*/dist",
-    "clear:parcel-cache": "rm -rf ./.parcel-cache",
-    "clear:node_modules": "rm -rf ./node_modules && rm -rf ./packages/*/node_modules",
+    "clear": "pnpm run clear:git & pnpm run clear:library & pnpm run clear:node_modules",
+    "clear:git": "git clean -dfx",
+    "clear:library": "cd packages/spa-apiscoringviewer && pnpm run clear",
+    "clear:node_modules": "rm -rf ./node_modules",
     "lint": "cd packages/apiscoringviewer && pnpm lint",
     "prerelease": "preconstruct build",
     "postinstall": "preconstruct dev",
@@ -19,6 +20,7 @@
     "typescript:watch": "tsc --noEmit --watch"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.26.9",
     "@babel/preset-react": "^7.25.7",
     "@babel/preset-typescript": "^7.25.7",
     "@testing-library/jest-dom": "^6.5.0",
@@ -41,12 +43,12 @@
   },
   "dependencies": {
     "@jest/globals": "^29.7.0",
-    "@parcel/config-default": "^2.12.0",
-    "@parcel/core": "^2.12.0",
-    "@parcel/packager-ts": "^2.12.0",
-    "@parcel/transformer-js": "^2.12.0",
-    "@parcel/transformer-react-refresh-wrap": "^2.12.0",
-    "@parcel/transformer-typescript-types": "^2.12.0",
+    "@parcel/config-default": "^2.9.3",
+    "@parcel/core": "^2.9.3",
+    "@parcel/packager-ts": "^2.9.3",
+    "@parcel/transformer-js": "^2.9.3",
+    "@parcel/transformer-react-refresh-wrap": "^2.9.3",
+    "@parcel/transformer-typescript-types": "^2.9.3",
     "@preconstruct/cli": "^2.8.9",
     "@testing-library/react": "^14.3.1",
     "@testing-library/user-event": "^14.5.2"

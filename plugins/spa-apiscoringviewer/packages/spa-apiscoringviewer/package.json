@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "clear": "pnpm run clear:parcel-cache & pnpm run clear:node_modules",
+    "clear:node_modules": "rm -rf ./node_modules",
+    "clear:parcel-cache": "rm -rf ./.parcel-cache",
     "build": "parcel build index.html",
     "kill-port": "kill-port ${PORT:-1234}",
     "test": "jest --config=jest.config.js",
