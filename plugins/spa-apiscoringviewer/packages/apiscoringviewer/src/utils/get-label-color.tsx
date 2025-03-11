@@ -9,7 +9,7 @@ export function getLabelColor(theme: MantineTheme, score: number) {
     return theme.colors.dark[9];
   }
   if (score >= 50) {
-    return theme.colors.organe[6];
+    return theme.colors.orange[6];
   }
   return theme.colors.red[4];
 }

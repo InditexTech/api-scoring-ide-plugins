@@ -1,8 +1,7 @@
 {
   "name": "@inditextech/apiscoringviewer",
   "description": "React components for API Scoring Viewer",
-  "version": "1.0.0",
-  "private": true,
+  "version": "1.0.1",
   "license": "Apache-2.0",
   "author": {
     "name": "Inditex Open Source Team",
@@ -15,6 +14,15 @@
   "source": "src/index.tsx",
   "main": "dist/inditextech-apiscoringviewer.cjs.js",
   "module": "dist/inditextech-apiscoringviewer.esm.js",
+  "files": [
+    "dist",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": [
+    "**/*.json"
+  ],
   "exports": {
     ".": {
       "types": {
@@ -22,9 +30,29 @@
         "default": "./dist/inditextech-apiscoringviewer.cjs.js"
       },
       "development": {
+        "browser": {
+          "module": "./dist/inditextech-apiscoringviewer.browser.development.esm.js",
+          "import": "./dist/inditextech-apiscoringviewer.browser.development.cjs.mjs",
+          "default": "./dist/inditextech-apiscoringviewer.browser.development.cjs.js"
+        },
+        "node": {
+          "module": "./dist/inditextech-apiscoringviewer.development.node.esm.js",
+          "import": "./dist/inditextech-apiscoringviewer.development.node.cjs.mjs",
+          "default": "./dist/inditextech-apiscoringviewer.development.node.cjs.js"
+        },
         "module": "./dist/inditextech-apiscoringviewer.development.esm.js",
         "import": "./dist/inditextech-apiscoringviewer.development.cjs.mjs",
         "default": "./dist/inditextech-apiscoringviewer.development.cjs.js"
+      },
+      "browser": {
+        "module": "./dist/inditextech-apiscoringviewer.browser.esm.js",
+        "import": "./dist/inditextech-apiscoringviewer.browser.cjs.mjs",
+        "default": "./dist/inditextech-apiscoringviewer.browser.cjs.js"
+      },
+      "node": {
+        "module": "./dist/inditextech-apiscoringviewer.node.esm.js",
+        "import": "./dist/inditextech-apiscoringviewer.node.cjs.mjs",
+        "default": "./dist/inditextech-apiscoringviewer.node.cjs.js"
       },
       "module": "./dist/inditextech-apiscoringviewer.esm.js",
       "import": "./dist/inditextech-apiscoringviewer.cjs.mjs",
@@ -36,10 +64,18 @@
     "#is-development": {
       "development": "./src/env-conditions/development.ts",
       "default": "./src/env-conditions/production.ts"
+    },
+    "#is-browser": {
+      "browser": "./src/env-conditions/browser.ts",
+      "node": "./src/env-conditions/node.ts",
+      "default": "./src/env-conditions/unknown.ts"
     }
   },
-  "types": "dist/apiscoringviewer.cjs.d.ts",
+  "types": "dist/inditextech-apiscoringviewer.cjs.d.ts",
   "scripts": {
+    "clear": "pnpm run clear:builds & pnpm run clear:node_modules",
+    "clear:builds": "rm -rf ./packages/*/dist",
+    "clear:node_modules": "rm -rf ./node_modules",
     "build": "parcel build",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "watch": "parcel watch --port=2345"
@@ -48,6 +84,7 @@
     "@babel/core": "^7.12.0",
     "@types/lodash": "^4.14.195",
     "@types/react-router-dom": "^5.3.3",
+    "cpx": "^1.5.0",
     "eslint": "^8.37.0",
     "eslint-plugin-no-restricted-imports": "^0.0.0",
     "eslint-plugin-react-hooks": "^4.6.0",
@@ -56,8 +93,8 @@
     "type-fest": "^3.12.0"
   },
   "peerDependencies": {
-    "react": "^16.14.0 || ^17.0.0 || ^18.0.0",
-    "react-dom": "^16.14.0 || ^17.0.0 || ^18.0.0"
+    "react": "^16.14.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^19.0.0-rc",
+    "react-dom": "^16.14.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^19.0.0-rc"
   },
   "browserslist": [
     "Chrome 79"
