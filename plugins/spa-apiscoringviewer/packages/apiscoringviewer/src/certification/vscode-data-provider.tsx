@@ -3,20 +3,12 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { useCallback, useEffect, useState } from "react";
-import {
-  useVSCodeCertification,
-  ValidationType,
-  getModuleId,
-  isIntelliJ,
-  sendMessageVscode,
-} from "@inditextech/apiscoringviewer";
-import type {
-  DataProviderChildFn,
-  ModuleValidation,
-  ModulesMetadata,
-  SetCertificationResults,
-  SetModuleResults,
-} from "@inditextech/apiscoringviewer";
+import { DataProviderChildFn, ModulesMetadata, SetCertificationResults, SetModuleResults, ModuleValidation } from "../types";
+import isIntelliJ from "../utils/is-intellij";
+import { sendMessageVscode } from "../utils/send-message-vscode";
+import useVSCodeCertification from "./hooks/use-vscode-certification";
+import getModuleId from "./utils/get-module-id";
+
 
 export default function VSCodeDataProvider({
   children,

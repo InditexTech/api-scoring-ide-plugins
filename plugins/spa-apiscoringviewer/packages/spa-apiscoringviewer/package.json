@@ -1,5 +1,5 @@
 {
-  "name": "@inditextech/spa-apiscoringviewer",
+  "name": "@airam/spa-apiscoringviewer",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -12,7 +12,7 @@
     "watch": "parcel index.html -p 3000"
   },
   "dependencies": {
-    "@inditextech/apiscoringviewer": "*",
+    "@airam/apiscoringviewer": "*",
     "@mantine/core": "^6.0.15",
     "kill-port": "latest",
     "react": "latest",
