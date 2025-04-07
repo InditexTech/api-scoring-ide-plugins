@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 export { default as CertificationPage } from "./certification";
+export { default as CodeValidation } from "./components/validation-result/code-validation";
 export { default as VSCodeDataProvider } from "./certification/vscode-data-provider";
 export { default as FilesPage } from "./files";
 export { default as useVSCodeCertification } from "./certification/hooks/use-vscode-certification";
