@@ -1,7 +1,7 @@
 {
   "name": "@airam/apiscoringviewer",
   "description": "React components for API Scoring Viewer",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "Apache-2.0",
   "author": {
     "name": "Inditex Open Source Team",
