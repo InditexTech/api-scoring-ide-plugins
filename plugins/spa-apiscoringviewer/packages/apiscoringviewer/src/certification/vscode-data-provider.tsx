@@ -3,12 +3,18 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { useCallback, useEffect, useState } from "react";
-import { DataProviderChildFn, ModulesMetadata, SetCertificationResults, SetModuleResults, ModuleValidation } from "../types";
+import {
+  DataProviderChildFn,
+  ModulesMetadata,
+  SetCertificationResults,
+  SetModuleResults,
+  ModuleValidation,
+  ApiIdentifier,
+} from "../types";
 import isIntelliJ from "../utils/is-intellij";
 import { sendMessageVscode } from "../utils/send-message-vscode";
 import useVSCodeCertification from "./hooks/use-vscode-certification";
 import getModuleId from "./utils/get-module-id";
-
 
 export default function VSCodeDataProvider({
   children,
@@ -18,7 +24,7 @@ export default function VSCodeDataProvider({
   return children(useVSCodeDataProvider());
 }
 
-function useVSCodeDataProvider() {
+function useVSCodeDataProvider<TApiIdentifier extends ApiIdentifier>() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
   const [certification, dispatch] = useVSCodeCertification();
@@ -30,7 +36,9 @@ function useVSCodeDataProvider() {
     ({
       origin,
       data,
-    }: MessageEvent<SetCertificationResults | SetModuleResults>) => {
+    }: MessageEvent<
+      SetCertificationResults<TApiIdentifier> | SetModuleResults
+    >) => {
       //origin is vsCode or intelliiJ
       if (origin.startsWith("vscode-webview://") || origin === "null") {
         const { command, payload } = data;

@@ -6,6 +6,7 @@ import { cloneDeep } from "lodash";
 import { useReducer } from "react";
 import isModuleValidation from "../utils/is-module-validation";
 import type {
+  ApiIdentifier,
   Certification,
   CertificationPayload,
   ModulePayload,
@@ -13,34 +14,32 @@ import type {
   SetModuleResults,
 } from "../../types";
 
-type CertificationAction =
-  | { type: "replace"; payload: SetCertificationResults["payload"] }
+type CertificationAction<TApiIdentifier extends ApiIdentifier> =
+  | { type: "replace"; payload: SetCertificationResults<TApiIdentifier>["payload"] }
   | { type: "patch"; payload: SetModuleResults["payload"] };
 
-function reducer(state: CertificationPayload | null, { type, payload }: CertificationAction) {
+function reducer<TApiIdentifier extends ApiIdentifier>(
+  state: CertificationPayload<TApiIdentifier> | null,
+  { type, payload }: CertificationAction<TApiIdentifier>,
+) {
   switch (type) {
     case "replace":
       return { ...state, ...payload };
     case "patch": {
-      if (
-        !state?.results ||
-        !payload.results ||
-        payload.results.length === 0 ||
-        payload.results[0].result.length === 0
-      ) {
+      if (!state?.results || !payload.results || payload.results.length === 0 || payload.results[0].result.length === 0) {
         return state;
       }
-      return patchModuleResuts(state, payload);
+      return patchModuleResults(state, payload);
     }
     default:
       throw new Error();
   }
 }
 
-function patchModuleResuts(
-  prevState: SetCertificationResults["payload"],
+function patchModuleResults<TApiIdentifier extends ApiIdentifier>(
+  prevState: SetCertificationResults<TApiIdentifier>["payload"],
   nextModuleState: SetModuleResults["payload"],
-): CertificationPayload {
+) {
   const { results: prevResults, metadata: prevMetadata } = prevState;
   const { apiModule, results: validationResults } = nextModuleState;
   const { apiName, apiSpecType, validationType } = apiModule;
@@ -74,11 +73,14 @@ function patchModuleResuts(
   });
 }
 
-function patchMetadata(prevMetadata: CertificationPayload["metadata"], apiModule: ModulePayload["apiModule"]) {
+function patchMetadata<TApiIdentifier extends ApiIdentifier>(
+  prevMetadata: CertificationPayload<TApiIdentifier>["metadata"],
+  apiModule: ModulePayload["apiModule"],
+) {
   const { apis: prevApisMetadata, ...rest } = prevMetadata;
   const { apiName, apiSpecType, apiDefinitionPath } = apiModule;
 
-  const nextApis: CertificationPayload["metadata"]["apis"] = [];
+  const nextApis: CertificationPayload<TApiIdentifier>["metadata"]["apis"] = [];
   for (const apiMetadata of prevApisMetadata) {
     if (apiMetadata.name === apiName && apiMetadata.apiSpecType === apiSpecType) {
       nextApis.push({ ...apiMetadata, definitionPath: apiDefinitionPath ?? "" });
@@ -89,10 +91,7 @@ function patchMetadata(prevMetadata: CertificationPayload["metadata"], apiModule
   return { ...rest, apis: nextApis };
 }
 
-function patchModuleValidation(
-  certificationResult: Certification["result"],
-  moduleValidation: Certification["result"][number],
-) {
+function patchModuleValidation(certificationResult: Certification["result"], moduleValidation: Certification["result"][number]) {
   const moduleValidationKey = Object.keys(moduleValidation)[0];
   const nextResult = [];
   for (const validationResult of certificationResult) {
