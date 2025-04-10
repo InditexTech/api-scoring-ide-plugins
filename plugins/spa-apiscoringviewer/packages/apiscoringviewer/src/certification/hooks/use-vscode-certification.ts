@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { cloneDeep } from "lodash";
-import { useReducer } from "react";
+import { Reducer, useReducer } from "react";
 import isModuleValidation from "../utils/is-module-validation";
 import type {
   ApiIdentifier,
@@ -21,7 +21,7 @@ type CertificationAction<TApiIdentifier extends ApiIdentifier> =
 function reducer<TApiIdentifier extends ApiIdentifier>(
   state: CertificationPayload<TApiIdentifier> | null,
   { type, payload }: CertificationAction<TApiIdentifier>,
-) {
+): CertificationPayload<TApiIdentifier> | null {
   switch (type) {
     case "replace":
       return { ...state, ...payload };
@@ -39,14 +39,14 @@ function reducer<TApiIdentifier extends ApiIdentifier>(
 function patchModuleResults<TApiIdentifier extends ApiIdentifier>(
   prevState: SetCertificationResults<TApiIdentifier>["payload"],
   nextModuleState: SetModuleResults["payload"],
-) {
+): CertificationPayload<TApiIdentifier> {
   const { results: prevResults, metadata: prevMetadata } = prevState;
   const { apiModule, results: validationResults } = nextModuleState;
   const { apiName, apiSpecType, validationType } = apiModule;
 
   const { result: moduleValidations, ...moduleInfo } = validationResults[0];
   const moduleValidation = moduleValidations[0];
-  const nextCertificationResults = [];
+  const nextCertificationResults: Certification<TApiIdentifier>[] = [];
 
   for (const apiResult of prevResults) {
     // Find the API that has to be patched.
@@ -55,10 +55,10 @@ function patchModuleResults<TApiIdentifier extends ApiIdentifier>(
         // In this case, only one of linting, security or documentation module was validated.
         const nextResult = patchModuleValidation(apiResult.result, moduleValidation);
         const nextModuleInfo = { ...moduleInfo, rating: undefined };
-        nextCertificationResults.push({ ...nextModuleInfo, result: nextResult });
+        nextCertificationResults.push({ ...nextModuleInfo, result: nextResult } as Certification<TApiIdentifier>);
       } else {
         // In this case, all the API was validated. Do not confuse with all the apis validation.
-        nextCertificationResults.push({ ...moduleInfo, result: moduleValidations });
+        nextCertificationResults.push({ ...moduleInfo, result: moduleValidations } as Certification<TApiIdentifier>);
       }
     } else {
       // Keep other previous apis validations.
@@ -66,7 +66,7 @@ function patchModuleResults<TApiIdentifier extends ApiIdentifier>(
     }
   }
 
-  return cloneDeep({
+  return cloneDeep<CertificationPayload<TApiIdentifier>>({
     ...prevState,
     metadata: patchMetadata(prevMetadata, apiModule),
     results: nextCertificationResults,
@@ -104,6 +104,6 @@ function patchModuleValidation(certificationResult: Certification["result"], mod
   return nextResult;
 }
 
-export default function useVSCodeCertification() {
-  return useReducer(reducer, null);
+export default function useVSCodeCertification<TApiIdentifier extends ApiIdentifier>() {
+  return useReducer<Reducer<CertificationPayload<TApiIdentifier> | null, CertificationAction<TApiIdentifier>>>(reducer, null);
 }

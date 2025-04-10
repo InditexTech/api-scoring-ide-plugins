@@ -50,11 +50,9 @@ export type ModulePayload<TApiIdentifier extends ApiIdentifier = ApiIdentifier> 
   results: Certification<TApiIdentifier>[];
 };
 
-export type ValidationResponse<TApiIdentifier extends ApiIdentifier = ApiIdentifier> = Certification<ApiIdentifier>;
+export type ValidationResponse<TApiIdentifier extends ApiIdentifier = ApiIdentifier> = Certification<TApiIdentifier>;
 
-export type GetApiIdentifier<TApiIdentifier extends ApiIdentifier> = (
-  apiCertification: Certification<TApiIdentifier>
-) => string;
+export type GetApiIdentifier<TApiIdentifier extends ApiIdentifier> = (apiCertification: Certification<TApiIdentifier>) => string;
 
 export type ApiIdentifier = {
   apiName: string;
@@ -65,11 +63,7 @@ export type Certification<TApiIdentifier extends ApiIdentifier = ApiIdentifier> 
   rating?: Rating;
   ratingDescription: string;
   score: number;
-  result: (
-    | { designValidation: CodeValidation }
-    | { securityValidation: CodeValidation }
-    | { documentationValidation: DocValidation }
-  )[];
+  result: ({ designValidation: CodeValidation } | { securityValidation: CodeValidation } | { documentationValidation: DocValidation })[];
 };
 
 export type ValidationTypes = CodeValidation & DocValidation;
