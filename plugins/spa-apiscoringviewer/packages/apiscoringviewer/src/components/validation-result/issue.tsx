@@ -4,7 +4,7 @@
 
 import openFile from "../../certification/utils/open-file";
 import { MouseEvent, useCallback } from "react";
-import { NavLink } from "@mantine/core";
+import { NavLink, useMantineTheme } from "@mantine/core";
 import { CodeText } from "../../components/code-text";
 import SeverityIcon from "../../components/validation-result/severity-icon";
 import type { CodeIssue, CommonProps } from "../../types";
@@ -33,6 +33,7 @@ export default function Issue({
   filePath,
   "data-testid": dataTestId = "Issue",
 }: Readonly<IssueProps>) {
+  const theme = useMantineTheme();
   let location = "";
   if (startLine) {
     location += startLine;
@@ -52,7 +53,7 @@ export default function Issue({
         });
       }
     },
-    [endCharacter, endLine, filePath, startCharacter, startLine]
+    [endCharacter, endLine, filePath, startCharacter, startLine],
   );
 
   return (
@@ -67,9 +68,9 @@ export default function Issue({
             </CodeText>
           )}
 
-          <CodeText mr="md">
+          <CodeText color="gray.7" mr="md">
             {infoUrl ? (
-              <a target="_blank" rel="noreferrer" href={infoUrl}>
+              <a style={{ color: theme.colors.gray[7] }} target="_blank" rel="noreferrer" href={infoUrl}>
                 {message}
               </a>
             ) : (

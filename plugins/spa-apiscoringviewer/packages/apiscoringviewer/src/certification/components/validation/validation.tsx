@@ -10,6 +10,7 @@ import ValidationResult from "../../../components/validation-result";
 import { AccordionControl } from "./accordion-control";
 import RevalidateModuleAction from "./revalidate-module-action";
 import type {
+  ApiIdentifier,
   Certification,
   CertificationPayload,
   ModuleMetadata,
@@ -17,26 +18,24 @@ import type {
   ValidationTypes,
 } from "../../../types";
 
-type ValidationProps = {
+type ValidationProps<TApiIdentifier extends ApiIdentifier> = {
   result: Certification["result"];
   metadata: Pick<Certification, "apiName" | "apiProtocol">;
-  rootPath: CertificationPayload["rootPath"];
+  rootPath: CertificationPayload<TApiIdentifier>["rootPath"];
   definitionPath: string;
   moduleMetadata: ModuleMetadata;
   revalidateModule?: RevalidateModule;
 };
 
-export default function Validation({
+export default function Validation<TApiIdentifier extends ApiIdentifier>({
   result,
   metadata,
   rootPath = "",
   definitionPath,
   moduleMetadata,
   revalidateModule,
-}: Readonly<ValidationProps>) {
-  const [collapsed, setCollapsed] = useState<string[]>(() =>
-    getOpenedAccordions(result)
-  );
+}: Readonly<ValidationProps<TApiIdentifier>>) {
+  const [collapsed, setCollapsed] = useState<string[]>(() => getOpenedAccordions(result));
 
   useEffect(() => {
     setCollapsed(getOpenedAccordions(result));
@@ -53,9 +52,7 @@ export default function Validation({
       styles={getAccordionStyles}
     >
       {result.map((validations) => {
-        const validationValues = Object.values(
-          validations
-        ) as ValidationTypes[];
+        const validationValues = Object.values(validations) as ValidationTypes[];
         if (validationValues.length === 0) {
           return null;
         }
@@ -63,10 +60,7 @@ export default function Validation({
         const { validationType, score } = validation;
 
         return (
-          <Accordion.Item
-            value={`accordion-${validationType}`}
-            key={`accordion-${validationType}`}
-          >
+          <Accordion.Item value={`accordion-${validationType}`} key={`accordion-${validationType}`}>
             <AccordionControl
               score={score}
               validationType={validationType}
@@ -96,7 +90,7 @@ export default function Validation({
   );
 }
 
-function getOpenedAccordions(result: ValidationProps["result"]) {
+function getOpenedAccordions<TApiIdentifier extends ApiIdentifier>(result: ValidationProps<TApiIdentifier>["result"]) {
   const accordions = [];
   for (const validations of result) {
     const validationValues = Object.values(validations) as ValidationTypes[];

@@ -13,24 +13,13 @@ import type {
 } from "../../../types";
 import { useCallback } from "react";
 import { FormattedMessage } from "react-intl";
-import {
-  ActionIcon,
-  Badge,
-  Flex,
-  Grid,
-  MediaQuery,
-  Title,
-  Tooltip,
-} from "@mantine/core";
+import { ActionIcon, Badge, Flex, Grid, MediaQuery, Title, Tooltip } from "@mantine/core";
 import { IconPlayerPlay } from "@tabler/icons-react";
 import isIntelliJ from "../../../utils/is-intellij";
 import isVsCode from "../../../utils/is-vscode";
 
 type ApiHeadingProps = Pick<Certification, "score" | "ratingDescription"> &
-  PickRenameMulti<
-    ApiIdentifier,
-    { apiName: "name"; apiProtocol: "protocol" }
-  > & {
+  PickRenameMulti<ApiIdentifier, { apiName: "name"; apiProtocol: "protocol" }> & {
     apiRevalidationMetadata: ModuleMetadata;
     revalidateApi?: RevalidateModule;
     definitionPath: string;
@@ -73,22 +62,13 @@ export default function ApiHeading({
         <Flex gap="md" align="center">
           <div>
             <Flex data-testid="ApiHeading-Name">
-              <Title
-                lineClamp={1}
-                order={2}
-                sx={{ textOverflow: "ellipsis", overflow: "hidden" }}
-              >
+              <Title lineClamp={1} order={2} sx={{ textOverflow: "ellipsis", overflow: "hidden" }}>
                 {name}
               </Title>
             </Flex>
 
             <Flex gap="md">
-              <Badge
-                variant="filled"
-                color="water.1"
-                radius={0}
-                data-testid={`ApiHeading-Badge-${name}-${protocol}`}
-              >
+              <Badge variant="filled" color="water.1" radius={0} data-testid={`ApiHeading-Badge-${name}-${protocol}`}>
                 <FormattedMessage id={`api.protocol.${protocol}`} />
               </Badge>
             </Flex>
@@ -124,10 +104,7 @@ export default function ApiHeading({
               </span>
             </MediaQuery>
 
-            <ScoreLabel
-              score={score}
-              data-testid={`ApiHeading-Score-${name}-${protocol}`}
-            />
+            <ScoreLabel score={score} data-testid={`ApiHeading-Score-${name}-${protocol}`} />
           </Flex>
         </Grid.Col>
       )}

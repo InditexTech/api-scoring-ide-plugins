@@ -8,8 +8,13 @@ import { ErrorBoundary } from "react-error-boundary";
 import { FormattedMessage } from "react-intl";
 import { Button, Center, Loader } from "@mantine/core";
 import isIntelliJ from "../utils/is-intellij";
+import defaultGetApiIdentifier from "./utils/get-api-identifier";
 import Feedback from "../components/feedback";
-import type { DataProviderChildFn } from "../types";
+import type {
+  ApiIdentifier,
+  DataProviderChildFn,
+  GetApiIdentifier,
+} from "../types";
 
 function ErrorFallback() {
   return (
@@ -19,12 +24,21 @@ function ErrorFallback() {
   );
 }
 
-type DataProviderType = ComponentType<{ children: DataProviderChildFn }>;
-type CertificationProps = { DataProvider: DataProviderType };
+type DataProviderType<TApiIdentifier extends ApiIdentifier> = ComponentType<{
+  children: DataProviderChildFn<TApiIdentifier>;
+}>;
 
-export default function CertificationPage({
+type CertificationProps<TApiIdentifier extends ApiIdentifier> = {
+  DataProvider: DataProviderType<TApiIdentifier>;
+  getApiIdentifier?: GetApiIdentifier<TApiIdentifier>;
+};
+
+export default function CertificationPage<
+  TApiIdentifier extends ApiIdentifier = ApiIdentifier,
+>({
   DataProvider,
-}: Readonly<CertificationProps>) {
+  getApiIdentifier = defaultGetApiIdentifier,
+}: Readonly<CertificationProps<TApiIdentifier>>) {
   const [intelliJLoading, setIntelliJLoading] = useState(false);
 
   function onClick() {
@@ -63,6 +77,7 @@ export default function CertificationPage({
 
               {certification && (
                 <ApiTabs
+                  getApiIdentifier={getApiIdentifier}
                   certification={certification}
                   modulesMetadata={modulesMetadata}
                   apisRevalidationMetadata={apisRevalidationMetadata}

@@ -10,10 +10,7 @@ type ScoreLabelProps = {
   score: number;
 } & CommonProps;
 
-export default function ScoreLabel({
-  score,
-  "data-testid": dataTestId = "ScoreLabel",
-}: Readonly<ScoreLabelProps>) {
+export default function ScoreLabel({ score, "data-testid": dataTestId = "ScoreLabel" }: Readonly<ScoreLabelProps>) {
   return (
     <Badge variant="filled" color="dark.2" radius={0} data-testid={dataTestId}>
       <Flex align="center" gap="xs">

@@ -14,19 +14,21 @@ import Feedback from "../../../components/feedback";
 import type {
   ApiIdentifier,
   CertificationPayload,
+  GetApiIdentifier,
   ModulesMetadata,
   RevalidateModule,
 } from "../../../types";
 
-type ApiTabsProps = {
-  certification: CertificationPayload;
+type ApiTabsProps<TApiIdentifier extends ApiIdentifier> = {
+  certification: CertificationPayload<TApiIdentifier>;
   modulesMetadata: ModulesMetadata;
   apisRevalidationMetadata: ModulesMetadata;
   revalidateModule?: RevalidateModule;
   revalidateApi?: RevalidateModule;
+  getApiIdentifier: GetApiIdentifier<TApiIdentifier>;
 };
 
-export default function ApiTabs({
+export default function ApiTabs<TApiIdentifier extends ApiIdentifier = ApiIdentifier>({
   certification: {
     metadata: { apis: apisMetadata },
     results: apis,
@@ -36,14 +38,10 @@ export default function ApiTabs({
   apisRevalidationMetadata,
   revalidateModule,
   revalidateApi,
-}: Readonly<ApiTabsProps>) {
-  const [selectedId, setSelectedId] = useState<string | null>(
-    apis.length > 0 ? getApiId(apis[0]) : null
-  );
-  const selectedApi = apis.find(
-    ({ apiName, apiProtocol }) =>
-      getApiId({ apiName, apiProtocol }) === selectedId
-  );
+  getApiIdentifier,
+}: Readonly<ApiTabsProps<TApiIdentifier>>) {
+  const [selectedId, setSelectedId] = useState<string | null>(apis.length > 0 ? getApiIdentifier(apis[0]) : null);
+  const selectedApi = apis.find((api) => getApiIdentifier(api) === selectedId);
 
   if (!selectedApi || apis.length === 0) {
     return (
@@ -70,8 +68,9 @@ export default function ApiTabs({
       }}
     >
       <Tabs.List>
-        {apis.map(({ apiName, apiProtocol, score }) => {
-          const id = getApiId({ apiName, apiProtocol });
+        {apis.map((api) => {
+          const { apiName, score } = api;
+          const id = getApiIdentifier(api);
           return (
             <Tabs.Tab
               key={id}
@@ -100,18 +99,14 @@ export default function ApiTabs({
               <>
                 {apis.map((api) => {
                   const { apiName, apiProtocol } = api;
-                  const tabId = getApiId({ apiName, apiProtocol });
+                  const tabId = getApiIdentifier(api);
                   const definitionPath =
-                    apisMetadata.find(
-                      ({ name, apiSpecType }) =>
-                        name === apiName && apiProtocol === apiSpecType
-                    )?.definitionPath ?? "";
+                    apisMetadata.find(({ name, apiSpecType }) => name === apiName && apiProtocol === apiSpecType)
+                      ?.definitionPath ?? "";
                   const moduleMetadata = modulesMetadata[getModuleId(api)] ?? {
                     loading: false,
                   };
-                  const apiRevalidationMetadata = apisRevalidationMetadata[
-                    apiName
-                  ] ?? { loading: false };
+                  const apiRevalidationMetadata = apisRevalidationMetadata[apiName] ?? { loading: false };
                   return (
                     <Tabs.Panel key={tabId} value={tabId} w="100%">
                       <ScrollArea sx={{ height }}>
@@ -135,8 +130,4 @@ export default function ApiTabs({
       </Flex>
     </Tabs>
   );
-}
-
-function getApiId({ apiName, apiProtocol }: ApiIdentifier) {
-  return `${apiName}-${apiProtocol}`;
 }

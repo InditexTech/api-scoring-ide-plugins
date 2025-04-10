@@ -5,7 +5,6 @@
 import { act, fireEvent, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { ReactNode } from "react";
-import { CertificationPage, isVsCode } from "@inditextech/apiscoringviewer";
 import {
   API_VALIDATION_RESULTS,
   CERTS_PAYLOAD,
@@ -13,9 +12,10 @@ import {
   Providers,
 } from "../../apiscoringviewer/src/utils/test-utils";
 import VSCodeDataProvider from "../../apiscoringviewer/src/certification/vscode-data-provider";
+import { isVsCode, CertificationPage } from "../../apiscoringviewer/src";
 
-jest.mock("@inditextech/apiscoringviewer", () => ({
-  ...jest.requireActual("@inditextech/apiscoringviewer"),
+jest.mock("../../apiscoringviewer/src", () => ({
+  ...jest.requireActual("../../apiscoringviewer/src"),
   isVsCode: jest.fn(),
 }));
 jest.mock("react-router-dom", () => ({

@@ -6,12 +6,7 @@ import type { JSX } from "react";
 
 export type ProtocolType = "REST" | "EVENT" | "GRPC";
 export type Rating = "A+" | "A" | "B" | "C" | "D";
-export type ValidationType =
-  | "LINTER"
-  | "DESIGN"
-  | "DOCUMENTATION"
-  | "SECURITY"
-  | "OVERALL_SCORE";
+export type ValidationType = "LINTER" | "DESIGN" | "DOCUMENTATION" | "SECURITY" | "OVERALL_SCORE";
 
 export enum Severity {
   Error = 0,
@@ -21,9 +16,9 @@ export enum Severity {
 
 export type VSCodeCommand<C extends string, P> = { command: C; payload: P };
 
-export type SetCertificationResults = {
+export type SetCertificationResults<TApiIdentifier extends ApiIdentifier> = {
   command: "setCertificationResults";
-  payload: CertificationPayload;
+  payload: CertificationPayload<TApiIdentifier>;
 };
 
 export type SetModuleResults = {
@@ -42,35 +37,33 @@ export interface MessageHandler<P> {
   (payload: P): void;
 }
 
-export type CertificationPayload = {
+export type CertificationPayload<TApiIdentifier extends ApiIdentifier> = {
   metadata: {
     apis: { name: string; apiSpecType: ProtocolType; definitionPath: string }[];
   };
-  results: Certification[];
+  results: Certification<TApiIdentifier>[];
   rootPath?: string;
 };
 
-export type ModulePayload = {
+export type ModulePayload<TApiIdentifier extends ApiIdentifier = ApiIdentifier> = {
   apiModule: ModuleValidation;
-  results: Certification[];
+  results: Certification<TApiIdentifier>[];
 };
 
-export type ValidationResponse = Certification;
+export type ValidationResponse<TApiIdentifier extends ApiIdentifier = ApiIdentifier> = Certification<TApiIdentifier>;
+
+export type GetApiIdentifier<TApiIdentifier extends ApiIdentifier> = (apiCertification: Certification<TApiIdentifier>) => string;
 
 export type ApiIdentifier = {
   apiName: string;
   apiProtocol: ProtocolType;
 };
 
-export type Certification = ApiIdentifier & {
+export type Certification<TApiIdentifier extends ApiIdentifier = ApiIdentifier> = TApiIdentifier & {
   rating?: Rating;
   ratingDescription: string;
   score: number;
-  result: (
-    | { designValidation: CodeValidation }
-    | { securityValidation: CodeValidation }
-    | { documentationValidation: DocValidation }
-  )[];
+  result: ({ designValidation: CodeValidation } | { securityValidation: CodeValidation } | { documentationValidation: DocValidation })[];
 };
 
 export type ValidationTypes = CodeValidation & DocValidation;
@@ -156,8 +149,8 @@ export type Position = {
   character?: number;
 };
 
-export type DataProviderChildFn = (props: {
-  certification?: CertificationPayload | null;
+export type DataProviderChildFn<TApiIdentifier extends ApiIdentifier = ApiIdentifier> = (props: {
+  certification?: CertificationPayload<TApiIdentifier> | null;
   loading: boolean;
   error?: Error | null;
   modulesMetadata: ModulesMetadata;

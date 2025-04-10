@@ -3,42 +3,29 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { useCallback, useEffect, useState } from "react";
-import {
-  useVSCodeCertification,
-  ValidationType,
-  getModuleId,
-  isIntelliJ,
-  sendMessageVscode,
-} from "@inditextech/apiscoringviewer";
-import type {
-  DataProviderChildFn,
-  ModuleValidation,
-  ModulesMetadata,
-  SetCertificationResults,
-  SetModuleResults,
-} from "@inditextech/apiscoringviewer";
+import { DataProviderChildFn, ModulesMetadata, SetCertificationResults, SetModuleResults, ModuleValidation, ApiIdentifier } from "../types";
+import isIntelliJ from "../utils/is-intellij";
+import { sendMessageVscode } from "../utils/send-message-vscode";
+import useVSCodeCertification from "./hooks/use-vscode-certification";
+import getModuleId from "./utils/get-module-id";
 
-export default function VSCodeDataProvider({
+export default function VSCodeDataProvider<TApiIdentifier extends ApiIdentifier>({
   children,
 }: {
-  children: DataProviderChildFn;
+  children: DataProviderChildFn<TApiIdentifier>;
 }) {
-  return children(useVSCodeDataProvider());
+  return children(useVSCodeDataProvider<TApiIdentifier>());
 }
 
-function useVSCodeDataProvider() {
+function useVSCodeDataProvider<TApiIdentifier extends ApiIdentifier>() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
-  const [certification, dispatch] = useVSCodeCertification();
-  const [apisRevalidationMetadata, setApisRevalidationMetadata] =
-    useState<ModulesMetadata>({});
+  const [certification, dispatch] = useVSCodeCertification<TApiIdentifier>();
+  const [apisRevalidationMetadata, setApisRevalidationMetadata] = useState<ModulesMetadata>({});
   const [modulesMetadata, setModulesMetadata] = useState<ModulesMetadata>({});
 
   const onMessageReceived = useCallback(
-    ({
-      origin,
-      data,
-    }: MessageEvent<SetCertificationResults | SetModuleResults>) => {
+    ({ origin, data }: MessageEvent<SetCertificationResults<TApiIdentifier> | SetModuleResults>) => {
       //origin is vsCode or intelliiJ
       if (origin.startsWith("vscode-webview://") || origin === "null") {
         const { command, payload } = data;
@@ -78,7 +65,7 @@ function useVSCodeDataProvider() {
         }
       }
     },
-    [dispatch]
+    [dispatch],
   );
 
   const revalidateApi = useCallback((validationBody: ModuleValidation) => {
@@ -131,6 +118,6 @@ function resetModulesMetadata(prev: ModulesMetadata) {
       ...memo,
       [key]: { ...value, loading: false },
     }),
-    {}
+    {},
   );
 }
