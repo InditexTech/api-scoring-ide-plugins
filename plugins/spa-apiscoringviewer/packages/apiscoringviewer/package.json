@@ -1,19 +1,19 @@
 {
-  "name": "@airam/apiscoringviewer",
+  "name": "@inditextech/apiscoringviewer",
   "description": "React components for API Scoring Viewer",
   "version": "1.0.2",
   "license": "Apache-2.0",
   "author": {
     "name": "Inditex Open Source Team",
-    "url": "https://github.com/airamrguez/apiscoringviewer"
+    "url": "https://github.com/InditexTech/apiscoringviewer"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/airamrguez/apiscoringviewer.git"
+    "url": "git+https://github.com/InditexTech/apiscoringviewer.git"
   },
   "source": "src/index.tsx",
-  "main": "dist/airam-apiscoringviewer.cjs.js",
-  "module": "dist/airam-apiscoringviewer.esm.js",
+  "main": "dist/inditextech-apiscoringviewer.cjs.js",
+  "module": "dist/inditextech-apiscoringviewer.esm.js",
   "files": [
     "dist",
     "package.json",
@@ -26,37 +26,37 @@
   "exports": {
     ".": {
       "types": {
-        "import": "./dist/airam-apiscoringviewer.cjs.mjs",
-        "default": "./dist/airam-apiscoringviewer.cjs.js"
+        "import": "./dist/inditextech-apiscoringviewer.cjs.mjs",
+        "default": "./dist/inditextech-apiscoringviewer.cjs.js"
       },
       "development": {
         "browser": {
-          "module": "./dist/airam-apiscoringviewer.browser.development.esm.js",
-          "import": "./dist/airam-apiscoringviewer.browser.development.cjs.mjs",
-          "default": "./dist/airam-apiscoringviewer.browser.development.cjs.js"
+          "module": "./dist/inditextech-apiscoringviewer.browser.development.esm.js",
+          "import": "./dist/inditextech-apiscoringviewer.browser.development.cjs.mjs",
+          "default": "./dist/inditextech-apiscoringviewer.browser.development.cjs.js"
         },
         "node": {
-          "module": "./dist/airam-apiscoringviewer.development.node.esm.js",
-          "import": "./dist/airam-apiscoringviewer.development.node.cjs.mjs",
-          "default": "./dist/airam-apiscoringviewer.development.node.cjs.js"
+          "module": "./dist/inditextech-apiscoringviewer.development.node.esm.js",
+          "import": "./dist/inditextech-apiscoringviewer.development.node.cjs.mjs",
+          "default": "./dist/inditextech-apiscoringviewer.development.node.cjs.js"
         },
-        "module": "./dist/airam-apiscoringviewer.development.esm.js",
-        "import": "./dist/airam-apiscoringviewer.development.cjs.mjs",
-        "default": "./dist/airam-apiscoringviewer.development.cjs.js"
+        "module": "./dist/inditextech-apiscoringviewer.development.esm.js",
+        "import": "./dist/inditextech-apiscoringviewer.development.cjs.mjs",
+        "default": "./dist/inditextech-apiscoringviewer.development.cjs.js"
       },
       "browser": {
-        "module": "./dist/airam-apiscoringviewer.browser.esm.js",
-        "import": "./dist/airam-apiscoringviewer.browser.cjs.mjs",
-        "default": "./dist/airam-apiscoringviewer.browser.cjs.js"
+        "module": "./dist/inditextech-apiscoringviewer.browser.esm.js",
+        "import": "./dist/inditextech-apiscoringviewer.browser.cjs.mjs",
+        "default": "./dist/inditextech-apiscoringviewer.browser.cjs.js"
       },
       "node": {
-        "module": "./dist/airam-apiscoringviewer.node.esm.js",
-        "import": "./dist/airam-apiscoringviewer.node.cjs.mjs",
-        "default": "./dist/airam-apiscoringviewer.node.cjs.js"
+        "module": "./dist/inditextech-apiscoringviewer.node.esm.js",
+        "import": "./dist/inditextech-apiscoringviewer.node.cjs.mjs",
+        "default": "./dist/inditextech-apiscoringviewer.node.cjs.js"
       },
-      "module": "./dist/airam-apiscoringviewer.esm.js",
-      "import": "./dist/airam-apiscoringviewer.cjs.mjs",
-      "default": "./dist/airam-apiscoringviewer.cjs.js"
+      "module": "./dist/inditextech-apiscoringviewer.esm.js",
+      "import": "./dist/inditextech-apiscoringviewer.cjs.mjs",
+      "default": "./dist/inditextech-apiscoringviewer.cjs.js"
     },
     "./package.json": "./package.json"
   },
@@ -71,7 +71,7 @@
       "default": "./src/env-conditions/unknown.ts"
     }
   },
-  "types": "dist/airam-apiscoringviewer.cjs.d.ts",
+  "types": "dist/inditextech-apiscoringviewer.cjs.d.ts",
   "scripts": {
     "clear": "pnpm run clear:builds & pnpm run clear:node_modules",
     "clear:builds": "rm -rf ./packages/*/dist",
