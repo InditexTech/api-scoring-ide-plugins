@@ -15,6 +15,7 @@ import type {
   CertificationPayload,
   ModuleMetadata,
   RevalidateModule,
+  ScoreFormat,
   ValidationTypes,
 } from "../../../types";
 
@@ -25,6 +26,7 @@ type ValidationProps<TApiIdentifier extends ApiIdentifier> = {
   definitionPath: string;
   moduleMetadata: ModuleMetadata;
   revalidateModule?: RevalidateModule;
+  scoreFormat: ScoreFormat;
 };
 
 export default function Validation<TApiIdentifier extends ApiIdentifier>({
@@ -34,6 +36,7 @@ export default function Validation<TApiIdentifier extends ApiIdentifier>({
   definitionPath,
   moduleMetadata,
   revalidateModule,
+  scoreFormat,
 }: Readonly<ValidationProps<TApiIdentifier>>) {
   const [collapsed, setCollapsed] = useState<string[]>(() => getOpenedAccordions(result));
 
@@ -57,12 +60,14 @@ export default function Validation<TApiIdentifier extends ApiIdentifier>({
           return null;
         }
         const [validation] = validationValues;
-        const { validationType, score } = validation;
+        const { validationType, rating, score } = validation;
 
         return (
           <Accordion.Item value={`accordion-${validationType}`} key={`accordion-${validationType}`}>
             <AccordionControl
+              rating={rating}
               score={score}
+              scoreFormat={scoreFormat}
               validationType={validationType}
               action={
                 <RevalidateModuleAction

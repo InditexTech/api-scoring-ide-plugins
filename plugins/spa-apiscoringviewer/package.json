@@ -13,6 +13,7 @@
     "lint": "cd packages/apiscoringviewer && pnpm lint",
     "prerelease": "preconstruct build",
     "postinstall": "preconstruct dev",
+    "start": "pnpm --filter=spa-apiscoringviewer watch",
     "test": "jest --config=jest.config.js",
     "prettier": "prettier --write \"**/*.{css,html,js,json,jsx,ts,tsx}\"",
     "prettier:ci": "prettier --check \"**/*.{css,html,js,json,jsx,ts,tsx}\"",

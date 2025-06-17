@@ -19,18 +19,12 @@ root.render(
         <Router basename={process.env.PUBLIC_URL}>
           <Layout>
             <Switch>
-              <Route
-                exact
-                path="/"
-                render={() => (
-                  <CertificationPage DataProvider={VSCodeDataProvider} />
-                )}
-              />
+              <Route exact path="/" render={() => <CertificationPage DataProvider={VSCodeDataProvider} scoreFormat="percentage" />} />
               <Route path="/files" component={FilesPage} />
             </Switch>
           </Layout>
         </Router>
       </IntlProvider>
     </MantineProvider>
-  </StrictMode>
+  </StrictMode>,
 );

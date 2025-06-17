@@ -5,6 +5,7 @@
 import { useEffect } from "react";
 import FilesForm from "./components/files-form";
 import { sendMessageVscode } from "../utils/send-message-vscode";
+import { useMantineTheme } from "@mantine/core";
 
 export default function FilesPage() {
   useEffect(() => {

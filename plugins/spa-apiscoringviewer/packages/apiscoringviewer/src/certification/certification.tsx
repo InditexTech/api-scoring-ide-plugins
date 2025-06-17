@@ -10,11 +10,7 @@ import { Button, Center, Loader } from "@mantine/core";
 import isIntelliJ from "../utils/is-intellij";
 import defaultGetApiIdentifier from "./utils/get-api-identifier";
 import Feedback from "../components/feedback";
-import type {
-  ApiIdentifier,
-  DataProviderChildFn,
-  GetApiIdentifier,
-} from "../types";
+import type { ApiIdentifier, DataProviderChildFn, GetApiIdentifier, ScoreFormat } from "../types";
 
 function ErrorFallback() {
   return (
@@ -31,13 +27,19 @@ type DataProviderType<TApiIdentifier extends ApiIdentifier> = ComponentType<{
 type CertificationProps<TApiIdentifier extends ApiIdentifier> = {
   DataProvider: DataProviderType<TApiIdentifier>;
   getApiIdentifier?: GetApiIdentifier<TApiIdentifier>;
+  /**
+   * Determines how the score is displayed.
+   * Possible values:
+   * - "rating": Displays the score as a letter grade (A+ to D).
+   * - "percentage": Displays the score as a numeric percentage (0 to 100).
+   */
+  scoreFormat?: ScoreFormat;
 };
 
-export default function CertificationPage<
-  TApiIdentifier extends ApiIdentifier = ApiIdentifier,
->({
+export default function CertificationPage<TApiIdentifier extends ApiIdentifier = ApiIdentifier>({
   DataProvider,
   getApiIdentifier = defaultGetApiIdentifier,
+  scoreFormat = "rating",
 }: Readonly<CertificationProps<TApiIdentifier>>) {
   const [intelliJLoading, setIntelliJLoading] = useState(false);
 
@@ -53,17 +55,8 @@ export default function CertificationPage<
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
       <DataProvider>
-        {({
-          certification,
-          loading,
-          error,
-          modulesMetadata,
-          apisRevalidationMetadata,
-          revalidateModule,
-          revalidateApi,
-        }) => {
-          const showTriggerButton =
-            !certification && !intelliJLoading && isIntelliJ();
+        {({ certification, loading, error, modulesMetadata, apisRevalidationMetadata, revalidateModule, revalidateApi }) => {
+          const showTriggerButton = !certification && !intelliJLoading && isIntelliJ();
 
           return (
             <>
@@ -83,25 +76,20 @@ export default function CertificationPage<
                   apisRevalidationMetadata={apisRevalidationMetadata}
                   revalidateModule={revalidateModule}
                   revalidateApi={revalidateApi}
+                  scoreFormat={scoreFormat}
                 />
               )}
 
               {(loading || intelliJLoading) && (
                 <Center w="100%">
-                  <Loader
-                    color="gray"
-                    size="lg"
-                    data-testid="Certification-Loading"
-                  />
+                  <Loader color="gray" size="lg" data-testid="Certification-Loading" />
                 </Center>
               )}
 
               {error && (
                 <Feedback.Error
                   fullHeight
-                  mainText={
-                    <FormattedMessage id="certification.network-error" />
-                  }
+                  mainText={<FormattedMessage id="certification.network-error" />}
                   data-testid="CertificationPage-NetworkError"
                 />
               )}

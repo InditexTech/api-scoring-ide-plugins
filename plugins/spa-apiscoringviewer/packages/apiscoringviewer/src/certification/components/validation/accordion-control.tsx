@@ -2,39 +2,31 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
-import ScoreLabel from "../../components/score-label";
 import { FormattedMessage } from "react-intl";
 import { Accordion, Flex, Text } from "@mantine/core";
 import type { ReactNode } from "react";
-import type { BaseValidation, ValidationType } from "../../../types";
+import type { BaseValidation, Rating, ScoreFormat, ValidationType } from "../../../types";
+import RatingScoreLabel from "../score-label/rating-score-label";
+import PercentageScoreLabel from "../../components/score-label";
 
 type AccordionControlProps = {
+  rating: Rating;
   score: BaseValidation["score"];
+  scoreFormat: ScoreFormat;
   validationType: ValidationType;
   action: ReactNode;
 };
-export function AccordionControl({
-  score,
-  validationType,
-  action,
-}: Readonly<AccordionControlProps>) {
+
+export function AccordionControl({ rating, score, scoreFormat, validationType, action }: Readonly<AccordionControlProps>) {
   return (
     <Flex align="center">
       <Accordion.Control>
         <Flex gap="sm" align="center">
-          {score && (
-            <ScoreLabel
-              score={score}
-              data-testid={`ScoreLabel-${validationType}`}
-            />
-          )}
+          {scoreFormat === "rating" && rating && <RatingScoreLabel rating={rating} data-testid={`ScoreLabel-${validationType}`} />}
 
-          <Text
-            ff="sans-serif"
-            fz="sm"
-            fw="bold"
-            data-testid={`AccordionControlTitle-${validationType}`}
-          >
+          {scoreFormat === "percentage" && score && <PercentageScoreLabel score={score} data-testid={`ScoreLabel-${validationType}`} />}
+
+          <Text ff="sans-serif" fz="sm" fw="bold" data-testid={`AccordionControlTitle-${validationType}`}>
             <FormattedMessage id={`api.validation.${validationType}`} />
           </Text>
         </Flex>

@@ -7,16 +7,19 @@ import getModuleId from "../../utils/get-module-id";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import AutoSizer from "react-virtualized-auto-sizer";
-import { Flex, ScrollArea, Tabs } from "@mantine/core";
+import { CSSObject, Flex, MantineTheme, ScrollArea, Tabs, useMantineTheme } from "@mantine/core";
 import { IconError404 } from "@tabler/icons-react";
-import { getLabelColor } from "../../../utils/get-label-color";
+import { getRatingLabelColor, getScoreLabelColor } from "../../../utils/get-label-color";
 import Feedback from "../../../components/feedback";
 import type {
   ApiIdentifier,
+  Certification,
   CertificationPayload,
   GetApiIdentifier,
   ModulesMetadata,
+  Rating,
   RevalidateModule,
+  ScoreFormat,
 } from "../../../types";
 
 type ApiTabsProps<TApiIdentifier extends ApiIdentifier> = {
@@ -26,6 +29,7 @@ type ApiTabsProps<TApiIdentifier extends ApiIdentifier> = {
   revalidateModule?: RevalidateModule;
   revalidateApi?: RevalidateModule;
   getApiIdentifier: GetApiIdentifier<TApiIdentifier>;
+  scoreFormat: ScoreFormat;
 };
 
 export default function ApiTabs<TApiIdentifier extends ApiIdentifier = ApiIdentifier>({
@@ -39,7 +43,10 @@ export default function ApiTabs<TApiIdentifier extends ApiIdentifier = ApiIdenti
   revalidateModule,
   revalidateApi,
   getApiIdentifier,
+  scoreFormat,
 }: Readonly<ApiTabsProps<TApiIdentifier>>) {
+  console.log("theme from hook", useMantineTheme());
+
   const [selectedId, setSelectedId] = useState<string | null>(apis.length > 0 ? getApiIdentifier(apis[0]) : null);
   const selectedApi = apis.find((api) => getApiIdentifier(api) === selectedId);
 
@@ -53,6 +60,23 @@ export default function ApiTabs<TApiIdentifier extends ApiIdentifier = ApiIdenti
       />
     );
   }
+
+  const getTabSx =
+    ({ rating, score }: { rating: Rating | undefined; score: number }) =>
+    (theme: MantineTheme): CSSObject => {
+      console.log("theme", theme);
+      if (scoreFormat === "rating" && rating) {
+        return { "&[data-active]": { borderColor: getRatingLabelColor(theme, rating) } };
+      }
+      if (scoreFormat === "percentage" && typeof score === "number") {
+        return {
+          "&[data-active]": {
+            borderColor: getScoreLabelColor(theme, selectedApi.score),
+          },
+        };
+      }
+      return {};
+    };
 
   return (
     <Tabs
@@ -69,23 +93,10 @@ export default function ApiTabs<TApiIdentifier extends ApiIdentifier = ApiIdenti
     >
       <Tabs.List>
         {apis.map((api) => {
-          const { apiName, score } = api;
+          const { apiName, score, rating } = api;
           const id = getApiIdentifier(api);
           return (
-            <Tabs.Tab
-              key={id}
-              value={id}
-              data-testid={`ApiTab-${id}`}
-              sx={
-                typeof score === "number"
-                  ? (theme) => ({
-                      "&[data-active]": {
-                        borderColor: getLabelColor(theme, score),
-                      },
-                    })
-                  : {}
-              }
-            >
+            <Tabs.Tab key={id} value={id} data-testid={`ApiTab-${id}`} sx={getTabSx({ rating, score })}>
               {apiName}
             </Tabs.Tab>
           );
@@ -101,8 +112,7 @@ export default function ApiTabs<TApiIdentifier extends ApiIdentifier = ApiIdenti
                   const { apiName, apiProtocol } = api;
                   const tabId = getApiIdentifier(api);
                   const definitionPath =
-                    apisMetadata.find(({ name, apiSpecType }) => name === apiName && apiProtocol === apiSpecType)
-                      ?.definitionPath ?? "";
+                    apisMetadata.find(({ name, apiSpecType }) => name === apiName && apiProtocol === apiSpecType)?.definitionPath ?? "";
                   const moduleMetadata = modulesMetadata[getModuleId(api)] ?? {
                     loading: false,
                   };
@@ -118,6 +128,7 @@ export default function ApiTabs<TApiIdentifier extends ApiIdentifier = ApiIdenti
                           apiRevalidationMetadata={apiRevalidationMetadata}
                           revalidateModule={revalidateModule}
                           revalidateApi={revalidateApi}
+                          scoreFormat={scoreFormat}
                         />
                       </ScrollArea>
                     </Tabs.Panel>

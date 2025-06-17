@@ -7,6 +7,7 @@ import type { JSX } from "react";
 export type ProtocolType = "REST" | "EVENT" | "GRPC";
 export type Rating = "A+" | "A" | "B" | "C" | "D";
 export type ValidationType = "LINTER" | "DESIGN" | "DOCUMENTATION" | "SECURITY" | "OVERALL_SCORE";
+export type ScoreFormat = "rating" | "percentage";
 
 export enum Severity {
   Error = 0,
