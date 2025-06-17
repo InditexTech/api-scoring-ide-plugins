@@ -45,8 +45,6 @@ export default function ApiTabs<TApiIdentifier extends ApiIdentifier = ApiIdenti
   getApiIdentifier,
   scoreFormat,
 }: Readonly<ApiTabsProps<TApiIdentifier>>) {
-  console.log("theme from hook", useMantineTheme());
-
   const [selectedId, setSelectedId] = useState<string | null>(apis.length > 0 ? getApiIdentifier(apis[0]) : null);
   const selectedApi = apis.find((api) => getApiIdentifier(api) === selectedId);
 
@@ -64,7 +62,6 @@ export default function ApiTabs<TApiIdentifier extends ApiIdentifier = ApiIdenti
   const getTabSx =
     ({ rating, score }: { rating: Rating | undefined; score: number }) =>
     (theme: MantineTheme): CSSObject => {
-      console.log("theme", theme);
       if (scoreFormat === "rating" && rating) {
         return { "&[data-active]": { borderColor: getRatingLabelColor(theme, rating) } };
       }

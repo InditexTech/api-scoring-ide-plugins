@@ -17,8 +17,5 @@ export function getScoreLabelColor(theme: MantineTheme, score: number) {
 const RATINGS = ["A+", "A", "B", "C", "D"];
 
 export function getRatingLabelColor(theme: MantineTheme, scoreLabel: string) {
-  console.log("scoreLabel", scoreLabel);
-  console.log("RATINGS", RATINGS.indexOf(scoreLabel));
-  console.log("theme.colors.scoring", theme.colors.scoring);
   return theme.colors.scoring[RATINGS.indexOf(scoreLabel)];
 }
