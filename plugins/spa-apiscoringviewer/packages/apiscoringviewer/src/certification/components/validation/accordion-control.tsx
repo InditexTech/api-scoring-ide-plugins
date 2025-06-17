@@ -24,7 +24,9 @@ export function AccordionControl({ rating, score, scoreFormat, validationType, a
         <Flex gap="sm" align="center">
           {scoreFormat === "rating" && rating && <RatingScoreLabel rating={rating} data-testid={`ScoreLabel-${validationType}`} />}
 
-          {scoreFormat === "percentage" && score && <PercentageScoreLabel score={score} data-testid={`ScoreLabel-${validationType}`} />}
+          {scoreFormat === "percentage" && typeof score === "number" && (
+            <PercentageScoreLabel score={score} data-testid={`ScoreLabel-${validationType}`} />
+          )}
 
           <Text ff="sans-serif" fz="sm" fw="bold" data-testid={`AccordionControlTitle-${validationType}`}>
             <FormattedMessage id={`api.validation.${validationType}`} />
