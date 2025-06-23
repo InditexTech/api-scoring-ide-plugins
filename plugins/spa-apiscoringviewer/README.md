@@ -60,8 +60,7 @@ This folder contains the **SPA** of the API Scoring extension. The structure is 
 4. Once the process finishes, start the SPA:
 
    ```
-   pnpm --filter apiscoringviewer watch
-   pnpm --filter spa-apiscoringviewer watch
+   pnpm start
    ```
 
 5. If you are executing it on local, open VSCode with the plugin already installed. In the plugin configuration (Api Scoring › Certification › Frontend: Url) set the frontend URL to:
