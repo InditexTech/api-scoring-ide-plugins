@@ -45,17 +45,18 @@ This folder contains the **SPA** of the API Scoring extension. The structure is 
    git clone git@github.com:InditexTech/api-scoring-ide-plugins.git
    ```
 
-2. Place yourself in the correct directory:
+2. Navigate to the SPA directory:
 
    ```
    cd plugins/spa-apiscoringviewer
    ```
 
-3. Install the dependencies:
+3. Install dependencies:
 
    ```
-   pnpm i
-   ```
+    npm install --global pnpm
+    pnpm install
+    ```
 
 4. Once the process finishes, start the SPA:
 
@@ -63,11 +64,22 @@ This folder contains the **SPA** of the API Scoring extension. The structure is 
    pnpm start
    ```
 
-5. If you are executing it on local, open VSCode with the plugin already installed. In the plugin configuration (Api Scoring › Certification › Frontend: Url) set the frontend URL to:
+5. Configure the VSCode plugin (for local development): 
+
+If you are running the SPA locally, open VSCode with the plugin already installed. Then, in the plugin settings, go to (Api Scoring › Certification › Frontend: Url) and set the frontend URL to:
 
 ```
 http://localhost:3000
 ```
+
+
+
+> [!TIP]
+> If you need to remove all dependencies, you can use the following command:
+>
+> ```bash
+> pnpm clean
+> ```
 
 <br>
 
