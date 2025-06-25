@@ -10,6 +10,7 @@ import type {
   ModuleValidation,
   PickRenameMulti,
   RevalidateModule,
+  ScoreFormat,
 } from "../../../types";
 import { useCallback } from "react";
 import { FormattedMessage } from "react-intl";
@@ -17,22 +18,27 @@ import { ActionIcon, Badge, Flex, Grid, MediaQuery, Title, Tooltip } from "@mant
 import { IconPlayerPlay } from "@tabler/icons-react";
 import isIntelliJ from "../../../utils/is-intellij";
 import isVsCode from "../../../utils/is-vscode";
+import PercentageScoreLabel from "../score-label";
+import RatingScoreLabel from "../score-label/rating-score-label";
 
-type ApiHeadingProps = Pick<Certification, "score" | "ratingDescription"> &
+type ApiHeadingProps = Pick<Certification, "score" | "rating" | "ratingDescription"> &
   PickRenameMulti<ApiIdentifier, { apiName: "name"; apiProtocol: "protocol" }> & {
     apiRevalidationMetadata: ModuleMetadata;
     revalidateApi?: RevalidateModule;
     definitionPath: string;
+    scoreFormat: ScoreFormat;
   };
 
 export default function ApiHeading({
   name,
   protocol,
+  rating,
   score,
   ratingDescription,
   apiRevalidationMetadata,
   revalidateApi,
   definitionPath,
+  scoreFormat,
 }: Readonly<ApiHeadingProps>) {
   const onRevalidateApiClick = useCallback(() => {
     if (typeof revalidateApi === "function") {
@@ -55,6 +61,8 @@ export default function ApiHeading({
       }
     }
   }, [definitionPath, name, protocol, revalidateApi]);
+
+  const showScore = typeof score === "number" && rating;
 
   return (
     <Grid m={0} grow justify="space-between" align="center">
@@ -89,7 +97,7 @@ export default function ApiHeading({
         </Flex>
       </Grid.Col>
 
-      {typeof score === "number" && (
+      {showScore && (
         <Grid.Col span="auto" data-testid="ApiHeading-CenterCol">
           <Flex align="center" justify="flex-end" gap="md">
             <MediaQuery smallerThan="sm" styles={{ display: "none" }}>
@@ -104,7 +112,11 @@ export default function ApiHeading({
               </span>
             </MediaQuery>
 
-            <ScoreLabel score={score} data-testid={`ApiHeading-Score-${name}-${protocol}`} />
+            {scoreFormat === "percentage" ? (
+              <PercentageScoreLabel score={score} data-testid={`ApiHeading-Score-${name}-${protocol}`} />
+            ) : (
+              <RatingScoreLabel rating={rating} size="large" data-testid={`ApiHeading-RatingScore-${name}-${protocol}`} />
+            )}
           </Flex>
         </Grid.Col>
       )}

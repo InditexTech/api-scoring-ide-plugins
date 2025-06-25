@@ -6,25 +6,21 @@ import isCodeValidation from "../../utils/is-code-validation";
 import isDocValidation from "../../utils/is-doc-validation";
 import CodeValidation from "../../components/validation-result/code-validation";
 import DocValidation from "../../components/validation-result/doc-validation";
-import type {
-  CertificationPayload,
-  ValidationType,
-  ValidationTypes,
-} from "../../types";
+import type { ApiIdentifier, CertificationPayload, ValidationType, ValidationTypes } from "../../types";
 
-type ValidationResultProps = {
+type ValidationResultProps<TApiIdentifier extends ApiIdentifier> = {
   validationType: ValidationType;
-  rootPath: CertificationPayload["rootPath"];
+  rootPath: CertificationPayload<TApiIdentifier>["rootPath"];
   definitionPath: string;
   validation: ValidationTypes;
 };
 
-export default function ValidationResult({
+export default function ValidationResult<TApiIdentifier extends ApiIdentifier>({
   validationType,
   validation,
   rootPath,
   definitionPath,
-}: Readonly<ValidationResultProps>) {
+}: Readonly<ValidationResultProps<TApiIdentifier>>) {
   return (
     <div data-testid={`ValidationResult-${validationType}`}>
       {/* Linter and Security validations */}
@@ -37,12 +33,7 @@ export default function ValidationResult({
       )}
 
       {/* Documentation validations */}
-      {isDocValidation(validationType) && (
-        <DocValidation
-          basePath={rootPath ?? ""}
-          issues={validation.issues ?? []}
-        />
-      )}
+      {isDocValidation(validationType) && <DocValidation basePath={rootPath ?? ""} issues={validation.issues ?? []} />}
     </div>
   );
 }

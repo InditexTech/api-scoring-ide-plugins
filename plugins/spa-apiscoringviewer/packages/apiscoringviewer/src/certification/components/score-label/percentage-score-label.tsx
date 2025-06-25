@@ -3,14 +3,14 @@
 // SPDX-License-Identifier: Apache-2.0
 import { FormattedMessage } from "react-intl";
 import { Flex, Badge, Box, Text, MantineTheme } from "@mantine/core";
-import { getLabelColor } from "../../../utils/get-label-color";
+import { getScoreLabelColor } from "../../../utils/get-label-color";
 import type { CommonProps } from "../../../types";
 
 type ScoreLabelProps = {
   score: number;
 } & CommonProps;
 
-export default function ScoreLabel({ score, "data-testid": dataTestId = "ScoreLabel" }: Readonly<ScoreLabelProps>) {
+export default function PercentageScoreLabel({ score, "data-testid": dataTestId = "ScoreLabel" }: Readonly<ScoreLabelProps>) {
   return (
     <Badge variant="filled" color="dark.2" radius={0} data-testid={dataTestId}>
       <Flex align="center" gap="xs">
@@ -28,7 +28,7 @@ function ScoreSquare({ score }: Readonly<{ score: number }>) {
         display: "inline-block",
         width: 8,
         height: 8,
-        backgroundColor: getLabelColor(theme, score),
+        backgroundColor: getScoreLabelColor(theme, score),
       })}
     />
   );

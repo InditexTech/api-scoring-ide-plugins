@@ -5,6 +5,7 @@
 import { render, screen } from "@testing-library/react";
 import ApiTabs from "../components/api-tabs";
 import { CERTS_PAYLOAD, Providers } from "../../utils/test-utils";
+import { ApiIdentifier, Certification } from "../../types";
 
 test("shows empty apis message", async () => {
   const certification = { ...CERTS_PAYLOAD, results: [] };
@@ -14,10 +15,14 @@ test("shows empty apis message", async () => {
       certification={certification}
       modulesMetadata={{}}
       apisRevalidationMetadata={{}}
+      getApiIdentifier={function ({ apiName, apiProtocol }: Certification<ApiIdentifier>): string {
+        return `${apiProtocol}-${apiName}`;
+      }}
+      scoreFormat="rating"
     />,
     {
       wrapper: Providers,
-    }
+    },
   );
 
   expect(screen.getByTestId("ApiTabs-FeedbackStateNoApis")).toBeInTheDocument();

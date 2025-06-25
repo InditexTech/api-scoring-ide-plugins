@@ -5,7 +5,7 @@
 import ApiHeading from "../../components/api-heading";
 import Validation from "../../components/validation";
 import { Flex } from "@mantine/core";
-import type { ApiIdentifier, Certification, CertificationPayload, ModuleMetadata, RevalidateModule } from "../../../types";
+import type { ApiIdentifier, Certification, CertificationPayload, ModuleMetadata, RevalidateModule, ScoreFormat } from "../../../types";
 
 type ApiValidationProps<TApiIdentifier extends ApiIdentifier> = {
   api: Certification;
@@ -15,6 +15,7 @@ type ApiValidationProps<TApiIdentifier extends ApiIdentifier> = {
   apiRevalidationMetadata: ModuleMetadata;
   revalidateModule?: RevalidateModule;
   revalidateApi?: RevalidateModule;
+  scoreFormat: ScoreFormat;
 };
 
 export default function ApiValidation<TApiIdentifier extends ApiIdentifier>({
@@ -25,18 +26,21 @@ export default function ApiValidation<TApiIdentifier extends ApiIdentifier>({
   apiRevalidationMetadata,
   revalidateModule,
   revalidateApi,
+  scoreFormat,
 }: Readonly<ApiValidationProps<TApiIdentifier>>) {
-  const { apiName, apiProtocol, score, ratingDescription, result } = api;
+  const { apiName, apiProtocol, score, rating, ratingDescription, result } = api;
   return (
     <Flex direction="column" gap="sm" maw="100%" py="sm" data-testid={`ApiValidation-${apiName}-${apiProtocol}`}>
       <ApiHeading
         name={apiName}
         protocol={apiProtocol}
         score={score}
+        rating={rating}
         ratingDescription={ratingDescription}
         definitionPath={definitionPath}
         apiRevalidationMetadata={apiRevalidationMetadata}
         revalidateApi={revalidateApi}
+        scoreFormat={scoreFormat}
       />
 
       <Validation
@@ -46,6 +50,7 @@ export default function ApiValidation<TApiIdentifier extends ApiIdentifier>({
         definitionPath={definitionPath}
         moduleMetadata={moduleMetadata}
         revalidateModule={revalidateModule}
+        scoreFormat={scoreFormat}
       />
     </Flex>
   );
