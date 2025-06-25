@@ -74,10 +74,10 @@ http://localhost:3000
 
 
 
-> [!TIP]
+> #### TIP
 > If you need to remove all dependencies, you can use the following command:
 >
-> ```bash
+> ```
 > pnpm clean
 > ```
 
