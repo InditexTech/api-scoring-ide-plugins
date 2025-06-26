@@ -16,7 +16,7 @@
   "certification.api-not-found": "No APIs found",
   "certification.network-error": "Error fetching validation results",
   "certification.unexpected-error": "An unexpected error occurred",
-  "certification.score.label": "{score}% Quality",
+  "certification.score.label": "{score}%",
   "file-form.file": "Select file",
   "file-form.ruleset": "Select rule",
   "file-form.step.protocol": "Select protocol:",
