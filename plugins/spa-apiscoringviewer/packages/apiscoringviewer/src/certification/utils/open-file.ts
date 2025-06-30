@@ -12,10 +12,7 @@ type FileLocation = {
   endCharacter?: number;
 };
 
-export default function openFile(
-  filePath: string,
-  { startLine, startCharacter, endLine, endCharacter }: FileLocation
-) {
+export default function openFile(filePath: string, { startLine, startCharacter, endLine, endCharacter }: FileLocation) {
   const infoPosition = {
     line: startLine,
     char: startCharacter,
@@ -23,9 +20,7 @@ export default function openFile(
     lastchar: endCharacter,
   };
 
-  if (isVsCode()) {
-    sendMessageVscode("onClickOpenFile", { fileName: filePath, infoPosition });
-  } else if (isIntelliJ()) {
+  if (isIntelliJ()) {
     window.cefQuery({
       request: JSON.stringify({
         request: "onClickOpenFile",
@@ -33,5 +28,7 @@ export default function openFile(
         infoPosition,
       }),
     });
+  } else if (isVsCode()) {
+    sendMessageVscode("onClickOpenFile", { fileName: filePath, infoPosition });
   }
 }
