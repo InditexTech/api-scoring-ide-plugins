@@ -47,7 +47,7 @@ export default function RevalidateModuleAction({
     });
   };
 
-  if (!isVsCode() || !isIntelliJ()) {
+  if (!isVsCode() && !isIntelliJ()) {
     return null;
   }
 
