@@ -32,19 +32,27 @@ const intelliJCommands = new Map<string, string | null>([
 
 export function sendMessageIde(command: string, message: VSCodeMessage) {
   if (isIntelliJ()) {
-    const intelliJCommand = intelliJCommands.get(command);
-    if (!intelliJCommand) {
-      return;
-    }
-    window.cefQuery({
-      request: JSON.stringify({
-        request: intelliJCommand,
-        ...message,
-      }),
-    });
+    sendMessageIntelliJ(command, message);
     return;
   }
 
+  sendMessageVscode(command, message);
+}
+
+export function sendMessageIntelliJ(command: string, message: VSCodeMessage) {
+  const intelliJCommand = intelliJCommands.get(command);
+  if (!intelliJCommand) {
+    return;
+  }
+  window.cefQuery({
+    request: JSON.stringify({
+      request: intelliJCommand,
+      ...message,
+    }),
+  });
+}
+
+export function sendMessageVscode(command: string, message: VSCodeMessage) {
   const vscode = tryAcquireVsCodeApi();
   const payload = message;
   //mode iframe

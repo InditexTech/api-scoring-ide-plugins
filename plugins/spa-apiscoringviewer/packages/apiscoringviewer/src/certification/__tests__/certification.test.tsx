@@ -7,7 +7,7 @@ import userEvent from "@testing-library/user-event";
 import { ReactNode } from "react";
 import { vi, beforeAll, afterEach, beforeEach, describe, test, expect } from "vitest";
 import { API_VALIDATION_RESULTS, CERTS_PAYLOAD, MODULE_RESULTS, Providers } from "../../utils/test-utils";
-import VSCodeDataProvider from "../vscode-data-provider";
+import IdeProvider from "../ide-data-provider";
 import isVsCode from "../../utils/is-vscode";
 import isIntelliJ from "../../utils/is-intellij";
 import Certification from "../certification";
@@ -49,7 +49,7 @@ describe("renders inside VSCode IDE", () => {
   });
 
   test("renders certification", async () => {
-    render(<Certification DataProvider={VSCodeDataProvider} />, {
+    render(<Certification DataProvider={IdeProvider} />, {
       wrapper: Providers,
     });
 
@@ -176,7 +176,7 @@ describe("renders inside VSCode IDE", () => {
 
   test("api validation results are updated", async () => {
     act(() => {
-      render(<Certification DataProvider={VSCodeDataProvider} />, {
+      render(<Certification DataProvider={IdeProvider} />, {
         wrapper: Providers,
       });
     });
@@ -249,7 +249,7 @@ describe("renders inside VSCode IDE", () => {
   });
 
   test("revalidation module error is displayed and reseted", async () => {
-    render(<Certification DataProvider={VSCodeDataProvider} />, {
+    render(<Certification DataProvider={IdeProvider} />, {
       wrapper: Providers,
     });
 
