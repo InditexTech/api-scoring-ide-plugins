@@ -2,6 +2,7 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
+import { test, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import ApiTabs from "../components/api-tabs";
 import { CERTS_PAYLOAD, Providers } from "../../utils/test-utils";
