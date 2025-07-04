@@ -10,7 +10,7 @@ export { default as useVSCodeCertification } from "./certification/hooks/use-vsc
 export { default as getModuleId } from "./certification/utils/get-module-id";
 export { default as isIntelliJ } from "./utils/is-intellij";
 export { default as isVsCode } from "./utils/is-vscode";
-export { sendMessageVscode } from "./utils/send-message-vscode";
+export { sendMessageIde } from "./utils/send-message-ide";
 export { theme } from "./theme";
 export { default as messages } from "./locales";
 export * from "./types";

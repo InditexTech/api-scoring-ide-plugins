@@ -35,16 +35,6 @@ export default function RevalidateModuleAction({
       validationType,
       apiDefinitionPath: definitionPath,
     });
-
-    window.cefQuery({
-      request: JSON.stringify({
-        request: "revalidateModule",
-        apiName,
-        apiSpecType: apiProtocol,
-        validationType,
-        definitionPath,
-      }),
-    });
   };
 
   if (!isVsCode() && !isIntelliJ()) {
