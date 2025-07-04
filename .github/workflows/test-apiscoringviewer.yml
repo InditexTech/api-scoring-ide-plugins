@@ -1,0 +1,45 @@
+name: Test API Scoring Viewer
+
+on:
+  pull_request:
+    paths:
+      - "plugins/spa-apiscoringviewer/**"
+      - ".github/workflows/test-apiscoringviewer.yml"
+jobs:
+  test:
+    name: Run Vitest Tests on SPA
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "pnpm"
+          cache-dependency-path: "plugins/spa-apiscoringviewer/pnpm-lock.yaml"
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8.15.9
+
+      - name: Install dependencies
+        run: |
+          cd plugins/spa-apiscoringviewer
+          pnpm install --frozen-lockfile --recursive
+
+      - name: Run tests
+        run: |
+          cd plugins/spa-apiscoringviewer/packages/apiscoringviewer
+          pnpm test -- --run
+
+      - name: Upload coverage reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-reports
+          path: plugins/spa-apiscoringviewer/packages/apiscoringviewer/coverage/
+          if-no-files-found: ignore
