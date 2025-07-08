@@ -45,7 +45,7 @@ function useIdeProvider<TApiIdentifier extends ApiIdentifier>() {
             }));
           } else {
             // The incoming validation is an API module validation.
-            const moduleId = getModuleId({ apiName, apiProtocol: apiSpecType });
+            const moduleId = getModuleId({ apiName, apiProtocol: apiSpecType, validationType });
             setModulesMetadata((prev) => ({
               ...prev,
               [moduleId]: { loading: false },
@@ -75,8 +75,8 @@ function useIdeProvider<TApiIdentifier extends ApiIdentifier>() {
   }, []);
 
   const revalidateModule = useCallback((validationBody: ModuleValidation) => {
-    const { apiName, apiSpecType } = validationBody;
-    const moduleId = getModuleId({ apiName, apiProtocol: apiSpecType });
+    const { apiName, apiSpecType, validationType } = validationBody;
+    const moduleId = getModuleId({ apiName, apiProtocol: apiSpecType, validationType });
     setModulesMetadata((prev) => ({ ...prev, [moduleId]: { loading: true } }));
 
     sendMessageIde("onClickValidateModule", validationBody);

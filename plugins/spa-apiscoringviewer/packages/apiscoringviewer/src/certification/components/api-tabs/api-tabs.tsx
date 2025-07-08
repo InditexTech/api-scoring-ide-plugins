@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import ApiValidation from "../api-validation";
-import getModuleId from "../../utils/get-module-id";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import AutoSizer from "react-virtualized-auto-sizer";
@@ -13,7 +12,6 @@ import { getRatingLabelColor, getScoreLabelColor } from "../../../utils/get-labe
 import Feedback from "../../../components/feedback";
 import type {
   ApiIdentifier,
-  Certification,
   CertificationPayload,
   GetApiIdentifier,
   ModulesMetadata,
@@ -110,9 +108,6 @@ export default function ApiTabs<TApiIdentifier extends ApiIdentifier = ApiIdenti
                   const tabId = getApiIdentifier(api);
                   const definitionPath =
                     apisMetadata.find(({ name, apiSpecType }) => name === apiName && apiProtocol === apiSpecType)?.definitionPath ?? "";
-                  const moduleMetadata = modulesMetadata[getModuleId(api)] ?? {
-                    loading: false,
-                  };
                   const apiRevalidationMetadata = apisRevalidationMetadata[apiName] ?? { loading: false };
                   return (
                     <Tabs.Panel key={tabId} value={tabId} w="100%">
@@ -121,7 +116,7 @@ export default function ApiTabs<TApiIdentifier extends ApiIdentifier = ApiIdenti
                           api={api}
                           rootPath={rootPath}
                           definitionPath={definitionPath}
-                          moduleMetadata={moduleMetadata}
+                          modulesMetadata={modulesMetadata}
                           apiRevalidationMetadata={apiRevalidationMetadata}
                           revalidateModule={revalidateModule}
                           revalidateApi={revalidateApi}
