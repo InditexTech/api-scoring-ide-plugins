@@ -56,7 +56,7 @@ This folder contains the **SPA** of the API Scoring extension. The structure is 
    ```
     npm install --global pnpm
     pnpm install
-    ```
+   ```
 
 4. Once the process finishes, start the SPA:
 
@@ -64,7 +64,7 @@ This folder contains the **SPA** of the API Scoring extension. The structure is 
    pnpm start
    ```
 
-5. Configure the VSCode plugin (for local development): 
+5. Configure the VSCode plugin (for local development):
 
 If you are running the SPA locally, open VSCode with the plugin already installed. Then, in the plugin settings, go to (Api Scoring › Certification › Frontend: Url) and set the frontend URL to:
 
@@ -72,13 +72,12 @@ If you are running the SPA locally, open VSCode with the plugin already installe
 http://localhost:3000
 ```
 
-
-
 > #### TIP
+>
 > If you need to remove all dependencies, you can use the following command:
 >
 > ```
-> pnpm clean
+> pnpm clear
 > ```
 
 <br>
