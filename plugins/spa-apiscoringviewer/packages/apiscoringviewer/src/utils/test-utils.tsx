@@ -4,14 +4,11 @@
 
 import { type ReactNode } from "react";
 import { IntlProvider } from "react-intl";
+import { vi } from "vitest";
 import { MantineProvider } from "@mantine/core";
 import { theme } from "../theme";
 import messages from "../locales";
-import {
-  type CertificationPayload,
-  type ModulePayload,
-  Severity,
-} from "../types";
+import { type CertificationPayload, type ModulePayload, ProtocolType, Severity } from "../types";
 
 export function Providers({ children }: { children?: ReactNode }) {
   return (
@@ -37,7 +34,12 @@ const API_SAMPLE_FILENAME = "hub/v3/openapi-rest.yml";
 const CAMEL_CASE_FOR_PROPERTIES_CODE = "camel-case-for-properties";
 const CAMEL_CASE_FOR_PROPERTIES_MESSAGE = "Property name has to be camelCase";
 
-export const CERTS_PAYLOAD: CertificationPayload = {
+type ApiIdentifier = {
+  apiName: string;
+  apiProtocol: ProtocolType;
+};
+
+export const CERTS_PAYLOAD: CertificationPayload<ApiIdentifier> = {
   metadata: {
     apis: [
       {
@@ -66,13 +68,7 @@ export const CERTS_PAYLOAD: CertificationPayload = {
                 {
                   code: "first-pass-lint-error",
                   message: "This error is only on first pass",
-                  path: [
-                    "components",
-                    "schemas",
-                    "ApiVersionDTO",
-                    "properties",
-                    "definitionURL",
-                  ],
+                  path: ["components", "schemas", "ApiVersionDTO", "properties", "definitionURL"],
                   severity: 1,
                   source: API_SAMPLE_SOURCE,
                   range: {
@@ -90,13 +86,7 @@ export const CERTS_PAYLOAD: CertificationPayload = {
                 {
                   code: CAMEL_CASE_FOR_PROPERTIES_CODE,
                   message: CAMEL_CASE_FOR_PROPERTIES_MESSAGE,
-                  path: [
-                    "components",
-                    "schemas",
-                    "ApiVersionDTO",
-                    "properties",
-                    "artifactURL",
-                  ],
+                  path: ["components", "schemas", "ApiVersionDTO", "properties", "artifactURL"],
                   severity: 1,
                   source: API_SAMPLE_SOURCE,
                   range: {
@@ -114,13 +104,7 @@ export const CERTS_PAYLOAD: CertificationPayload = {
                 {
                   code: "ensure-properties-examples",
                   message: "branch doesn't have an example",
-                  path: [
-                    "components",
-                    "schemas",
-                    "ApiRepository",
-                    "properties",
-                    "branch",
-                  ],
+                  path: ["components", "schemas", "ApiRepository", "properties", "branch"],
                   severity: 1,
                   source: "/apicollections/rest/openapi-rest.yml",
                   range: {
@@ -189,14 +173,7 @@ export const CERTS_PAYLOAD: CertificationPayload = {
                 {
                   code: "numeric-required-properties-format",
                   message: '"schema.format" property must be defined',
-                  path: [
-                    "paths",
-                    "/reports/notificationsList",
-                    "get",
-                    "parameters",
-                    "0",
-                    "schema",
-                  ],
+                  path: ["paths", "/reports/notificationsList", "get", "parameters", "0", "schema"],
                   severity: 1,
                   source: API_SAMPLE_SOURCE,
                   range: {
@@ -229,8 +206,7 @@ export const CERTS_PAYLOAD: CertificationPayload = {
                 lineNumber: 7,
                 ruleNames: ["MD034", "no-bare-urls"],
                 ruleDescription: "Bare URL used",
-                ruleInformation:
-                  "https://github.com/DavidAnson/markdownlint/blob/v0.25.1/doc/Rules.md#md034",
+                ruleInformation: "https://github.com/DavidAnson/markdownlint/blob/v0.25.1/doc/Rules.md#md034",
                 errorDetail: null,
                 errorContext: "https://www.example.com/",
                 errorRange: [27, 24],
@@ -259,13 +235,7 @@ export const CERTS_PAYLOAD: CertificationPayload = {
                 {
                   code: "js-properties-should-be-camel-case",
                   message: "JS Property name has to be camelCase",
-                  path: [
-                    "components",
-                    "schemas",
-                    "ArtifactDTO",
-                    "properties",
-                    "URL",
-                  ],
+                  path: ["components", "schemas", "ArtifactDTO", "properties", "URL"],
                   severity: 1,
                   source: "apis/portal/operations/openapi-rest.yml",
                   range: {
@@ -283,13 +253,7 @@ export const CERTS_PAYLOAD: CertificationPayload = {
                 {
                   code: CAMEL_CASE_FOR_PROPERTIES_CODE,
                   message: CAMEL_CASE_FOR_PROPERTIES_MESSAGE,
-                  path: [
-                    "components",
-                    "schemas",
-                    "ApiDTO",
-                    "properties",
-                    "definitionURL",
-                  ],
+                  path: ["components", "schemas", "ApiDTO", "properties", "definitionURL"],
                   severity: 1,
                   source: "apis/portal/operations/openapi-rest.yml",
                   range: {
@@ -325,8 +289,7 @@ export const CERTS_PAYLOAD: CertificationPayload = {
                 {
                   line: 33,
                   column: 3,
-                  message:
-                    'EnumField name "ADJUSTMENT_UNSPECIFIED" should have the prefix "ADJUSTMENT_TYPE"',
+                  message: 'EnumField name "ADJUSTMENT_UNSPECIFIED" should have the prefix "ADJUSTMENT_TYPE"',
                   rule: "ENUM_FIELD_NAMES_PREFIX",
                   fileName: "grpc/example/v1/adjustment.proto",
                   severity: 2,
@@ -346,8 +309,7 @@ export const CERTS_PAYLOAD: CertificationPayload = {
                 lineNumber: 13,
                 ruleNames: ["MD009", "no-trailing-spaces"],
                 ruleDescription: "Trailing spaces",
-                ruleInformation:
-                  "https://github.com/DavidAnson/markdownlint/blob/v0.25.1/doc/Rules.md#md009",
+                ruleInformation: "https://github.com/DavidAnson/markdownlint/blob/v0.25.1/doc/Rules.md#md009",
                 errorDetail: "Expected: 0 or 2; Actual: 1",
                 errorContext: null,
                 errorRange: [14, 1],
@@ -371,13 +333,7 @@ const lintRevalidationError1 = {
   code: "new-lint-error-on-revalidation",
   fileName: "openapi-rest.yml",
   message: "New lint error while revalidating",
-  path: [
-    "components",
-    "schemas",
-    "ApiVersionV2DTO",
-    "properties",
-    "definitionURL",
-  ],
+  path: ["components", "schemas", "ApiVersionV2DTO", "properties", "definitionURL"],
   severity: 1 as Severity,
   source: API_SAMPLE_SOURCE,
   range: {
@@ -396,13 +352,7 @@ const lintRevalidationError2 = {
   code: "other-kind-of-error",
   fileName: "openapi-rest.yml",
   message: CAMEL_CASE_FOR_PROPERTIES_MESSAGE,
-  path: [
-    "components",
-    "schemas",
-    "ApiVersionV2DTO",
-    "properties",
-    "artifactURL",
-  ],
+  path: ["components", "schemas", "ApiVersionV2DTO", "properties", "artifactURL"],
   severity: 1 as Severity,
   source: API_SAMPLE_SOURCE,
   range: {
@@ -474,8 +424,7 @@ export const API_VALIDATION_RESULTS: ModulePayload = {
                 lineNumber: 13,
                 ruleNames: ["MD034", "no-bare-urls"],
                 ruleDescription: "No bare urls",
-                ruleInformation:
-                  "https://github.com/DavidAnson/markdownlint/blob/v0.25.1/doc/Rules.md#md0123",
+                ruleInformation: "https://github.com/DavidAnson/markdownlint/blob/v0.25.1/doc/Rules.md#md0123",
                 errorDetail: "Expected: 0 or 2; Actual: 1",
                 errorContext: null,
                 errorRange: [14, 1],
@@ -512,8 +461,7 @@ export const VALIDATION_FILE_RESULT = {
   results: [
     {
       code: "global-doc",
-      message:
-        "Definition `doc` must be present and non-empty string in all types",
+      message: "Definition `doc` must be present and non-empty string in all types",
       path: [],
       severity: 1,
       source: "/temporal/path/to/file.yml",
@@ -538,21 +486,21 @@ export class FileReaderMock {
   readyState: 0 | 1 | 2 = 0;
   error: FileReader["error"] = null;
   result: FileReader["result"] = null;
-  abort = jest.fn();
-  addEventListener = jest.fn();
-  dispatchEvent = jest.fn();
-  onabort = jest.fn();
-  onerror = jest.fn();
-  onload = jest.fn();
-  onloadend = jest.fn();
-  onloadprogress = jest.fn();
-  onloadstart = jest.fn();
-  onprogress = jest.fn();
-  readAsArrayBuffer = jest.fn();
-  readAsBinaryString = jest.fn();
+  abort = vi.fn();
+  addEventListener = vi.fn();
+  dispatchEvent = vi.fn();
+  onabort = vi.fn();
+  onerror = vi.fn();
+  onload = vi.fn();
+  onloadend = vi.fn();
+  onloadprogress = vi.fn();
+  onloadstart = vi.fn();
+  onprogress = vi.fn();
+  readAsArrayBuffer = vi.fn();
+  readAsBinaryString = vi.fn();
   readAsDataURL = () => {
     this.onloadend();
   };
-  readAsText = jest.fn();
-  removeEventListener = jest.fn();
+  readAsText = vi.fn();
+  removeEventListener = vi.fn();
 }

@@ -44,12 +44,13 @@ export default function CertificationPage<TApiIdentifier extends ApiIdentifier =
   const [intelliJLoading, setIntelliJLoading] = useState(false);
 
   function onClick() {
+    setIntelliJLoading(true);
+
     window.cefQuery({
       request: JSON.stringify({
         request: "submitCertificationIntelliJ",
       }),
     });
-    setIntelliJLoading(true);
   }
 
   return (
@@ -80,7 +81,7 @@ export default function CertificationPage<TApiIdentifier extends ApiIdentifier =
                 />
               )}
 
-              {(loading || intelliJLoading) && (
+              {(loading || intelliJLoading) && !certification && !error && (
                 <Center w="100%">
                   <Loader color="gray" size="lg" data-testid="Certification-Loading" />
                 </Center>

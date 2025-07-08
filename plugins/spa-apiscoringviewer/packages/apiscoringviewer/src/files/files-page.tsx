@@ -4,12 +4,11 @@
 
 import { useEffect } from "react";
 import FilesForm from "./components/files-form";
-import { sendMessageVscode } from "../utils/send-message-vscode";
-import { useMantineTheme } from "@mantine/core";
+import { sendMessageIde } from "../utils/send-message-ide";
 
 export default function FilesPage() {
   useEffect(() => {
-    sendMessageVscode("onFileLoaded", {});
+    sendMessageIde("onFileLoaded", {});
   }, []);
 
   return (

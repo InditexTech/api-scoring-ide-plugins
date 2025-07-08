@@ -7,11 +7,7 @@ import { ActionIcon, Tooltip } from "@mantine/core";
 import { IconPlayerPlay } from "@tabler/icons-react";
 import isVsCode from "../../../utils/is-vscode";
 import isIntelliJ from "../../../utils/is-intellij";
-import type {
-  Certification,
-  RevalidateModule,
-  ValidationType,
-} from "../../../types";
+import type { Certification, RevalidateModule, ValidationType } from "../../../types";
 
 type RevalidateModuleActionProps = {
   metadata: Pick<Certification, "apiName" | "apiProtocol">;
@@ -29,39 +25,24 @@ export default function RevalidateModuleAction({
   loading,
 }: Readonly<RevalidateModuleActionProps>) {
   const onRevalidateClick = () => {
-    if (typeof revalidateModule === "function" && isVsCode()) {
-      revalidateModule({
-        apiName,
-        apiSpecType: apiProtocol,
-        validationType,
-        apiDefinitionPath: definitionPath,
-      });
-    } else if (isIntelliJ()) {
-      window.cefQuery({
-        request: JSON.stringify({
-          request: "revalidateModule",
-          apiName,
-          apiSpecType: apiProtocol,
-          validationType,
-          definitionPath,
-        }),
-      });
+    if (typeof revalidateModule !== "function") {
+      return;
     }
+
+    revalidateModule({
+      apiName,
+      apiSpecType: apiProtocol,
+      validationType,
+      apiDefinitionPath: definitionPath,
+    });
   };
 
-  if (!isVsCode()) {
+  if (!isVsCode() && !isIntelliJ()) {
     return null;
   }
 
   return (
-    <Tooltip
-      label={
-        <FormattedMessage
-          id="api.revalidate-module"
-          values={{ name: validationType }}
-        />
-      }
-    >
+    <Tooltip label={<FormattedMessage id="api.revalidate-module" values={{ name: validationType }} />}>
       <ActionIcon
         onClick={onRevalidateClick}
         loading={loading}

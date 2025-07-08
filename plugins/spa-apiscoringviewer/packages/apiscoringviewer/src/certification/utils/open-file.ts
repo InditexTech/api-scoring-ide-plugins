@@ -2,8 +2,7 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
-import { isIntelliJ, isVsCode } from "../..";
-import { sendMessageVscode } from "../../utils/send-message-vscode";
+import { sendMessageIde } from "../../utils/send-message-ide";
 
 type FileLocation = {
   startLine?: number;
@@ -12,10 +11,7 @@ type FileLocation = {
   endCharacter?: number;
 };
 
-export default function openFile(
-  filePath: string,
-  { startLine, startCharacter, endLine, endCharacter }: FileLocation
-) {
+export default function openFile(filePath: string, { startLine, startCharacter, endLine, endCharacter }: FileLocation) {
   const infoPosition = {
     line: startLine,
     char: startCharacter,
@@ -23,15 +19,5 @@ export default function openFile(
     lastchar: endCharacter,
   };
 
-  if (isVsCode()) {
-    sendMessageVscode("onClickOpenFile", { fileName: filePath, infoPosition });
-  } else if (isIntelliJ()) {
-    window.cefQuery({
-      request: JSON.stringify({
-        request: "onClickOpenFile",
-        fileName: filePath,
-        infoPosition,
-      }),
-    });
-  }
+  sendMessageIde("onClickOpenFile", { fileName: filePath, infoPosition });
 }

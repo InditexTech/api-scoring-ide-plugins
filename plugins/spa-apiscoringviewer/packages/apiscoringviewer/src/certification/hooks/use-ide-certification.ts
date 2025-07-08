@@ -104,6 +104,6 @@ function patchModuleValidation(certificationResult: Certification["result"], mod
   return nextResult;
 }
 
-export default function useVSCodeCertification<TApiIdentifier extends ApiIdentifier>() {
+export default function useIdeCertification<TApiIdentifier extends ApiIdentifier>() {
   return useReducer<Reducer<CertificationPayload<TApiIdentifier> | null, CertificationAction<TApiIdentifier>>>(reducer, null);
 }

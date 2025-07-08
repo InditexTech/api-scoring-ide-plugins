@@ -5,14 +5,22 @@
 import ApiHeading from "../../components/api-heading";
 import Validation from "../../components/validation";
 import { Flex } from "@mantine/core";
-import type { ApiIdentifier, Certification, CertificationPayload, ModuleMetadata, RevalidateModule, ScoreFormat } from "../../../types";
+import type {
+  ApiIdentifier,
+  Certification,
+  CertificationPayload,
+  ModuleMetadata,
+  ModulesMetadata,
+  RevalidateModule,
+  ScoreFormat,
+} from "../../../types";
 
 type ApiValidationProps<TApiIdentifier extends ApiIdentifier> = {
   api: Certification;
   rootPath: CertificationPayload<TApiIdentifier>["rootPath"];
   definitionPath: string;
-  moduleMetadata: ModuleMetadata;
   apiRevalidationMetadata: ModuleMetadata;
+  modulesMetadata: ModulesMetadata;
   revalidateModule?: RevalidateModule;
   revalidateApi?: RevalidateModule;
   scoreFormat: ScoreFormat;
@@ -22,8 +30,8 @@ export default function ApiValidation<TApiIdentifier extends ApiIdentifier>({
   api,
   definitionPath,
   rootPath,
-  moduleMetadata,
   apiRevalidationMetadata,
+  modulesMetadata,
   revalidateModule,
   revalidateApi,
   scoreFormat,
@@ -44,11 +52,12 @@ export default function ApiValidation<TApiIdentifier extends ApiIdentifier>({
       />
 
       <Validation
+        api={api}
         result={result}
         metadata={{ apiName, apiProtocol }}
         rootPath={rootPath}
+        modulesMetadata={modulesMetadata}
         definitionPath={definitionPath}
-        moduleMetadata={moduleMetadata}
         revalidateModule={revalidateModule}
         scoreFormat={scoreFormat}
       />

@@ -2,17 +2,13 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
-import { act, fireEvent, render, screen } from "@testing-library/react";
+import { vi } from "vitest";
+import { act, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import {
-  FileReaderMock,
-  Providers,
-  VALIDATION_FILE_RESULT,
-  createJSONFile,
-} from "../../utils/test-utils";
+import { FileReaderMock, Providers, VALIDATION_FILE_RESULT, createJSONFile } from "../../utils/test-utils";
 import FilesPage from "../files-page";
 
-const postMessage = jest.fn();
+const postMessage = vi.fn();
 
 beforeAll(() => {
   Object.defineProperty(global.window, "parent", {
@@ -27,39 +23,36 @@ test("file results are displayed", async () => {
   const fileReader = new FileReaderMock();
 
   fileReader.result = "";
-  jest.spyOn(window, "FileReader").mockImplementation(() => fileReader);
+  vi.spyOn(window, "FileReader").mockImplementation(() => fileReader);
 
-  act(() => {
-    render(<FilesPage />, { wrapper: Providers });
+  render(<FilesPage />, { wrapper: Providers });
+
+  waitFor(() => {
+    expect(postMessage).toHaveBeenCalled();
   });
-
-  expect(postMessage).toHaveBeenCalled();
   expect(postMessage).toHaveBeenCalledTimes(1);
   expect(postMessage).toHaveBeenCalledWith(
     {
       command: "onFileLoaded",
       payload: {},
     },
-    "*"
+    "*",
   );
 
   postMessage.mockClear();
 
-  const fileInput = screen
-    .getByTestId("File")
-    .querySelector("input") as HTMLInputElement;
+  const fileInput = screen.getByTestId("File").querySelector("input") as HTMLInputElement;
 
   const file = createJSONFile();
   await userEvent.upload(fileInput!, file);
 
-  expect(fileInput.files?.[0]).toStrictEqual(file);
+  act(() => {
+    expect(fileInput.files?.[0]).toStrictEqual(file);
+  });
 
-  await userEvent.click(
-    screen.getByRole("searchbox", { name: /Select protocol/ })
-  );
+  await userEvent.click(screen.getByRole("searchbox", { name: /Select protocol/ }));
   await userEvent.click(screen.getByRole("option", { name: /gRPC/ }));
-
-  fireEvent.submit(screen.getByRole("button", { name: /submit/ }));
+  await userEvent.click(screen.getByRole("button", { name: /submit/ }));
 
   expect(screen.getByTestId("FilesPage-Loader")).toBeInTheDocument();
 
@@ -73,7 +66,7 @@ test("file results are displayed", async () => {
         apiProtocol: "grpc",
       },
     },
-    "*"
+    "*",
   );
 
   const validationSuccessEvent = new MessageEvent("message", {
@@ -85,16 +78,8 @@ test("file results are displayed", async () => {
     window.dispatchEvent(validationSuccessEvent);
   });
 
-  expect(
-    screen.getByTestId(
-      "Issue-/Users/inditex/path/to/file.json-global-doc-0-0-6-20-0"
-    )
-  ).toBeInTheDocument();
-  expect(
-    screen.getByText(
-      "Definition `doc` must be present and non-empty string in all types"
-    )
-  ).toBeInTheDocument();
+  expect(screen.getByTestId("Issue-/Users/inditex/path/to/file.json-global-doc-0-0-6-20-0")).toBeInTheDocument();
+  expect(screen.getByText("Definition `doc` must be present and non-empty string in all types")).toBeInTheDocument();
 
   // Unhappy path
   const validationErrorEvent = new MessageEvent("message", {

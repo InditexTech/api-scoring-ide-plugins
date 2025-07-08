@@ -5,28 +5,24 @@
 import { useCallback, useEffect, useState } from "react";
 import { DataProviderChildFn, ModulesMetadata, SetCertificationResults, SetModuleResults, ModuleValidation, ApiIdentifier } from "../types";
 import isIntelliJ from "../utils/is-intellij";
-import { sendMessageVscode } from "../utils/send-message-vscode";
-import useVSCodeCertification from "./hooks/use-vscode-certification";
+import { sendMessageIde } from "../utils/send-message-ide";
+import useIdeCertification from "./hooks/use-ide-certification";
 import getModuleId from "./utils/get-module-id";
 
-export default function VSCodeDataProvider<TApiIdentifier extends ApiIdentifier>({
-  children,
-}: {
-  children: DataProviderChildFn<TApiIdentifier>;
-}) {
-  return children(useVSCodeDataProvider<TApiIdentifier>());
+export default function IdeProvider<TApiIdentifier extends ApiIdentifier>({ children }: { children: DataProviderChildFn<TApiIdentifier> }) {
+  return children(useIdeProvider<TApiIdentifier>());
 }
 
-function useVSCodeDataProvider<TApiIdentifier extends ApiIdentifier>() {
+function useIdeProvider<TApiIdentifier extends ApiIdentifier>() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
-  const [certification, dispatch] = useVSCodeCertification<TApiIdentifier>();
+  const [certification, dispatch] = useIdeCertification<TApiIdentifier>();
   const [apisRevalidationMetadata, setApisRevalidationMetadata] = useState<ModulesMetadata>({});
   const [modulesMetadata, setModulesMetadata] = useState<ModulesMetadata>({});
 
   const onMessageReceived = useCallback(
     ({ origin, data }: MessageEvent<SetCertificationResults<TApiIdentifier> | SetModuleResults>) => {
-      //origin is vsCode or intelliiJ
+      // origin is VSCode or IntelliJ
       if (origin.startsWith("vscode-webview://") || origin === "null") {
         const { command, payload } = data;
         if (command === "setCertificationResults") {
@@ -42,14 +38,14 @@ function useVSCodeDataProvider<TApiIdentifier extends ApiIdentifier>() {
           } = payload;
 
           if (validationType === "OVERALL_SCORE") {
-            // The inconming validation is an API validation.
+            // The incoming validation is an API validation.
             setApisRevalidationMetadata((prev) => ({
               ...prev,
               [apiName]: { loading: false },
             }));
           } else {
-            // The inconming validation is an API module validation.
-            const moduleId = getModuleId({ apiName, apiProtocol: apiSpecType });
+            // The incoming validation is an API module validation.
+            const moduleId = getModuleId({ apiName, apiProtocol: apiSpecType, validationType });
             setModulesMetadata((prev) => ({
               ...prev,
               [moduleId]: { loading: false },
@@ -75,15 +71,15 @@ function useVSCodeDataProvider<TApiIdentifier extends ApiIdentifier>() {
       [apiName]: { loading: true },
     }));
 
-    sendMessageVscode("onClickValidateModule", validationBody);
+    sendMessageIde("onClickValidateModule", validationBody);
   }, []);
 
   const revalidateModule = useCallback((validationBody: ModuleValidation) => {
-    const { apiName, apiSpecType } = validationBody;
-    const moduleId = getModuleId({ apiName, apiProtocol: apiSpecType });
+    const { apiName, apiSpecType, validationType } = validationBody;
+    const moduleId = getModuleId({ apiName, apiProtocol: apiSpecType, validationType });
     setModulesMetadata((prev) => ({ ...prev, [moduleId]: { loading: true } }));
 
-    sendMessageVscode("onClickValidateModule", validationBody);
+    sendMessageIde("onClickValidateModule", validationBody);
   }, []);
 
   useEffect(() => {
@@ -98,7 +94,7 @@ function useVSCodeDataProvider<TApiIdentifier extends ApiIdentifier>() {
     if (!isIntelliJ()) {
       setLoading(true);
     }
-    sendMessageVscode("onProjectLoaded", {});
+    sendMessageIde("onProjectLoaded", {});
   }, []);
 
   return {

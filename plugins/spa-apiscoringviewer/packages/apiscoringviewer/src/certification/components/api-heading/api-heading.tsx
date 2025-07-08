@@ -2,7 +2,6 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
-import ScoreLabel from "../score-label";
 import type {
   ApiIdentifier,
   Certification,
@@ -16,7 +15,6 @@ import { useCallback } from "react";
 import { FormattedMessage } from "react-intl";
 import { ActionIcon, Badge, Flex, Grid, MediaQuery, Title, Tooltip } from "@mantine/core";
 import { IconPlayerPlay } from "@tabler/icons-react";
-import isIntelliJ from "../../../utils/is-intellij";
 import isVsCode from "../../../utils/is-vscode";
 import PercentageScoreLabel from "../score-label";
 import RatingScoreLabel from "../score-label/rating-score-label";
@@ -50,15 +48,6 @@ export default function ApiHeading({
       };
 
       revalidateApi(payload);
-
-      if (isIntelliJ()) {
-        window.cefQuery({
-          request: JSON.stringify({
-            request: "revalidateApi",
-            ...payload,
-          }),
-        });
-      }
     }
   }, [definitionPath, name, protocol, revalidateApi]);
 
@@ -88,6 +77,7 @@ export default function ApiHeading({
                 variant="transparent"
                 onClick={onRevalidateApiClick}
                 loading={apiRevalidationMetadata.loading}
+                disabled={apiRevalidationMetadata.loading}
                 data-testid={`RevalidateApiButton-${name}`}
               >
                 <IconPlayerPlay size={22} />

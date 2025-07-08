@@ -2,8 +2,12 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
-import type { ApiIdentifier } from "../../types";
+import type { ApiIdentifier, ValidationType } from "../../types";
 
-export default function getModuleId({ apiName, apiProtocol }: Pick<ApiIdentifier, "apiName" | "apiProtocol">) {
-  return `${apiName}-${apiProtocol}`;
+export default function getModuleId({
+  apiName,
+  apiProtocol,
+  validationType,
+}: Pick<ApiIdentifier, "apiName" | "apiProtocol"> & { validationType: ValidationType }) {
+  return `${apiName}-${apiProtocol}-${validationType}`;
 }

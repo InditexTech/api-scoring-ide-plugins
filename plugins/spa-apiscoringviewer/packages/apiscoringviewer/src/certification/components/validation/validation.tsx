@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Accordion, MantineTheme } from "@mantine/core";
 import isCodeValidation from "../../../utils/is-code-validation";
 import isDocValidation from "../../../utils/is-doc-validation";
+import getModuleId from "../../utils/get-module-id";
 import ValidationResult from "../../../components/validation-result";
 import { AccordionControl } from "./accordion-control";
 import RevalidateModuleAction from "./revalidate-module-action";
@@ -13,28 +14,30 @@ import type {
   ApiIdentifier,
   Certification,
   CertificationPayload,
-  ModuleMetadata,
+  ModulesMetadata,
   RevalidateModule,
   ScoreFormat,
   ValidationTypes,
 } from "../../../types";
 
 type ValidationProps<TApiIdentifier extends ApiIdentifier> = {
+  api: Certification;
   result: Certification["result"];
   metadata: Pick<Certification, "apiName" | "apiProtocol">;
   rootPath: CertificationPayload<TApiIdentifier>["rootPath"];
+  modulesMetadata: ModulesMetadata;
   definitionPath: string;
-  moduleMetadata: ModuleMetadata;
   revalidateModule?: RevalidateModule;
   scoreFormat: ScoreFormat;
 };
 
 export default function Validation<TApiIdentifier extends ApiIdentifier>({
+  api,
   result,
   metadata,
   rootPath = "",
   definitionPath,
-  moduleMetadata,
+  modulesMetadata,
   revalidateModule,
   scoreFormat,
 }: Readonly<ValidationProps<TApiIdentifier>>) {
@@ -61,6 +64,9 @@ export default function Validation<TApiIdentifier extends ApiIdentifier>({
         }
         const [validation] = validationValues;
         const { validationType, rating, score } = validation;
+        const moduleMetadata = modulesMetadata[getModuleId({ ...api, validationType })] ?? {
+          loading: false,
+        };
 
         return (
           <Accordion.Item value={`accordion-${validationType}`} key={`accordion-${validationType}`}>
